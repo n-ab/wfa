@@ -1,0 +1,26 @@
+@keyframes fadeIn {
+  0%    { opacity: 0; }
+  100%  { opacity: 1; }
+}
+
+@keyframes slideFromLeftSmall {
+  0%   { margin-left: 0px; }
+  100% { margin-left: 15px; }
+}
+
+@keyframes slideFromLeftMedium {
+  0%   { margin-left: 0px; }
+  100% { margin-left: 30px; }
+}
+
+@keyframes slideFromLeftLarge {
+  0%   { margin-left: 0px; }
+  100% { margin-left: 45px; }
+}
+
+@keyframes expandButton {
+  0%    { font-size: 0;    width: 0;     height: 0;    }
+  100%  { font-size: 100%; width: 100px; height: 30px; }
+}
+
+
