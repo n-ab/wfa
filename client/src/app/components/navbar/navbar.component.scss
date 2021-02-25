@@ -1,0 +1,37 @@
+.navbar {
+  padding: 0 0 0 0 !important;
+  margin: 0 0 0 0 !important;
+  background-color: black;
+  color: white;
+  height: 3rem;
+}
+
+.navbar-left {
+  float: left;
+}
+
+.navbar-right {
+  float: right;
+}
+
+.logo{
+  width: 10rem;
+  border: 1px solid white;
+  text-align: center;
+  padding: 1rem;
+}
+
+.options {
+  color: white;
+  margin-right: 30px;
+  margin-top: 13px;
+}
+
+.option {
+  display: inline;
+  margin-left: 10px;
+  padding: 1rem;
+  margin-top: 5px;
+  text-align: center;
+  border: 1px solid white;
+}

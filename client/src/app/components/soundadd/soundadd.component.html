@@ -1,1 +1,16 @@
-<p>soundadd works!</p>
+<div class="title">Add A Sound</div>
+
+<form class="add-form" [formGroup]="addSoundForm" (ngSubmit)="uploadSound()" enctype="multipart/form-data">
+  <mat-form-field class="form-input"><input matInput type="text" name="title" formControlName="title" placeholder="title"></mat-form-field>
+  <mat-form-field class="form-input"><input matInput type="text" name="description" formControlName="description" placeholder="description"></mat-form-field>
+  <mat-form-field class="form-input"><input matInput type="text" name="keywords" formControlName="keywords" placeholder="keywords"></mat-form-field>
+  <mat-form-field class="form-input"><input matInput type="text" name="price" formControlName="price" placeholder="price"></mat-form-field>
+  <mat-form-field class="form-input"><input matInput type="text" name="library" formControlName="library" placeholder="library"></mat-form-field>
+  <mat-form-field class="form-input"><input matInput type="text" name="misc" formControlName="misc" placeholder="misc"></mat-form-field>
+  <hr>
+  <button mat-raised-button class="upload-button" (click)="sound.click()">upload</button>
+  <input type="file" class="input" #sound (change)="soundSelected($event)">
+  <button mat-raised-button class="submit" (ngSubmit)="uploadSound()">submit</button>
+</form>
+
+<div class="sound-uploaded-notifier" *ngIf="audioPreview && audioPreview !== ''">ready for upload</div>

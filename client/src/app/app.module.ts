@@ -19,6 +19,8 @@ import { LandingComponent } from './components/landing/landing.component';
 import { SoundaddComponent } from './components/soundadd/soundadd.component';
 import { SoundeditComponent } from './components/soundedit/soundedit.component';
 import { SearchComponent } from './components/search/search.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { SearchComponent } from './components/search/search.component';
     LandingComponent,
     SoundaddComponent,
     SoundeditComponent,
-    SearchComponent
+    SearchComponent,
+    NavbarComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
