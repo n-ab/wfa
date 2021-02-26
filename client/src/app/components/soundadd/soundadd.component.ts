@@ -12,7 +12,6 @@ export class SoundaddComponent implements OnInit {
 
   addSoundForm: FormGroup;
   audioPreview = '';
-  audioFile: File;
 
   constructor(private router: Router, private fileService: FileService) {
     this.addSoundForm = new FormGroup({
@@ -22,6 +21,7 @@ export class SoundaddComponent implements OnInit {
       price: new FormControl(null),
       library: new FormControl(null),
       misc: new FormControl(null),
+      audioFile: new FormControl(null)
     });
   }
 

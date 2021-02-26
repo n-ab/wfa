@@ -1,3 +1,4 @@
+<button mat-raised-button [routerLink]="['/soundlist']">back</button>
 <div class="title">Add A Sound</div>
 
 <form class="add-form" [formGroup]="addSoundForm" (ngSubmit)="uploadSound()" enctype="multipart/form-data">
@@ -7,10 +8,9 @@
   <mat-form-field class="form-input"><input matInput type="text" name="price" formControlName="price" placeholder="price"></mat-form-field>
   <mat-form-field class="form-input"><input matInput type="text" name="library" formControlName="library" placeholder="library"></mat-form-field>
   <mat-form-field class="form-input"><input matInput type="text" name="misc" formControlName="misc" placeholder="misc"></mat-form-field>
-  <hr>
-  <button mat-raised-button class="upload-button" (click)="sound.click()">upload</button>
+  <button type="button" mat-raised-button class="upload-button" (click)="sound.click()">upload file</button>
   <input type="file" class="input" #sound (change)="soundSelected($event)">
+  <div class="sound-uploaded-notifier" *ngIf="audioPreview && audioPreview !== ''">ready for upload</div>
+  <br>
   <button mat-raised-button class="submit" (ngSubmit)="uploadSound()">submit</button>
 </form>
-
-<div class="sound-uploaded-notifier" *ngIf="audioPreview && audioPreview !== ''">ready for upload</div>
