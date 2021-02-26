@@ -1,0 +1,28 @@
+.title {
+  font-size: 200%;
+  text-align: center;
+  padding: 2rem;
+}
+
+.add-form {
+  padding: 1rem;
+  border: 1px solid lightgrey;
+  width: 90%;
+  max-width: 700px;
+  margin: auto;
+}
+
+.form-input {
+  display: block;
+  margin: auto;
+}
+
+button {
+  margin-top: 3rem;
+  margin-left: 1rem;
+}
+
+.submit {
+  color: white;
+  background-color: rgb(83, 83, 83);
+}
