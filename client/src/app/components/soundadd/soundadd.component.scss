@@ -1,3 +1,4 @@
+@import '../../scss/keyframes.scss';
 .title {
   font-size: 200%;
   text-align: center;
@@ -20,6 +21,7 @@
 button {
   margin-top: 3rem;
   margin-left: 1rem;
+  display: inline;
 }
 
 .submit {
@@ -29,4 +31,13 @@ button {
 
 .input {
   display: none;
+}
+
+.sound-uploaded-notifier {
+  display: inline;
+  color: white;
+  background-color: lightgreen;
+  border-radius: 5px;
+  padding: 12px;
+  animation: expandButton 1s ease;
 }

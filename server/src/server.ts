@@ -1,16 +1,16 @@
 import * as express from 'express';
 import * as session from 'express-session';
-import {config} from './config';
+import { config } from './config';
 import * as mongoose from 'mongoose';
 import * as passport from 'passport';
 
-console.log(`Welcome to the Waveform Arts database, running on port ${config.PORT}`);
+console.log(`Welcome to the Waveform Arts server, running on port ${config.PORT}`);
 
 const app = express();
 
 app.use(express.json({limit:'32MB'}));
 app.use(express.urlencoded({limit:'32MB', extended:false}));
-app.use("/audio", express.static(`${__dirname}/audiofiles`)); // for audio file upload
+app.use("/audiofiles", express.static(`${__dirname}/audiofiles`)); // for audio file upload
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
