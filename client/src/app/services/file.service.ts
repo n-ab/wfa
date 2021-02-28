@@ -21,7 +21,6 @@ export class FileService {
     postData.append('library', data.library);
     postData.append('misc', data.misc);
     postData.append('audioFile', data.audioFile);
-    // postData.append('data', new Blob([JSON.stringify(data)], {type: 'application/json'}));
     return this.http.post('/api/file/upload', postData).toPromise()
       .then(file => console.log(`file ${file} was successfully uploaded.`))
       .catch(err => console.log('err: ', err));

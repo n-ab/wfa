@@ -10,7 +10,7 @@ const app = express();
 
 app.use(express.json({limit:'32MB'}));
 app.use(express.urlencoded({limit:'32MB', extended:false}));
-app.use("/audiofiles", express.static(`${__dirname}/audiofiles`)); // for audio file upload
+app.use("/audiofiles", express.static(`./audiofiles`)); // for audio file upload
 
 app.use((req, res, next) => {
     res.setHeader("Access-Control-Allow-Origin", "*");
