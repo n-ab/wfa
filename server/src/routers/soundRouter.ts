@@ -18,6 +18,14 @@ const storage = multer.diskStorage({
 
 app.post('/upload', multer({storage:storage}).single('audioFile'), (req: any, res) => {
     console.log('file upload successful. saving metadata/path to db using: ', req.body);
-    soundController.saveSoundData(req.body)
-    
+    return soundController.saveSoundData(req.body);
+})
+
+app.get('/fetch', (req: any, res) => {
+    console.log(`fetching sounds ${req.headers}`);
+    return soundController.fetch(req.headers)
+      .then(sounds => {
+        return res.status(200).json({sounds});
+      })
+      .catch(err => err);
 })

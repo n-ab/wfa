@@ -1,5 +1,5 @@
-import { Sound } from '../../../server/src/models/sound';
+import { SoundObject } from '../../../server/src/models/sound';
 
 export {
-  Sound,
+  SoundObject as Sound,
 };
