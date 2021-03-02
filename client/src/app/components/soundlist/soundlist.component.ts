@@ -14,13 +14,16 @@ export class SoundlistComponent implements OnInit {
   constructor(private soundService: SoundService) { }
 
   ngOnInit(): void {
-    this.soundService.fetchSounds('')
-      .then(soundList => soundList);
+    this.compileSoundList('');
   }
 
-  search(query: string): Sound[] {
-    this.soundService.fetchSounds(query);
-    return [];
+  search(query: string): void {
+    this.compileSoundList(query);
   }
 
+  async compileSoundList(searchQuery: string): Promise<Sound[]> {
+    const soundList = await this.soundService.fetchSounds('');
+    this.soundList = soundList;
+    return soundList;
+  }
 }

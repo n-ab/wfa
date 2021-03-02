@@ -7,8 +7,6 @@ import { Sound } from '../models';
 })
 export class SoundService {
 
-  soundList: Sound[] = [];
-
   constructor(private http: HttpClient) { }
 
   fetchSounds(searchQuery: string): Promise<Sound[]> {
@@ -16,8 +14,8 @@ export class SoundService {
     const queryParams = {
       searchQuery,
       searchBy: 'name'
-    }
-    return this.http.get('/api/sound/fetch', {headers: {searchQuery, searchBy: 'name'}}).toPromise()
+    };
+    return this.http.get('/api/sound/fetch', {params: {searchQuery, searchBy: 'name'}}).toPromise()
       .then(soundList => {
         console.log('sound list found: ', soundList);
         return soundList;

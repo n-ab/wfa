@@ -1,6 +1,11 @@
 import * as mongoose from 'mongoose';
-import {Sound} from '../models/sound';
+import {Sound, SoundObject} from '../models/sound';
 import * as moment from 'moment';
+
+export interface IsearchQuery {
+  searchQuery: string,
+  searchBy:    string
+}
 
 export function saveSoundData(data) {
     return Sound.findOneAndUpdate(data, {$set: {newSound: data}}, { new: true, upsert: true })
@@ -16,33 +21,25 @@ export function saveSoundData(data) {
     .catch(err => console.log('there was an error saving sound: ', err));
 }
 
-export function fetch(data: any) {
-    const yourShit = Object.entries(data);
-    // console.log(yourShit);
-    console.log('searchBy', yourShit[7][1]);
-    console.log('searchQuery', yourShit[8][1]);
-    if (yourShit[7][1] = 'name') {
-        if (yourShit[8][1] == '') {
-            console.log('returning all sounds.');
-            return Sound.find({});
-        }
+export function fetch(data: IsearchQuery): Promise<SoundObject[]> {
+    console.log('searching by "' + data.searchBy + '" for sounds with "' + data.searchQuery + '"');
+    if (data.searchQuery === '') { 
+      return Sound.find({}).then(sounds => Promise.resolve(sounds)).catch(err => err) 
+    } else {
+      switch (data.searchQuery) {
+        case 'title':
+          Sound.find( { title: { $regex: `${data.searchQuery}` } } ).then(sounds => Promise.resolve(sounds)).catch(err => err);
+          break;
+        case 'keywords':
+          Sound.find( { keywords: { $regex: `${data.searchQuery}` } } ).then(sounds => Promise.resolve(sounds)).catch(err => err);
+          break;
+        case 'library':
+          Sound.find( { library: { $regex: `${data.searchQuery}` } } ).then(sounds => Promise.resolve(sounds)).catch(err => err);
+          break;
+        case 'misc':
+          Sound.find( { misc: { $regex: `${data.searchQuery}` } } ).then(sounds => Promise.resolve(sounds)).catch(err => err);
+          break;
+      }
+
     }
-    if (data.findBy = 'keywords')
-    return Sound.find({keywords: {}})
 }
-
-// export async function fetch(data: object) {
-//     const sortedData = await sort(data);
-//     if (sortedData.searchBy = 'name') {
-//         return Sound.find({name: { }})
-//     }
-//     if (data.findBy = 'keywords')
-//     return Sound.find({keywords: {}})
-// }
-
-// export function sort(data: object) {
-//     const preSortedData = Object.entries(data);
-//     const searchBy = preSortedData[7];
-//     const searchQuery = preSortedData[8];
-//     return {searchBy, searchQuery};
-// }
