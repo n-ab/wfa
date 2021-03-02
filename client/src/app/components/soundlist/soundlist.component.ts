@@ -22,8 +22,13 @@ export class SoundlistComponent implements OnInit {
   }
 
   async compileSoundList(searchQuery: string): Promise<Sound[]> {
-    const soundList = await this.soundService.fetchSounds('');
+    const soundList = await this.soundService.fetchSounds(searchQuery, 'name');
     this.soundList = soundList;
+    console.log('this.soundList INITIAL = ', this.soundList);
+    console.log('Object.keys(soundList) = ', Object.keys(soundList));
+    console.log('Object.values(soundList) = ', Object.values(soundList));
+    this.soundList = Object.values(soundList);
+    console.log('this.soundList = ', this.soundList);
     return soundList;
   }
 }

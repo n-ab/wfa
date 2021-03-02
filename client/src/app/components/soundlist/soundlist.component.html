@@ -1,24 +1,14 @@
 <button mat-raised-button [routerLink]="['/add']">Add A Sound</button>
-<div class="title">Sound List</div>
 <div class="sound-list-container">
-  <table>
-    <thead>
-      <th></th>
-      <th>name</th>
-      <th>paid</th>
-      <th>url</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let item of soundList; let i=index">
-        <td>{{ i+1 }}</td>
-        <td>{{ item.title }}</td>
-        <td>{{ item.price }}</td>
-        <td> <button mat-raised-button><a href="item.url" style="color: black; text-decoration: none;">view item</a></button></td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div class="options2">
-  <div class="option2">Serial Numbers</div>
-  <div class="option2" [routerLink]="['/add']">Add +</div>
+  <div class="sound-list-title">Sound List</div>
+  <div class="sound-list">
+    <table>
+      <tbody>
+        <tr *ngFor="let sound of soundList[0]">
+          <td>{{sound.title}}</td>
+          <td>derrr</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
