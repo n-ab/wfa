@@ -31,3 +31,19 @@ app.get('/fetch', (req: any, res) => {
       })
       .catch(err => err);
 })
+
+app.get('/findByName', (req:any, res) => {
+    return soundController.fetchByName(req.query);
+})
+
+app.get('/findByKeyword', (req:any, res) => {
+    return soundController.fetchByKeyword(req.query);
+})
+
+app.get('/findByLibrary', (req:any, res) => {
+    return soundController.fetchByLibrary(req.query);
+})
+
+app.get('/findByAny', (req:any, res) => {
+    return soundController.fetchByAny(req.query);
+})

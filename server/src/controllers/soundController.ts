@@ -40,6 +40,21 @@ export function fetch(data: IsearchQuery): Promise<SoundObject[]> {
           Sound.find( { misc: { $regex: `${data.searchQuery}` } } ).then(sounds => Promise.resolve(sounds)).catch(err => err);
           break;
       }
-
     }
+}
+
+export function fetchByName(query): Promise<SoundObject[]> {
+  return Sound.find( { title: { $regex: `${query}` } } ).then(sounds => Promise.resolve(sounds)).catch(err => err);
+}
+
+export function fetchByKeyword(query): Promise<SoundObject[]> {
+  return Sound.find( { keywords: { $regex: `${query}` } } ).then(sounds => Promise.resolve(sounds)).catch(err => err);
+}
+
+export function fetchByLibrary(query): Promise<SoundObject[]> {
+  return Sound.find( { library: { $regex: `${query}` } } ).then(sounds => Promise.resolve(sounds)).catch(err => err);
+}
+
+export function fetchByAny(query): Promise<SoundObject[]> {
+  return Sound.find( { misc: { $regex: `${query}` } } ).then(sounds => Promise.resolve(sounds)).catch(err => err);
 }

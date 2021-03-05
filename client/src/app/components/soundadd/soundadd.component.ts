@@ -13,7 +13,7 @@ export class SoundaddComponent implements OnInit {
   addSoundForm: FormGroup;
   audioPreview = '';
 
-  constructor(private router: Router, private fileService: FileService) {
+  constructor(private router: Router, private fileService: FileService, public audioContext: AudioContext) {
     this.addSoundForm = new FormGroup({
       title: new FormControl(null),
       description: new FormControl(null),
@@ -34,6 +34,7 @@ export class SoundaddComponent implements OnInit {
       // tslint:disable-next-line:no-non-null-assertion
       const file = (event.target as HTMLInputElement).files![0];
       this.addSoundForm.patchValue({audioFile: file});
+      console.log('file = ', file);
       // tslint:disable-next-line:no-non-null-assertion
       this.addSoundForm.get('audioFile')!.updateValueAndValidity();
       const reader = new FileReader();
@@ -41,7 +42,11 @@ export class SoundaddComponent implements OnInit {
         // tslint:disable-next-line:no-non-null-assertion
         this.audioPreview = reader.result!.toString();
       };
-      if (file) { reader.readAsDataURL(file); }
+      if (file) {
+        reader.readAsDataURL(file);
+        const source = this.audioContext.createBufferSource().context;
+        console.log('this.audioContext.createBufferSource().context: ', source);
+      }
     }
   }
 

@@ -52,6 +52,7 @@ import { ContactComponent } from './components/contact/contact.component';
   ],
   providers: [
     // put guards here
+    AudioContext
   ],
   bootstrap: [AppComponent]
 })

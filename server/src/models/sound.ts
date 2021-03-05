@@ -11,7 +11,10 @@ export interface SoundObject extends mongoose.Document {
     misc: string,
     length: number,
     price: number,
-    discount: number
+    discount: number,
+    fileType: string,
+    bitRate: string,
+    sampleRate: string,
 }
 
 const schema = new mongoose.Schema({
@@ -25,6 +28,9 @@ const schema = new mongoose.Schema({
     length: Number,
     price: Number,
     discount: Number,
+    fileType: String,
+    bitRate: String,
+    sampleRate: String,
     }, { timestamps: true }
 );
 

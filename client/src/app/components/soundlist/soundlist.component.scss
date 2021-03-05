@@ -1,5 +1,21 @@
-button {
+.add-a-sound {
   margin: 1rem;
+}
+
+.button-shit {
+  font-size: 50%;
+  height: 25px;
+  width: 10px !important;
+  min-width: 10px !important;
+  background-color: rgba(117, 209, 255, 0.579);
+  color: white;
+}
+
+mat-form-field {
+  width: 90%;
+  margin: auto;
+  display: block;
+  max-width: 400px;
 }
 
 .sound-list-title {
@@ -13,3 +29,60 @@ button {
   width: 40%;
   max-width: 400px;
 }
+
+.sound-list-left {
+  border: 1px solid #d8d8d8;
+  float: left;
+  width: 35%;
+  margin: 10px 3px 3px 17px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 2px lightgrey;
+}
+.sound-list-right {
+  float: right;
+  width: 62%;
+}
+
+// sound box -----------------
+
+.sound {
+  box-shadow: 0px 0px 20px -7px rgb(8, 160, 236);
+  border: 1px solid rgb(43 208 254 / 14%);
+  display: inline-block;
+  padding: 7px;
+  margin: 10px;
+  border-radius: 10px;
+  width: 10rem;
+}
+
+.sound-title {
+  padding: 10px;
+  font-size: 150%;
+  // border-bottom: 1px solid rgba(19, 231, 255, 0.301);
+  // border-right: 1px solid rgba(19, 231, 255, 0.315);
+}
+
+.sound-description {
+  font-size: 80%;
+}
+
+.sound-keywords {
+  font-size: 80%;
+}
+
+.sound-left-right-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sound-left {
+
+}
+
+
+.sound-right {
+  width: 25px;
+  // border-left:1px solid rgba(19, 231, 255, 0.315);
+}
+
+// --------------------------

@@ -9,10 +9,12 @@ export class FileService {
   appJson = new HttpHeaders({ 'Content-Type': 'application/json' });
   multipartForm = new HttpHeaders({ 'Content-Type': 'multipart/form-data' });
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public audioContext: AudioContext) { }
 
   uploadFile(data: any): Promise<any> {
-    console.log('data: ', data.title);
+    const audioShit = this.audioContext.decodeAudioData(data.audioFile);
+    console.log('audioShit = ', audioShit);
+    console.log('data: ', data.audioFile);
     const postData = new FormData();
     postData.append('title', data.title);
     postData.append('description', data.description);

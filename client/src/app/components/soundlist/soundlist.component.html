@@ -1,14 +1,34 @@
-<button mat-raised-button [routerLink]="['/add']">Add A Sound</button>
+<button mat-raised-button [routerLink]="['/add']" class="add-a-sound">Add A Sound</button>
 <div class="sound-list-container">
   <div class="sound-list-title">Sound List</div>
-  <div class="sound-list">
-    <table>
-      <tbody>
-        <tr *ngFor="let sound of soundList[0]">
-          <td>{{sound.title}}</td>
-          <td>derrr</td>
-        </tr>
-      </tbody>
-    </table>
+
+  <div class="sound-list" *ngIf="soundList">
+    <div class="sound-list-left">
+      <mat-form-field><input matInput type="text" id="name-search-input"    placeholder="Search by name"></mat-form-field>
+      <mat-form-field><input matInput type="text" id="keyword-search-input" placeholder="Search by keyword"></mat-form-field>
+      <mat-form-field><input matInput type="text" id="library-search-input" placeholder="Search by library"></mat-form-field>
+      <mat-form-field><input matInput type="text" id="any-search-input"     placeholder="Search by any"></mat-form-field>
+    </div>
+    <div class="sound-list-right">
+      <div class="sound" *ngFor="let sound of soundList[0]">
+        <div class="sound-left-right-container">
+          <div class="sound-left">
+            <div class="sound-title">{{ sound.title }}</div>
+            <div class="sound-description">{{ sound.description }}</div>
+            <div *ngIf="sound.keywords" class="sound-keywords">
+              <div *ngFor="let keyword of sound.keywords">
+                {{ keyword }}
+              </div>
+            </div>
+          </div>
+          <div class="sound-right">
+            <button mat-raised-button class="star-button button-shit">*</button>
+            <button mat-raised-button class="add-button  button-shit">+</button>
+            <button mat-raised-button class="play-button button-shit">></button>
+            <button mat-raised-button class="info-button button-shit">i</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
