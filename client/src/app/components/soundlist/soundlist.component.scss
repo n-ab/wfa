@@ -86,3 +86,9 @@ mat-form-field {
 }
 
 // --------------------------
+
+// mat-raised-button overrides ----------
+
+.mat-raised-button {
+  border-radius: 0px;
+}

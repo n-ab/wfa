@@ -32,6 +32,9 @@ app.get('/fetch', (req: any, res) => {
       .catch(err => err);
 })
 
+// these routes should only be used when a user searches from the landing page.
+// otherwise, when soundlist.component.ts makes its call, it should only do so once.
+
 app.get('/findByName', (req:any, res) => {
     return soundController.fetchByName(req.query);
 })
