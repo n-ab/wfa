@@ -23,11 +23,11 @@ app.post('/upload', multer({storage:storage}).single('audioFile'), (req: any, re
 
 app.get('/fetch', (req: any, res) => {
     console.log('fetching sounds with data = ', req.query);
-    return soundController.fetch(req.query)
+    return soundController.fetch()
       .then(sounds => {
         console.log(`returning ${sounds.length} sounds`);
         console.log(sounds);
-        return res.status(200).json({sounds});
+        return res.status(200).json(sounds);
       })
       .catch(err => err);
 })
