@@ -1,13 +1,22 @@
+<link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <div class="navbar">
   <div class="navbar-left">
     <div class="logo">Waveform Arts</div>
   </div>
   <div class="navbar-right">
     <div class="options">
-      <div class="option" [routerLink]="['']">Home</div>
-      <div class="option" [routerLink]="['soundlist']">Search</div>
-      <div class="option" [routerLink]="['contact']">About Us</div>
-      <div class="option" [routerLink]="['contact']">Contact</div>
+      <div class="option o1" [routerLink]="['']">
+        <div class="option-text">Home</div>
+      </div>
+      <div class="option o2" [routerLink]="['soundlist']">
+        <div class="option-text">Search</div>
+      </div>
+      <div class="option o3" [routerLink]="['contact']">
+        <div class="option-text">About Us</div>
+      </div>
+      <div class="option o4" [routerLink]="['contact']">
+        <div class="option-text">Contact</div>
+      </div>
     </div>
   </div>
 </div>

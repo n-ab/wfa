@@ -23,4 +23,12 @@
   100%  { font-size: 100%; width: 100px; height: 30px; }
 }
 
+@keyframes letterSpacingReveal {
+  0%   { letter-spacing: -12px; opacity: 0;}
+  100% { letter-spacing: 1px;   opacity: 1;}
+}
 
+// @keyframes {
+//   0%   {  }
+//   100% {  }
+// }
