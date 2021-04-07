@@ -2,7 +2,7 @@
 @import '../../scss/wfa.scss';
 
 .navbar {
-  padding: 0 0 0 0 !important;
+  // padding: 0 0 0 0 !important;
   margin: 0 0 0 0 !important;
   background-color: black;
   color: rgb(0, 217, 229);
@@ -31,12 +31,12 @@
 .options {
   color: white;
   margin-right: 30px;
-  margin-top: 13px;
 }
 
 .option {
   display: inline-block;
   margin-left: 10px;
+  margin-top: 10px;
   text-align: center;
   opacity: 0;
   letter-spacing: 1px;
@@ -45,6 +45,8 @@
   user-select: none;
   height: 30px;
   width: 75px;
+  vertical-align: top;
+  outline: none;
 }
 
 .option:hover {
@@ -53,9 +55,7 @@
 }
 
 .option-text {
-  display: block;
-  margin: auto;
-  text-align: center;
+  padding: 6px;
 }
 
 .o1 {
@@ -72,4 +72,40 @@
 
 .o4 {
   animation: fadeIn 3.75s ease 2s forwards;
+}
+
+@media (max-width: 500px) {
+  .options {
+    margin-right: 0px;
+  }
+  .logo {
+    font-size: 100%;
+    text-align: unset;
+    animation: letterSpacingRevealMobile 1s ease forwards;
+  }
+  .option {
+    margin-left: 3px;
+    width: unset;
+  }
+  .navbar-left {
+    float: none;
+  }
+  .navbar-right {
+    float: none;
+  }
+  .o1 {
+    animation: fadeIn .5s ease .7s forwards;
+  }
+
+  .o2 {
+    animation: fadeIn .9s ease .7s forwards;
+  }
+
+  .o3 {
+    animation: fadeIn 1.3s ease .7s forwards;
+  }
+
+  .o4 {
+    animation: fadeIn 1.7s ease .7s forwards;
+  }
 }

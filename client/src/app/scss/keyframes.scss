@@ -28,6 +28,11 @@
   100% { letter-spacing: 1px;   opacity: 1;}
 }
 
+@keyframes letterSpacingRevealMobile {
+  0%   { letter-spacing: -4px; opacity: 0;}
+  100% { letter-spacing: 1px;   opacity: 1;}
+}
+
 // @keyframes {
 //   0%   {  }
 //   100% {  }
