@@ -4,10 +4,22 @@
 
   <div class="sound-list" *ngIf="soundList">
     <div class="sound-list-left">
-      <mat-form-field><input matInput type="text" id="name-search-input"    placeholder="Search by name"></mat-form-field>
-      <mat-form-field><input matInput type="text" id="keyword-search-input" placeholder="Search by keyword"></mat-form-field>
-      <mat-form-field><input matInput type="text" id="library-search-input" placeholder="Search by library"></mat-form-field>
-      <mat-form-field><input matInput type="text" id="any-search-input"     placeholder="Search by any"></mat-form-field>
+      <form [formGroup]="searchByNameForm" (onSubmit)="searchByName()">
+        <mat-form-field><input matInput type="text" id="name-search-input"    formControlName="query" placeholder="Search by name"></mat-form-field>
+        <button mat-raised-button class="submit-button"  (click)="searchByName()" (onSubmit)="searchByName()">search</button>
+      </form>
+      <form [formGroup]="searchByKeywordForm" (onSubmit)="searchByKeyword()">
+        <mat-form-field><input matInput type="text" id="keyword-search-input" formControlName="query" placeholder="Search by keyword"></mat-form-field>
+        <button mat-raised-button class="submit-button" (click)="searchByKeyword()" (onSubmit)="searchByKeyword()">search</button>
+      </form>
+      <form [formGroup]="searchByLibraryForm" (onSubmit)="searchByLibrary()">
+        <mat-form-field><input matInput type="text" id="library-search-input" formControlName="query" placeholder="Search by library"></mat-form-field>
+        <button mat-raised-button class="submit-button" (click)="searchByLibrary()" (onSubmit)="searchByLibrary()">search</button>
+      </form>
+      <form [formGroup]="searchByAnyForm" (onSubmit)="searchByAny()">
+        <mat-form-field><input matInput type="text" id="any-search-input"     formControlName="query" placeholder="Search by any"></mat-form-field>
+        <button mat-raised-button class="submit-button" (click)="searchByAny()" (onSubmit)="searchByAny()">search</button>
+      </form>
     </div>
     <div class="sound-list-right">
       <div class="sound" *ngFor="let sound of soundShit">

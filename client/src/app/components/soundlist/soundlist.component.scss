@@ -12,10 +12,13 @@
 }
 
 mat-form-field {
-  width: 90%;
-  margin: auto;
-  display: block;
+  width: 60%;
+  padding: 1rem;
   max-width: 400px;
+}
+
+.submit-button {
+margin-left: 15px;
 }
 
 .sound-list-title {

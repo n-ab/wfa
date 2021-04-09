@@ -9,8 +9,15 @@ export class SoundService {
 
   constructor(private http: HttpClient) { }
 
-  fetchSounds(searchQuery: string, searchBy: string): any {
-    return this.http.get('/api/sound/fetch', {params: {searchQuery, searchBy}}).toPromise()
+  fetchSounds(searchQuery: any, searchBy: string): Promise<object> {
+    console.log(searchQuery.query);
+    if (searchQuery && searchBy) {
+      console.log('fetching sounds with', searchQuery.query + ' and ', searchBy);
+    } else {
+      console.log('fetching entire sound library.');
+    }
+    const query = searchQuery.query;
+    return this.http.get('/api/sound/fetch', {params: {query, searchBy}}).toPromise()
       .then(sounds => {
         return sounds;
       })
