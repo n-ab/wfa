@@ -1,7 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Observable, Subscriber } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Sound } from 'src/app/models';
 import { SoundService } from 'src/app/services/sound.service';
 
@@ -12,12 +10,14 @@ import { SoundService } from 'src/app/services/sound.service';
 })
 export class SoundlistComponent implements OnInit, AfterViewInit {
 
-  soundShit: Sound[] = [];
-  soundList = true;
+  soundList: Sound[] = [];
+  soundsWereFound = false;
   searchByNameForm: FormGroup;
   searchByKeywordForm: FormGroup;
   searchByLibraryForm: FormGroup;
   searchByAnyForm: FormGroup;
+  regexQuery = '';
+  regex = new RegExp(`${this.regexQuery}/gm`);
 
   constructor(private soundService: SoundService) {
     this.searchByNameForm = new FormGroup({ query: new FormControl(null) });
@@ -31,7 +31,82 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
+    this.prepSearchBars();
   }
+
+  prepSearchBars(): void {
+    setTimeout(() => {
+      this.prepNameSearchBar();
+    }, 100);
+  }
+
+  prepNameSearchBar(): void {
+    const searchbar = document.getElementById('name-search-input');
+    searchbar?.addEventListener('keyup', event => {
+      console.log('#$&%*#$(&*&*(#$)) === ', event);
+    });
+  }
+
+  prepKeywordSearchBar(): void {
+    const searchbar = document.getElementById('keyword-search-input');
+    searchbar?.addEventListener('input', event => {
+      console.log('event: ', event);
+    });
+  }
+
+  prepLibrarySearchBar(): void {
+    const searchbar = document.getElementById('library-search-input');
+    searchbar?.addEventListener('input', event => {
+      console.log('event: ', event);
+    });
+  }
+
+  prepAnySearchBar(): void {
+    const searchbar = document.getElementById('any-search-input');
+    searchbar?.addEventListener('input', event => {
+      console.log('event: ', event);
+    });
+  }
+
+// FILTERING DATA --------------------------------
+
+  async searchQueryEntered(event: Event, filterBy: string): Promise<any> {
+    if ((event.target as HTMLInputElement).value != null) {
+      switch (filterBy) {
+        case 'name':
+          console.log('filter by NAME: ', (event.target as HTMLInputElement).value);
+          this.regexQuery.concat((event.target as HTMLInputElement).value);
+          break;
+        case 'keyword':
+          console.log('filter by KEYWORD: ', (event.target as HTMLInputElement).value);
+          this.regexQuery.concat((event.target as HTMLInputElement).value);
+          break;
+        case 'library':
+          console.log('filter by LIBRARY: ', (event.target as HTMLInputElement).value);
+          this.regexQuery.concat((event.target as HTMLInputElement).value);
+          break;
+        case 'any':
+          console.log('filter by ANY: ', (event.target as HTMLInputElement).value);
+          this.regexQuery.concat((event.target as HTMLInputElement).value);
+          break;
+        default:
+          break;
+      }
+    }
+    const dataEntered = (event.target as HTMLInputElement).value;
+    this.regexQuery.concat(dataEntered);
+    console.log(this.regexQuery);
+  }
+
+  filterResults(filter: 'name' | 'keyword' | 'library' | 'any', searchCharacter: any): any {
+    console.log('searchCharacter: ', searchCharacter);
+    console.log('filter: ', filter);
+    this.soundList.filter(sound => {
+      // console.log('sound FILTER: ', sound);
+    });
+  }
+
+// ------------------------------------------------
 
   searchByName(): void {
     const form = this.searchByNameForm.getRawValue();
@@ -62,8 +137,9 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
   // USING PROMISE
 
   async compileSoundList(searchQuery: string): Promise<any> {
-    const soundList = await this.soundService.fetchSounds(searchQuery, '');
-    this.soundShit = Object.values(soundList);
-    return soundList;
+    const soundsReturned = await this.soundService.fetchSounds(searchQuery, '');
+    this.soundList = Object.values(soundsReturned);
+    this.soundsWereFound = true;
+    return soundsReturned;
   }
 }

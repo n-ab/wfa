@@ -22,38 +22,25 @@ app.post('/upload', multer({storage:storage}).single('audioFile'), (req: any, re
 })
 
 app.get('/fetch', (req: any, res) => {
-    console.log('fetching sounds with data = ', req.query);
-    return soundController.fetch()
-      .then(sounds => {
-        console.log(`returning ${sounds.length} sounds`);
-        console.log(sounds);
-        return res.status(200).json(sounds);
-      })
+    const queryFromClient = Object.values(req.query);
+    console.log('queryFromClient = ', queryFromClient);
+    if (queryFromClient[0] === 'undefined' && queryFromClient[1] === '') {
+        return soundController.fetch()
+      .then(sounds => res.status(200).json(sounds))
       .catch(err => err);
-})
-
-// -- the routes below should only be used when a user searches from the landing page. -- 
-
-// otherwise, when soundlist.component.ts makes its call 
-// for the entire database (populate 10 results immediately, then slowly load the whole db), 
-// it should only do so once.
-
-app.get('/findByName', (req:any, res) => {
-    return soundController.fetchByName(req.query);
-})
-
-app.get('/findByKeyword', (req:any, res) => {
-    return soundController.fetchByKeyword(req.query);
-})
-
-app.get('/findByLibrary', (req:any, res) => {
-    return soundController.fetchByLibrary(req.query);
-})
-
-app.get('/findByPrice', (req: any, res) => {
-    return soundController.fetchByPrice(req.query);
-})
-
-app.get('/findByAny', (req:any, res) => {
-    return soundController.fetchByAny(req.query);
+    }
+    if (queryFromClient[0] !== 'undefined' && queryFromClient[1] !== '') {
+        switch (queryFromClient[1]) {
+            case 'name':
+                return soundController.fetchByName(req.query);
+            case 'keyword':
+                return soundController.fetchByKeyword(req.query);
+            case 'library':
+                return soundController.fetchByLibrary(req.query);
+            case 'any':
+                return soundController.fetchByAny(req.query); 
+            default:
+                break;
+        }
+    }
 })

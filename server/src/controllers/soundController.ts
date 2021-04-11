@@ -28,10 +28,11 @@ export function fetch() {
 }
 
 export function fetchByName(name: string) {
-  return Sound.find({ "title": { "$regex": `${name}`, "$options": "i"} })
-  .then(document => {
-    console.log('document found by keyword: ', document);
-    return document;
+  console.log('searching sounds for ', name);
+  return Sound.find({ "title": `${Object.values(name)[0]}` })
+  .then(documents => {
+    console.log('documents found by name: ', documents);
+    return documents;
   })
   .catch(err => err);
 }
@@ -48,7 +49,7 @@ export function fetchByKeyword(keyword: string) {
 export function fetchByLibrary(library: string) {
   return Sound.find({ "library": { "$regex": `${library}`, "$options": "i" } })
   .then(document => {
-    console.log('document found by keyword: ', document);
+    console.log('document found by library: ', document);
     return document;
   })
   .catch(err => err);
@@ -64,7 +65,7 @@ export function fetchByPrice(price) {
 export function fetchByAny(query: string) {
   return Sound.find({ $or : [{"title" : { $regex: `${query}` }}, {"keywords" : { $regex: `${query}` }}, {"library" : { $regex: `${query}` }}, {"misc" : { $regex: `${query}` }}, { "description": {$regex: `${query}`} }] })
   .then(documents => {
-    console.log('document found by keyword: ', documents);
+    console.log('document found by any: ', documents);
     return documents;
   })
   .catch(err => err);
