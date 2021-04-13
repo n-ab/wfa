@@ -11,8 +11,29 @@
       <form [formGroup]="searchByAnyForm"     (onSubmit)="searchByAny()"><mat-form-field><input matInput (keyup)="searchQueryEntered($event, 'any')" type="text" id="any-search-input"     formControlName="query" placeholder="Search by any"></mat-form-field></form>
     </div>
 
-    <div class="sound-list-right">
+    <div class="sound-list-right" *ngIf="showFullSoundList">
       <div class="sound" *ngFor="let sound of soundList">
+        <div class="sound-left-right-container">
+          <div class="sound-left">
+            <div class="sound-title">{{ sound.title }}</div>
+            <div class="sound-description">{{ sound.description }}</div>
+            <div *ngIf="sound.keywords" class="sound-keywords">
+              <div *ngFor="let keyword of sound.keywords">
+                {{ keyword }}
+              </div>
+            </div>
+          </div>
+          <div class="sound-right">
+            <button mat-raised-button class="star-button button-shit">*</button>
+            <button mat-raised-button class="add-button  button-shit">+</button>
+            <button mat-raised-button class="play-button button-shit">></button>
+            <button mat-raised-button class="info-button button-shit">i</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sound-list-right" *ngIf="showFilteredSoundList">
+      <div class="sound" *ngFor="let sound of newSoundList">
         <div class="sound-left-right-container">
           <div class="sound-left">
             <div class="sound-title">{{ sound.title }}</div>

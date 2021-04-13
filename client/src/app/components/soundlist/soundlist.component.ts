@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Sound } from 'src/app/models';
 import { SoundService } from 'src/app/services/sound.service';
@@ -11,13 +11,15 @@ import { SoundService } from 'src/app/services/sound.service';
 export class SoundlistComponent implements OnInit, AfterViewInit {
 
   soundList: Sound[] = [];
+  newSoundList: Sound[] = [];
   soundsWereFound = false;
   searchByNameForm: FormGroup;
   searchByKeywordForm: FormGroup;
   searchByLibraryForm: FormGroup;
   searchByAnyForm: FormGroup;
   regexQuery = '';
-  regex = new RegExp(`${this.regexQuery}/gm`);
+  showFullSoundList = true;
+  showFilteredSoundList = false;
 
   constructor(private soundService: SoundService) {
     this.searchByNameForm = new FormGroup({ query: new FormControl(null) });
@@ -43,67 +45,60 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
   prepNameSearchBar(): void {
     const searchbar = document.getElementById('name-search-input');
     searchbar?.addEventListener('keyup', event => {
-      console.log('#$&%*#$(&*&*(#$)) === ', event);
-    });
-  }
-
-  prepKeywordSearchBar(): void {
-    const searchbar = document.getElementById('keyword-search-input');
-    searchbar?.addEventListener('input', event => {
-      console.log('event: ', event);
-    });
-  }
-
-  prepLibrarySearchBar(): void {
-    const searchbar = document.getElementById('library-search-input');
-    searchbar?.addEventListener('input', event => {
-      console.log('event: ', event);
-    });
-  }
-
-  prepAnySearchBar(): void {
-    const searchbar = document.getElementById('any-search-input');
-    searchbar?.addEventListener('input', event => {
-      console.log('event: ', event);
+      // tslint:disable-next-line:max-line-length
+      if (event.key !== 'Shift' && event.key !== 'Alt' && event.key !== 'Meta' && event.key !== 'Control' && event.key !== 'Escape' && event.key !== 'Enter') {
+        if (event.key === 'Backspace') {
+          this.regexQuery = this.regexQuery.slice(0, -1);
+          this.filterResults('name');
+          if (this.regexQuery.length === 0) {this.showFilteredSoundList = false; this.showFullSoundList = true; }
+        }
+        if (event.key !== 'Backspace') {
+          this.regexQuery += event.key;
+          console.log('overall query: ', this.regexQuery);
+          this.filterResults('name');
+        }
+      }
     });
   }
 
 // FILTERING DATA --------------------------------
 
-  async searchQueryEntered(event: Event, filterBy: string): Promise<any> {
-    if ((event.target as HTMLInputElement).value != null) {
-      switch (filterBy) {
-        case 'name':
-          console.log('filter by NAME: ', (event.target as HTMLInputElement).value);
-          this.regexQuery.concat((event.target as HTMLInputElement).value);
-          break;
-        case 'keyword':
-          console.log('filter by KEYWORD: ', (event.target as HTMLInputElement).value);
-          this.regexQuery.concat((event.target as HTMLInputElement).value);
-          break;
-        case 'library':
-          console.log('filter by LIBRARY: ', (event.target as HTMLInputElement).value);
-          this.regexQuery.concat((event.target as HTMLInputElement).value);
-          break;
-        case 'any':
-          console.log('filter by ANY: ', (event.target as HTMLInputElement).value);
-          this.regexQuery.concat((event.target as HTMLInputElement).value);
-          break;
-        default:
-          break;
+filterResults(filter: 'name' | 'keyword' | 'library' | 'any'): any {
+  console.log('searching for :', this.regexQuery);
+  console.log('filtering by  : ', filter);
+  this.soundList.map(sound => {
+    const regex = new RegExp(`${this.regexQuery}`, 'i');
+    if (regex.test(sound.title)) {
+      this.showFullSoundList = false;
+      if (!this.newSoundList.includes(sound)) {
+        this.newSoundList.push(sound);
       }
+      this.showFilteredSoundList = true;
     }
-    const dataEntered = (event.target as HTMLInputElement).value;
-    this.regexQuery.concat(dataEntered);
-    console.log(this.regexQuery);
-  }
+  });
+}
 
-  filterResults(filter: 'name' | 'keyword' | 'library' | 'any', searchCharacter: any): any {
-    console.log('searchCharacter: ', searchCharacter);
-    console.log('filter: ', filter);
-    this.soundList.filter(sound => {
-      // console.log('sound FILTER: ', sound);
-    });
+  async searchQueryEntered(event: Event, filterBy: string): Promise<any> {
+    // if ((event.target as HTMLInputElement).value != null) {
+    //   switch (filterBy) {
+    //     case 'name':
+    //       console.log('filter by NAME: ', (event.target as HTMLInputElement).value);
+    //       this.regexQuery.concat((event.target as HTMLInputElement).value);
+    //       break;
+    //     case 'keyword':
+    //       console.log('filter by KEYWORD: ', (event.target as HTMLInputElement).value);
+    //       this.regexQuery.concat((event.target as HTMLInputElement).value);
+    //       break;
+    //     case 'library':
+    //       console.log('filter by LIBRARY: ', (event.target as HTMLInputElement).value);
+    //       this.regexQuery.concat((event.target as HTMLInputElement).value);
+    //       break;
+    //     case 'any':
+    //       console.log('filter by ANY: ', (event.target as HTMLInputElement).value);
+    //       this.regexQuery.concat((event.target as HTMLInputElement).value);
+    //       break;
+    //   }
+    // }
   }
 
 // ------------------------------------------------

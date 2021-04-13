@@ -8,6 +8,7 @@ export interface IsearchQuery {
 }
 
 export function saveSoundData(data) {
+  console.log('attempting to save sound with data: ', data);
     return Sound.findOneAndUpdate(data, {$set: {newSound: data}}, { new: true, upsert: true })
     .then(sound => {
         sound.price = 3;
