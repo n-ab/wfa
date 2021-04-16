@@ -10,7 +10,6 @@ export class SoundService {
   constructor(private http: HttpClient) { }
 
   fetchSounds(searchQuery: any, searchBy: string): Promise<object> {
-    console.log(searchQuery.query);
     if (searchQuery && searchBy) { console.log('fetching sounds with', searchQuery.query + ' and ', searchBy); }
     else { console.log('fetching entire sound library.'); }
     const query = searchQuery.query;

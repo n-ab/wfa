@@ -45,16 +45,15 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
   prepNameSearchBar(): void {
     const searchbar = document.getElementById('name-search-input');
     searchbar?.addEventListener('keyup', event => {
+      console.log('this.regexQuery.length = ', this.regexQuery.length);
       // tslint:disable-next-line:max-line-length
       if (event.key !== 'Shift' && event.key !== 'Alt' && event.key !== 'Meta' && event.key !== 'Control' && event.key !== 'Escape' && event.key !== 'Enter') {
         if (event.key === 'Backspace') {
           this.regexQuery = this.regexQuery.slice(0, -1);
           this.filterResults('name');
-          if (this.regexQuery.length === 0) {this.showFilteredSoundList = false; this.showFullSoundList = true; }
         }
         if (event.key !== 'Backspace') {
           this.regexQuery += event.key;
-          console.log('overall query: ', this.regexQuery);
           this.filterResults('name');
         }
       }
@@ -65,13 +64,17 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
 
 filterResults(filter: 'name' | 'keyword' | 'library' | 'any'): any {
   console.log('searching for :', this.regexQuery);
-  console.log('filtering by  : ', filter);
+  console.log('showFilteredSounds: ', this.showFilteredSoundList);
+  console.log('showFullSoundList: ', this.showFullSoundList);
+  console.log('this.soundList BEFORE', this.soundList);
   this.soundList.map(sound => {
     const regex = new RegExp(`${this.regexQuery}`, 'i');
     if (regex.test(sound.title)) {
       this.showFullSoundList = false;
       if (!this.newSoundList.includes(sound)) {
         this.newSoundList.push(sound);
+        console.log('this.soundList AFTER', this.soundList);
+        console.log('*** this.newSoundList:', this.newSoundList);
       }
       this.showFilteredSoundList = true;
     }
