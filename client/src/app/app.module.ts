@@ -21,6 +21,9 @@ import { SoundeditComponent } from './components/soundedit/soundedit.component';
 import { SearchComponent } from './components/search/search.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ApplyComponent } from './components/apply/apply.component';
+import { RegisterComponent } from './components/register/register.component';
+import { WorkorderComponent } from './components/workorder/workorder.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { ContactComponent } from './components/contact/contact.component';
     SoundeditComponent,
     SearchComponent,
     NavbarComponent,
-    ContactComponent
+    ContactComponent,
+    ApplyComponent,
+    RegisterComponent,
+    WorkorderComponent
   ],
   imports: [
     BrowserModule,
