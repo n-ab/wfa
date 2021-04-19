@@ -103,13 +103,10 @@ replaceSoundListWithQueue(): void {
 
 handleBackspace(): void {
   console.log('-- HANDLING BACKSPACE ...');
-  console.log('searchQueryArray = ', this.searchQueryArray);
-  const placeToTakeCharacterOff = this.searchQueryArray[this.searchQueryArray.length - 1];
-  this.searchQueryArray[0] = '';
-  this.newSoundList = [];
-  this.soundListQueue = [];
-  this.showFilteredSoundList = false;
-  this.showFullSoundList = true;
+  console.log('this.searchQueryArray = ', this.searchQueryArray);
+  this.searchQueryArray[0] = this.searchQueryArray[0].substr(0, this.searchQueryArray[0].length - 1);
+  console.log('this.searchQueryArray = ', this.searchQueryArray);
+  this.mapSounds();
 }
 
 // ------------------------------------------------
