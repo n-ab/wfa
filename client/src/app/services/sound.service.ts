@@ -11,12 +11,10 @@ export class SoundService {
 
   fetchSounds(searchQuery: any, searchBy: string): Promise<object> {
     if (searchQuery && searchBy) { console.log('fetching sounds with', searchQuery.query + ' and ', searchBy); }
-    else { console.log('fetching entire sound library.'); }
     const query = searchQuery.query;
     return this.http.get('/api/sound/fetch', {params: {query, searchBy}}).toPromise()
       .then(sounds => {
-        return sounds;
-      })
+        return sounds; })
       .catch(err => {
         console.log('error gathering your shit bro...');
         return err;

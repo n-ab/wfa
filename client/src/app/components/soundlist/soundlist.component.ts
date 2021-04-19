@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { PassThrough } from 'node:stream';
 import { Sound } from 'src/app/models';
 import { SoundService } from 'src/app/services/sound.service';
 
@@ -10,13 +11,19 @@ import { SoundService } from 'src/app/services/sound.service';
 })
 export class SoundlistComponent implements OnInit, AfterViewInit {
 
-  soundList: Sound[] = [];
-  newSoundList: Sound[] = [];
-  soundsWereFound = false;
   searchByNameForm: FormGroup;
   searchByKeywordForm: FormGroup;
   searchByLibraryForm: FormGroup;
   searchByAnyForm: FormGroup;
+  validSearchEntries: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-'];
+
+  soundsWereFound = false;
+
+  soundList: Sound[] = [];          // whole sound list
+  soundListQueue: Sound[] = [];     // what your search results yielded
+  newSoundList: Sound[] = [];       // filtered sound list
+  searchQueryArray: string[] = [];  // user input
+
   regexQuery = '';
   showFullSoundList = true;
   showFilteredSoundList = false;
@@ -38,71 +45,72 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
 
   prepSearchBars(): void {
     setTimeout(() => {
-      this.prepNameSearchBar();
+      this.prepNameSearchBarr();
     }, 100);
-  }
-
-  prepNameSearchBar(): void {
-    const searchbar = document.getElementById('name-search-input');
-    searchbar?.addEventListener('keyup', event => {
-      console.log('this.regexQuery.length = ', this.regexQuery.length);
-      // tslint:disable-next-line:max-line-length
-      if (event.key !== 'Shift' && event.key !== 'Alt' && event.key !== 'Meta' && event.key !== 'Control' && event.key !== 'Escape' && event.key !== 'Enter') {
-        if (event.key === 'Backspace') {
-          this.regexQuery = this.regexQuery.slice(0, -1);
-          this.filterResults('name');
-        }
-        if (event.key !== 'Backspace') {
-          this.regexQuery += event.key;
-          this.filterResults('name');
-        }
-      }
-    });
   }
 
 // FILTERING DATA --------------------------------
 
-filterResults(filter: 'name' | 'keyword' | 'library' | 'any'): any {
-  console.log('searching for :', this.regexQuery);
-  console.log('showFilteredSounds: ', this.showFilteredSoundList);
-  console.log('showFullSoundList: ', this.showFullSoundList);
-  console.log('this.soundList BEFORE', this.soundList);
-  this.soundList.map(sound => {
-    const regex = new RegExp(`${this.regexQuery}`, 'i');
-    if (regex.test(sound.title)) {
-      this.showFullSoundList = false;
-      if (!this.newSoundList.includes(sound)) {
-        this.newSoundList.push(sound);
-        console.log('this.soundList AFTER', this.soundList);
-        console.log('*** this.newSoundList:', this.newSoundList);
-      }
-      this.showFilteredSoundList = true;
-    }
+prepNameSearchBarr(): void {
+  const searchBar = document.getElementById('name-search-input');
+  searchBar?.addEventListener('keydown', event => {
+    if (event.key === 'Backspace' || event.code === 'Backspace') {  this.handleBackspace(); } // user hit backspace
+    if (this.validSearchEntries.includes(event.key)) {              this.handleValidEntry(event.key); }// user made valid entry
   });
 }
 
-  async searchQueryEntered(event: Event, filterBy: string): Promise<any> {
-    // if ((event.target as HTMLInputElement).value != null) {
-    //   switch (filterBy) {
-    //     case 'name':
-    //       console.log('filter by NAME: ', (event.target as HTMLInputElement).value);
-    //       this.regexQuery.concat((event.target as HTMLInputElement).value);
-    //       break;
-    //     case 'keyword':
-    //       console.log('filter by KEYWORD: ', (event.target as HTMLInputElement).value);
-    //       this.regexQuery.concat((event.target as HTMLInputElement).value);
-    //       break;
-    //     case 'library':
-    //       console.log('filter by LIBRARY: ', (event.target as HTMLInputElement).value);
-    //       this.regexQuery.concat((event.target as HTMLInputElement).value);
-    //       break;
-    //     case 'any':
-    //       console.log('filter by ANY: ', (event.target as HTMLInputElement).value);
-    //       this.regexQuery.concat((event.target as HTMLInputElement).value);
-    //       break;
-    //   }
-    // }
+handleValidEntry(eventKey: string): void {
+  console.log('++ HANDLING INPUT ...');
+  if (this.searchQueryArray.length === 0) {
+    // user started searching for something
+    this.searchQueryArray.push(eventKey);
+    this.mapSounds();
+  } else {
+    // user added to search query
+    this.searchQueryArray[0] += eventKey;
+    this.mapSounds();
   }
+}
+
+mapSounds(): void {
+  this.soundList.map((sound, index) => {
+    if (this.testRegex(sound)) { this.putSoundInQueue(sound); }
+  });
+  console.log('sound queue ', this.soundListQueue);
+  this.newSoundList.length = 0;
+  this.newSoundList.push(...this.soundListQueue);
+  this.soundListQueue.length = 0;
+  console.log('new sound list', this.newSoundList);
+  this.showFullSoundList = false;
+  this.showFilteredSoundList = true;
+}
+
+testRegex(sound: Sound): boolean {
+  if (RegExp(`${this.searchQueryArray}`, 'i').test(sound.title)) { return true; }
+  return false;
+}
+
+putSoundInQueue(sound: Sound): void {
+  this.soundListQueue.push(sound);
+}
+
+replaceSoundListWithQueue(): void {
+  this.newSoundList.length = 0;
+  this.newSoundList = this.soundListQueue;
+  this.showFullSoundList = false;
+  this.showFilteredSoundList = true;
+}
+
+handleBackspace(): void {
+  console.log('-- HANDLING BACKSPACE ...');
+  console.log('searchQueryArray = ', this.searchQueryArray);
+  const placeToTakeCharacterOff = this.searchQueryArray[this.searchQueryArray.length - 1];
+  this.searchQueryArray[0] = '';
+  this.newSoundList = [];
+  this.soundListQueue = [];
+  this.showFilteredSoundList = false;
+  this.showFullSoundList = true;
+}
 
 // ------------------------------------------------
 

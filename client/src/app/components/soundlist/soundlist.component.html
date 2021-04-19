@@ -5,10 +5,10 @@
   <div class="sound-list" *ngIf="soundsWereFound">
 
     <div class="sound-list-left">
-      <form [formGroup]="searchByNameForm"    (onSubmit)="searchByName()"><mat-form-field><input matInput (keyup)="searchQueryEntered($event, 'name')" type="text" id="name-search-input" formControlName="query" placeholder="Search by name"></mat-form-field></form>
-      <form [formGroup]="searchByKeywordForm" (onSubmit)="searchByKeyword()"><mat-form-field><input matInput (keyup)="searchQueryEntered($event, 'keyword')" type="text" id="keyword-search-input" formControlName="query" placeholder="Search by keyword"></mat-form-field></form>
-      <form [formGroup]="searchByLibraryForm" (onSubmit)="searchByLibrary()"><mat-form-field><input matInput (keyup)="searchQueryEntered($event, 'library')" type="text" id="library-search-input" formControlName="query" placeholder="Search by library"></mat-form-field></form>
-      <form [formGroup]="searchByAnyForm"     (onSubmit)="searchByAny()"><mat-form-field><input matInput (keyup)="searchQueryEntered($event, 'any')" type="text" id="any-search-input"     formControlName="query" placeholder="Search by any"></mat-form-field></form>
+      <form [formGroup]="searchByNameForm"    (onSubmit)="searchByName()"><mat-form-field><input matInput type="text" id="name-search-input" formControlName="query" placeholder="Search by name"></mat-form-field></form>
+      <form [formGroup]="searchByKeywordForm" (onSubmit)="searchByKeyword()"><mat-form-field><input matInput type="text" id="keyword-search-input" formControlName="query" placeholder="Search by keyword"></mat-form-field></form>
+      <form [formGroup]="searchByLibraryForm" (onSubmit)="searchByLibrary()"><mat-form-field><input matInput type="text" id="library-search-input" formControlName="query" placeholder="Search by library"></mat-form-field></form>
+      <form [formGroup]="searchByAnyForm"     (onSubmit)="searchByAny()"><mat-form-field><input matInput type="text" id="any-search-input"     formControlName="query" placeholder="Search by any"></mat-form-field></form>
     </div>
 
     <div class="sound-list-right" *ngIf="showFullSoundList">
