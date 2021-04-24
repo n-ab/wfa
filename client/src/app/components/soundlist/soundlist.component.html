@@ -4,19 +4,20 @@
 <button *ngIf="admin" mat-raised-button [routerLink]="['/add']" class="add-a-sound">Add A Sound</button>
 <div class="sound-list-container">
   <div class="sound-list-title">Compliment your content and stimulate your audience with professionally recorded and edited foley and sound effects.</div>
-  <div class="sound-list-title">Most sounds only <span class="one-dollar">1$</span> </div>
   <br>
   <div class="sound-list" *ngIf="soundsWereFound">
     <!-- S E A R C H    B A R -->
     <div class="search-bar-container">
-      <form [formGroup]="searchByNameForm"    (onSubmit)="searchByName()"><mat-form-field><input matInput type="text" id="name-search-input" formControlName="query" placeholder="Search by name"></mat-form-field></form>
+      <form [formGroup]="searchByNameForm"    (onSubmit)="searchByName()" autocomplete="off"><mat-form-field><input matInput type="text" id="name-search-input" formControlName="query" placeholder="Search by name"></mat-form-field></form>
     </div>
+    <br><br>
     <div class="sounds-container" *ngIf="showFullSoundList">
       <div class="sound" *ngFor="let sound of soundList">
         <div class="sound-left-right-container">
           <div class="sound-left">
+            <!-- sound title needs a LIMIT of 15 characters -->
             <div class="sound-title">{{ sound.title }}</div>
-            <div class="sound-description">{{ sound.description.substr(0, 110) }}</div>
+            <div class="sound-description">{{ sound.description.substr(0, 90) }}</div>
             <div *ngIf="sound.keywords.length > 0" class="sound-keywords">
               <div style="display: inline;" *ngFor="let keyword of sound.keywords">
                 <div class="keyword-container">

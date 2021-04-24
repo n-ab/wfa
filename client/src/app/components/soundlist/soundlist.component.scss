@@ -4,11 +4,11 @@
 
 .search-bar-container {
   border: 1px solid #424242;
-  box-shadow: 0px 0px 15px -3px white;
+  box-shadow: 0px 0px 25px -5px #ffffff;
   display: block;
   margin: auto;
   width: 60%;
-  background-color: #416b84;
+  background-color: #00d9e5;
 }
 
 .one-dollar {
@@ -22,7 +22,7 @@
   height: 33px;
   width: 55px !important;
   min-width: 10px !important;
-  background-color: rgba(117, 209, 255, 0.579);
+  background-color: #00d9e5;
   color: white;
 }
 
@@ -79,6 +79,11 @@ margin-left: 15px;
   width: 15rem;
   height: 120px;
   font-family: 'Montserrat', sans-serif;
+  transition: box-shadow .5s ease;
+}
+
+.sound:hover {
+  box-shadow: 0px 0px 20px 7px rgb(227, 227, 227);
 }
 
 .sound-title {
@@ -101,13 +106,14 @@ margin-left: 15px;
 }
 
 .keyword-container {
-  border: 1px solid lightgrey;
+  border: 1px solid #00dae5dd;
   border-radius: 5px;
   width: fit-content;
   display: inline;
   padding: 3px;
   position: relative;
-  bottom: -20px;
+  bottom: -1px;
+  margin-left: 1px;
 }
 
 .sound-left {
