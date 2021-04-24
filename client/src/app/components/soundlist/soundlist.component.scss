@@ -2,10 +2,25 @@
   margin: 1rem;
 }
 
+.search-bar-container {
+  border: 1px solid #424242;
+  box-shadow: 0px 0px 15px -3px white;
+  display: block;
+  margin: auto;
+  width: 60%;
+  background-color: #416b84;
+}
+
+.one-dollar {
+  font-size: 125%;
+  color: rgb(224, 19, 255);
+  margin-left: 10px;
+}
+
 .button-shit {
   font-size: 50%;
-  height: 25px;
-  width: 10px !important;
+  height: 33px;
+  width: 55px !important;
   min-width: 10px !important;
   background-color: rgba(117, 209, 255, 0.579);
   color: white;
@@ -17,52 +32,59 @@ mat-form-field {
   max-width: 400px;
 }
 
+.mat-form-field-label {
+  color: white !important;
+}
+
+.mat-form-field-appearance-legacy {
+  color: white !important;
+}
+
 .submit-button {
 margin-left: 15px;
 }
 
 .sound-list-title {
-  font-size: 200%;
+  font-size: 150%;
+  font-weight: 100;
   border-radius: 5px;
   background-color: black;
   color: white;
   padding: 1rem;
   margin: auto;
   display: block;
-  width: 40%;
-  max-width: 400px;
+  width: 60%;
+  max-width: 800px;
+  letter-spacing: 2px;
+  line-height: 1.6;
 }
 
-.sound-list-left {
-  border: 1px solid #d8d8d8;
-  float: left;
-  width: 35%;
-  margin: 10px 3px 3px 17px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px 2px lightgrey;
+.sounds-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  color: white;
 }
-.sound-list-right {
-  float: right;
-  // width: 62%;
-}
+
 
 // sound box -----------------
 
 .sound {
-  box-shadow: 0px 0px 20px -7px rgb(8, 160, 236);
-  border: 1px solid rgb(43 208 254 / 14%);
-  // display: inline-block;
+  box-shadow: 0px 0px 20px -7px rgb(74, 195, 255);
+  border: 1px solid rgb(111, 111, 111);
+  display: inline-block;
   padding: 7px;
   margin: 10px;
   border-radius: 10px;
-  width: 10rem;
+  width: 15rem;
+  height: 120px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .sound-title {
-  padding: 10px;
+  // padding: 10px;
   font-size: 150%;
-  // border-bottom: 1px solid rgba(19, 231, 255, 0.301);
-  // border-right: 1px solid rgba(19, 231, 255, 0.315);
+  border-bottom: 1px solid lightgrey;
 }
 
 .sound-description {
@@ -78,14 +100,42 @@ margin-left: 15px;
   justify-content: space-between;
 }
 
-.sound-left {
+.keyword-container {
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  width: fit-content;
+  display: inline;
+  padding: 3px;
+  position: relative;
+  bottom: -20px;
+}
 
+.sound-left {
+  width: 80%;
 }
 
 
 .sound-right {
-  width: 25px;
-  // border-left:1px solid rgba(19, 231, 255, 0.315);
+  width: 20%;
+  margin-top: -7px;
+}
+
+.star-button {
+  border-top-right-radius: 8px !important;
+}
+
+.add-button {
+  border-top: 1px solid #357388;
+}
+
+.play-button {
+  border-top: 1px solid #357388;
+}
+
+.info-button {
+  border-bottom-right-radius: 8px !important;
+  height: 35px;
+    border-top: 1px solid #357388;
 }
 
 // --------------------------

@@ -1,26 +1,27 @@
-<button mat-raised-button [routerLink]="['/add']" class="add-a-sound">Add A Sound</button>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+<div style="background-color: black;">
+<button *ngIf="admin" mat-raised-button [routerLink]="['/add']" class="add-a-sound">Add A Sound</button>
 <div class="sound-list-container">
-  <div class="sound-list-title">Sound List</div>
-
+  <div class="sound-list-title">Compliment your content and stimulate your audience with professionally recorded and edited foley and sound effects.</div>
+  <div class="sound-list-title">Most sounds only <span class="one-dollar">1$</span> </div>
+  <br>
   <div class="sound-list" *ngIf="soundsWereFound">
-
-    <div class="sound-list-left">
+    <!-- S E A R C H    B A R -->
+    <div class="search-bar-container">
       <form [formGroup]="searchByNameForm"    (onSubmit)="searchByName()"><mat-form-field><input matInput type="text" id="name-search-input" formControlName="query" placeholder="Search by name"></mat-form-field></form>
-      <form [formGroup]="searchByKeywordForm" (onSubmit)="searchByKeyword()"><mat-form-field><input matInput type="text" id="keyword-search-input" formControlName="query" placeholder="Search by keyword"></mat-form-field></form>
-      <form [formGroup]="searchByLibraryForm" (onSubmit)="searchByLibrary()"><mat-form-field><input matInput type="text" id="library-search-input" formControlName="query" placeholder="Search by library"></mat-form-field></form>
-      <form [formGroup]="searchByAnyForm"     (onSubmit)="searchByAny()"><mat-form-field><input matInput type="text" id="any-search-input"     formControlName="query" placeholder="Search by any"></mat-form-field></form>
     </div>
-
-    <div class="sound-list-right" *ngIf="showFullSoundList">
-      FULL!
+    <div class="sounds-container" *ngIf="showFullSoundList">
       <div class="sound" *ngFor="let sound of soundList">
         <div class="sound-left-right-container">
           <div class="sound-left">
             <div class="sound-title">{{ sound.title }}</div>
-            <div class="sound-description">{{ sound.description }}</div>
-            <div *ngIf="sound.keywords" class="sound-keywords">
-              <div *ngFor="let keyword of sound.keywords">
-                {{ keyword }}
+            <div class="sound-description">{{ sound.description.substr(0, 110) }}</div>
+            <div *ngIf="sound.keywords.length > 0" class="sound-keywords">
+              <div style="display: inline;" *ngFor="let keyword of sound.keywords">
+                <div class="keyword-container">
+                  {{ keyword }}
+                </div>
               </div>
             </div>
           </div>
@@ -33,8 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="sound-list-right" *ngIf="showFilteredSoundList">
-      FILTERED!
+    <div class="sounds-container" *ngIf="showFilteredSoundList">
       <div class="sound" *ngFor="let sound of newSoundList">
         <div class="sound-left-right-container">
           <div class="sound-left">
@@ -57,4 +57,5 @@
     </div>
 
   </div>
+</div>
 </div>
