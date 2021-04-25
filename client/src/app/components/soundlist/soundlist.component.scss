@@ -18,7 +18,7 @@
 }
 
 .button-shit {
-  font-size: 50%;
+  font-size: 93%;
   height: 33px;
   width: 55px !important;
   min-width: 10px !important;
@@ -79,11 +79,11 @@ margin-left: 15px;
   width: 15rem;
   height: 120px;
   font-family: 'Montserrat', sans-serif;
-  transition: box-shadow .5s ease;
+  transition: box-shadow .6s ease;
 }
 
 .sound:hover {
-  box-shadow: 0px 0px 20px 7px rgb(227, 227, 227);
+  box-shadow: 0px 0px 20px 5px #ffffff;
 }
 
 .sound-title {
@@ -92,12 +92,16 @@ margin-left: 15px;
   border-bottom: 1px solid lightgrey;
 }
 
+.sound-description-keyword-container {
+}
+
 .sound-description {
   font-size: 80%;
 }
 
 .sound-keywords {
   font-size: 80%;
+
 }
 
 .sound-left-right-container {
@@ -111,9 +115,8 @@ margin-left: 15px;
   width: fit-content;
   display: inline;
   padding: 3px;
-  position: relative;
-  bottom: -1px;
   margin-left: 1px;
+  overflow-y: scroll;
 }
 
 .sound-left {
@@ -150,4 +153,21 @@ margin-left: 15px;
 
 .mat-raised-button {
   border-radius: 0px;
+}
+
+// ------ B U L L S H I T --------
+.bullshit-parent {
+  position: relative;
+  height: 300px;
+  width: 300px;
+  border: 1px solid grey;
+  background-color: #333;
+}
+
+.bullshit-child {
+  position: absolute;
+  bottom: 0;
+  border: 1px solid rgb(210, 11, 11);
+  width: 50px;
+  height: 50px;
 }
