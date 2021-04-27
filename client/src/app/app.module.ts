@@ -24,6 +24,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ApplyComponent } from './components/apply/apply.component';
 import { RegisterComponent } from './components/register/register.component';
 import { WorkorderComponent } from './components/workorder/workorder.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthComponent } from './components/auth/auth.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +40,10 @@ import { WorkorderComponent } from './components/workorder/workorder.component';
     ContactComponent,
     ApplyComponent,
     RegisterComponent,
-    WorkorderComponent
+    WorkorderComponent,
+    LoginComponent,
+    AuthComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

@@ -1,1 +1,16 @@
-<p>register works!</p>
+<div class="register-wrapper">
+  <button class="back" mat-raised-button [routerLink]="['']">back</button>
+
+  <div class="register-title">Register</div>
+
+  <form [formGroup]="registerForm" (ngSubmit)="register()" class="register-form" enctype="application/x-www-form-urlencoded">
+    <mat-form-field class="form-input"><input matInput type="email"    name="email"    formControlName="email"    placeholder="email" ></mat-form-field>
+    <mat-form-field class="form-input"><input matInput type="password" name="password" formControlName="password" placeholder="password" ></mat-form-field>
+    <mat-form-field class="form-input"><input matInput type="text" name="firstName" formControlName="firstName" placeholder="First Name" ></mat-form-field>
+    <mat-form-field class="form-input"><input matInput type="text" name="lastName" formControlName="lastName" placeholder="Last Name" ></mat-form-field>
+    <button mat-raised-button class="submit">submit</button>
+    <br>
+  </form>
+  <hr class="register-splitter">
+  <button mat-raised-button class="register" [routerLink]="['/login']">Log In</button>
+</div>
