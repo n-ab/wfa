@@ -3,6 +3,7 @@ import * as session from 'express-session';
 import { config } from './config';
 import * as mongoose from 'mongoose';
 import * as passport from 'passport';
+import { UserModel } from './models/user';
 
 console.log(`Welcome to the Waveform Arts server, running on port ${config.PORT}`);
 
@@ -29,25 +30,25 @@ app.listen(config.PORT);
 //     resave: false
 // }));
 
-// --- p a s s p o r t ------------------------------------------
+//--- p a s s p o r t ------------------------------------------
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-// passport.serializeUser((user:UserDocument, done) => {
-//     if(!user._id) done({error: 'No user id.'}, null);
-//     done(null,user._id);
-//   });
+passport.serializeUser((user: any, done) => {
+    if(!user._id) done({error: 'No user id.'}, null);
+    done(null,user._id);
+  });
   
-// passport.deserializeUser((id, done) => {
-//     UserModel.findById(id).select('firstName email active role cart')
-//         .lean()
-//         .exec()
-//         .then(user => {
-//         if(!user) return done('No user found.', null);
-//             done(null, user);
-//         });
-// });
+passport.deserializeUser((id, done) => {
+    UserModel.findById(id).select('firstName email active role cart')
+        .lean()
+        .exec()
+        .then(user => {
+        if(!user) return done('No user found.', null);
+            done(null, user);
+        });
+});
 
 // --- m o n g o o s e ----------------------------------------
 

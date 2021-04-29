@@ -9,12 +9,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  login(email: string, password: string): Promise<any> {
-    console.log('logging in user with data:', email + ' ' + password);
-    if (email === null || password === null) {
-      return Promise.reject('actually put shit in to log in with JACK.');
-    }
-    return this.http.post('/api/user/login', {email, password}).toPromise()
+  login(data: any): Promise<any> {
+    return this.http.post('/api/user/login', data).toPromise()
       .then(user => user)
       .catch(err => console.log('error logging in user: ', err));
   }
@@ -28,5 +24,17 @@ export class UserService {
         .then(user => {console.log(`user ${user} was saved`); })
         .catch(err => { console.log('error registering user: ', err); });
     }
-    }
+  }
+
+  emailExistsCheck(email: string): Promise<boolean> {
+    return this.http.get('/api/user/emailExistsCheck', {params: {email}}).toPromise()
+      .then(emailFound => emailFound)
+      .catch(err => err);
+  }
+
+  usernameExistsCheck(username: string): Promise<boolean> {
+    return this.http.get('/api/user/usernameExistsCheck', {params: {username}}).toPromise()
+      .then(usernameFound => usernameFound)
+      .catch(err => err);
+  }
 }

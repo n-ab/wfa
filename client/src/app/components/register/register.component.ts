@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { SoundService } from 'src/app/services/sound.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -25,6 +24,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(): void {
+    console.log('attempting to register user with data: ', this.registerForm);
     this.userService.register(this.registerForm.getRawValue());
   }
 
