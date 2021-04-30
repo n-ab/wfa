@@ -19,11 +19,13 @@ app.post('/login', (req: any, res) => {
 })
 
 app.get('/emailExistsCheck', (req: any, res) => {
-    console.log('checking to see if email exists...', req.query);
-    userController.emailExistsCheck(req.query);
+    console.log('emailExists query...', req.query);
+    userController.emailExistsCheck(req.query.email)
+        .then(user => { res.status(200).json(user); })
+        .catch(err => { res.status(500).json(err)});
 })
 
 app.get('/usernameExistsCheck', (req: any, res) => {
     console.log('checking to see if username exists...', req.query);
-    userController.usernameExistsCheck(req.query)
+    userController.usernameExistsCheck(req.query);
 })

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../models';
 
@@ -27,8 +27,12 @@ export class UserService {
   }
 
   emailExistsCheck(email: string): Promise<boolean> {
-    return this.http.get('/api/user/emailExistsCheck', {params: {email}}).toPromise()
-      .then(emailFound => emailFound)
+    const params  = new HttpParams().set('email', email).set('validator', 'validated-012');
+    return this.http.get('/api/user/emailExistsCheck', {params}).toPromise()
+      .then(emailFound => {
+        console.log('emailFound = ', emailFound);
+        return this.http.post('/api/user/login', emailFound);
+      })
       .catch(err => err);
   }
 

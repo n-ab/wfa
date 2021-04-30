@@ -25,15 +25,29 @@ export function getAllUsers() {
 }
 
 export function usernameExistsCheck(username: string) {
-  console.log('userController - usernameExistsCheck = ', username);
-    return UserModel.find({"username": username})
-      .then(user => user)
+    return UserModel.find({username: username})
+      .then(user => {
+        console.log(`found user ${user[0].firstName} ${user[0].lastName} with USERNAME `, username);
+        if (user.length > 0) {return user;}
+        else { return false; }
+      })
       .catch(err => err);
 }
 
-export function emailExistsCheck(email: string): Promise<unknown> {
-  console.log('userController - emailExistsCheck = ', email);
-  return UserModel.find({"email": email})
-    .then(user => user)
-    .catch(err => err);
+export function emailExistsCheck(email: any): Promise<unknown> {
+  return UserModel.find({email: email})
+    .then(user => {
+      if (user) { console.log(`found user ${user[0].firstName} ${user[0].lastName} with email `, email); }
+      return user;
+    })
+    .catch(async err => {
+      console.log('trying to match with username instead', err);
+      const usernameFound = await usernameExistsCheck(email);
+      if (usernameFound) {
+        console.log('SUCCESS using username.');
+        return usernameFound;
+      }
+      console.log('couldn\'t match shit dude. you are FUCKED.');
+      return err;
+    });
 }
