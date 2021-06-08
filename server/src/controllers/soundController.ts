@@ -1,5 +1,5 @@
 import * as mongoose from 'mongoose';
-import {Sound, SoundObject} from '../models/sound';
+import {SoundModel, SoundObject} from '../models/sound';
 import * as moment from 'moment';
 
 export interface IsearchQuery {
@@ -9,7 +9,7 @@ export interface IsearchQuery {
 
 export function saveSoundData(data) {
   console.log('attempting to save sound with data: ', data);
-    return Sound.findOneAndUpdate(data, {$set: {newSound: data}}, { new: true, upsert: true })
+    return SoundModel.findOneAndUpdate(data, {$set: {newSound: data}}, { new: true, upsert: true })
     .then(sound => {
         sound.price = 3;
         sound.discount = 0;
@@ -23,14 +23,14 @@ export function saveSoundData(data) {
 }
 
 export function fetch() {
-  return Sound.find({})
+  return SoundModel.find({})
     .then(sounds => sounds)
     .catch(err => err);
 }
 
 export function fetchByName(name: string) {
   console.log('searching sounds for ', name);
-  return Sound.find({ "title": `${Object.values(name)[0]}` })
+  return SoundModel.find({ "title": `${Object.values(name)[0]}` })
   .then(documents => {
     console.log('documents found by name: ', documents);
     return documents;
@@ -39,7 +39,7 @@ export function fetchByName(name: string) {
 }
 
 export function fetchByKeyword(keyword: string) {
-  return Sound.find({ "keywords": { "$regex": `${keyword}`, "$options": "i" } })
+  return SoundModel.find({ "keywords": { "$regex": `${keyword}`, "$options": "i" } })
     .then(document => {
       console.log('document found by keyword: ', document);
       return document;
@@ -48,7 +48,7 @@ export function fetchByKeyword(keyword: string) {
 }
 
 export function fetchByLibrary(library: string) {
-  return Sound.find({ "library": { "$regex": `${library}`, "$options": "i" } })
+  return SoundModel.find({ "library": { "$regex": `${library}`, "$options": "i" } })
   .then(document => {
     console.log('document found by library: ', document);
     return document;
@@ -57,14 +57,14 @@ export function fetchByLibrary(library: string) {
 }
 
 export function fetchByPrice(price) {
-  return Sound.find({price: { $lte: price }})
+  return SoundModel.find({price: { $lte: price }})
     .then(documents => {
       console.log(`document[s] found with price matching or less than ${price}: `, documents);
     })
 }
 
 export function fetchByAny(query: string) {
-  return Sound.find({ $or : [{"title" : { $regex: `${query}` }}, {"keywords" : { $regex: `${query}` }}, {"library" : { $regex: `${query}` }}, {"misc" : { $regex: `${query}` }}, { "description": {$regex: `${query}`} }] })
+  return SoundModel.find({ $or : [{"title" : { $regex: `${query}` }}, {"keywords" : { $regex: `${query}` }}, {"library" : { $regex: `${query}` }}, {"misc" : { $regex: `${query}` }}, { "description": {$regex: `${query}`} }] })
   .then(documents => {
     console.log('document found by any: ', documents);
     return documents;

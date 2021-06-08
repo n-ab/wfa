@@ -23,7 +23,6 @@ app.post('/upload', multer({storage:storage}).single('audioFile'), (req: any, re
 
 app.get('/fetch', (req: any, res) => {
     const queryFromClient = Object.values(req.query);
-    console.log('queryFromClient = ', queryFromClient);
     if (queryFromClient[0] === 'undefined' && queryFromClient[1] === '') {
         return soundController.fetch()
       .then(sounds => res.status(200).json(sounds))

@@ -8,6 +8,7 @@ import { SoundeditComponent } from './components/soundedit/soundedit.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AccountComponent } from './components/account/account.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent},
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'add', component: SoundaddComponent},
   { path: 'edit', component: SoundeditComponent},
   { path: 'admin', component: AdminComponent},
-  { path: 'edit', component: SoundeditComponent}
+  { path: 'edit', component: SoundeditComponent},
+  { path: 'account', component: AccountComponent}
 ];
 
 @NgModule({

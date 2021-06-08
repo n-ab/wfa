@@ -6,7 +6,8 @@ const passport = new Passport();
 
 passport.use(new LocalStrategy(
     function(username, password, done) {
-        UserModel.findOne({username: username}, function(err, user) {
+        console.log('username = ', username + ' ||| ' + 'password = ', password);
+        UserModel.findOne({email: username}, function(err, user) {
             if (err)                        { return done(err) }
             if (!user)                      { return done(null, false, { message: 'Incorrect username/email' }); }
             if (user.password !== password) { return done(null, false, { message: 'Incorrect password SON.'}); }
@@ -16,8 +17,11 @@ passport.use(new LocalStrategy(
 ));
 
 export function login(req, res, next) {
-    console.log('auth.login() - creds: ', req.body);
+    console.log('REEEEE!!! auth.login() - creds: ', req.body);
     passport.authenticate('local', (err, user, info) => {
+        console.log('err = ', err);
+        console.log('user = ', user);
+        console.log('info = ', info);
         if (err) return next(err) && console.log('auth.login() failed - error = ', err);
         if (!user) return res.status(401).json(info);
         req.login(user, (err) => {

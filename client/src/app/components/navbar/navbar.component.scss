@@ -58,6 +58,12 @@
   padding: 6px;
 }
 
+.logged-in {
+  // text-decoration: underline;
+  // text-decoration-color: rgb(0, 217, 229);
+  border-bottom: rgb(0, 217, 229);
+}
+
 .o1 {
   animation: fadeIn 1s ease 2s forwards;
 }

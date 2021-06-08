@@ -26,10 +26,10 @@
               </div>
           </div>
           <div class="sound-right">
-            <button mat-raised-button class="star-button button-shit">star</button>
-            <button mat-raised-button class="add-button  button-shit">play</button>
-            <button mat-raised-button class="play-button button-shit">add</button>
-            <button mat-raised-button class="info-button button-shit">info</button>
+            <button mat-raised-button class="star-button button-shit" (click)="star(sound._id)">star</button>
+            <button mat-raised-button class="add-button  button-shit" (click)="play(sound._id)">play</button>
+            <button mat-raised-button class="play-button button-shit" (click)="add(sound._id)">add</button>
+            <button mat-raised-button class="info-button button-shit" (click)="info(sound._id)">info</button>
           </div>
         </div>
       </div>
@@ -58,19 +58,5 @@
 
   </div>
 </div><!-- keep this one -->
-
-<div class="bullshit-parent">
-  <div class="bullshit-child"></div>
-</div>
-
-<br><br>
-
-<div class="bullshit-parent">
-  <div class="bullshit-child"></div>
-  <div class="bullshit-child"></div>
-  <div class="bullshit-child"></div>
-</div>
-
-<br><br><br><br><br><br><br>
 
 </div><!-- keep this one -->

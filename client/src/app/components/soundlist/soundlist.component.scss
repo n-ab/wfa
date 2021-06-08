@@ -27,9 +27,15 @@
 }
 
 mat-form-field {
-  width: 60%;
+  width: 93%;
   padding: 1rem;
-  max-width: 400px;
+  // max-width: 400px;
+}
+
+@media(max-width:600px) {
+  mat-form-field {
+    width: 89%;
+  }
 }
 
 .mat-form-field-label {
@@ -153,21 +159,4 @@ margin-left: 15px;
 
 .mat-raised-button {
   border-radius: 0px;
-}
-
-// ------ B U L L S H I T --------
-.bullshit-parent {
-  position: relative;
-  height: 300px;
-  width: 300px;
-  border: 1px solid grey;
-  background-color: #333;
-}
-
-.bullshit-child {
-  position: absolute;
-  bottom: 0;
-  border: 1px solid rgb(210, 11, 11);
-  width: 50px;
-  height: 50px;
 }

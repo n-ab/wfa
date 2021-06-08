@@ -23,12 +23,12 @@ app.use((req, res, next) => {
 app.listen(config.PORT);
 
 // MAY NOT NEED FOLLOWING CODE WHILE USING PASSPORT. TESTTESTTEST
-// app.use(session({
-//     name:'waveformArtsSession',
-//     secret: 'pleaseActuallyMakeThisAGoodSecretPassword',
-//     saveUninitialized: false,
-//     resave: false
-// }));
+app.use(session({
+    name:'waveformArtsSession',
+    secret: 'suckadickdumbshit!',
+    saveUninitialized: false,
+    resave: false
+}));
 
 //--- p a s s p o r t ------------------------------------------
 

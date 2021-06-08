@@ -1,0 +1,18 @@
+.account-container {
+    background-color: black;
+    height: 100vh;
+    color: rgb(0, 217, 229);
+    position: relative;
+    z-index: -1;
+    overflow: auto;
+}
+
+.title {
+    padding: 3rem;
+    font-size: 250%;
+    border-right: 1px solid rgba(255, 255, 255, 0.274);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.274);
+    width: 132px;
+    margin-left: 20px;
+    margin-top: 5rem;
+}

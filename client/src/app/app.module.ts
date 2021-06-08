@@ -27,6 +27,7 @@ import { WorkorderComponent } from './components/workorder/workorder.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { AccountComponent } from './components/account/account.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { AdminComponent } from './components/admin/admin.component';
     WorkorderComponent,
     LoginComponent,
     AuthComponent,
-    AdminComponent
+    AdminComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ import { AdminComponent } from './components/admin/admin.component';
   ],
   providers: [
     // put guards here
-    AudioContext
+    AudioContext,
+    NavbarComponent
   ],
   bootstrap: [AppComponent]
 })

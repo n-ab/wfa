@@ -1,5 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { NavbarComponent } from '../components/navbar/navbar.component';
 import { User } from '../models';
 
 @Injectable({
@@ -11,17 +12,20 @@ export class UserService {
 
   login(data: any): Promise<any> {
     return this.http.post('/api/user/login', data).toPromise()
-      .then(user => user)
+      .then(user => {
+        console.log('LOGIN SUCCESS');
+        return user;
+      })
       .catch(err => console.log('error logging in user: ', err));
   }
 
   register(data: {firstName: string, lastName: string, email: string, password: string}): Promise<any> {
     console.log('registering user with data:', data);
     if (data.email === null || data.firstName === null || data.lastName === null || data.password === null) {
-      return Promise.reject('your shit is EMPTY SON.');
+      return Promise.reject('CORRUPT DATA WHEN REGISTERING. aborting...');
     } else {
       return this.http.post('/api/user/register', data).toPromise()
-        .then(user => {console.log(`user ${user} was saved`); })
+        .then(user => {console.log(`REGISTER SUCCESS: ${user}`); })
         .catch(err => { console.log('error registering user: ', err); });
     }
   }
@@ -30,7 +34,7 @@ export class UserService {
     const params  = new HttpParams().set('email', email).set('validator', 'validated-012');
     return this.http.get('/api/user/emailExistsCheck', {params}).toPromise()
       .then(emailFound => {
-        console.log('emailFound = ', emailFound);
+        console.log('SUCCESS VERIFYING EMAIL EXISTS', emailFound);
         return this.http.post('/api/user/login', emailFound);
       })
       .catch(err => err);
@@ -39,6 +43,18 @@ export class UserService {
   usernameExistsCheck(username: string): Promise<boolean> {
     return this.http.get('/api/user/usernameExistsCheck', {params: {username}}).toPromise()
       .then(usernameFound => usernameFound)
+      .catch(err => err);
+  }
+
+  loggedInCheck(): Promise<object> {
+    return this.http.get('/api/user/check').toPromise()
+      .then(user => user)
+      .catch(err => err);
+  }
+
+  starSound(id: string): Promise<any> {
+    return this.http.post('/api/user/starSound', {params: {id}}).toPromise()
+      .then(starred => starred)
       .catch(err => err);
   }
 }

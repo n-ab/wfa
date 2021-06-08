@@ -21,4 +21,16 @@ export class SoundService {
       });
   }
 
+  playSound(soundId: string) {
+    return this.http.get('/api/sound/play', {params: {soundId}}).toPromise()
+      .then(sound => {
+        console.log('RETURNING SOUND: ', sound);
+        return sound;
+      })
+      .catch(err => {
+        console.log('ERROR FETCHING SOUND: ', err);
+        return err;
+      })
+  }
+
 }

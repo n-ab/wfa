@@ -12,9 +12,7 @@ export class FileService {
   constructor(private http: HttpClient, public audioContext: AudioContext) { }
 
   uploadFile(data: any): Promise<any> {
-    const audioShit = this.audioContext.decodeAudioData(data.audioFile);
-    console.log('audioShit = ', audioShit);
-    console.log('data: ', data.audioFile);
+    console.log('data: ', data);
     const postData = new FormData();
     postData.append('title', data.title);
     postData.append('description', data.description);
@@ -22,7 +20,9 @@ export class FileService {
     postData.append('price', data.price);
     postData.append('library', data.library);
     postData.append('misc', data.misc);
-    postData.append('audioFile', data.audioFile);
+    if (data.audioFile) {
+      postData.append('audioFile', data.audioFile);
+    }
     return this.http.post('/api/file/upload', postData).toPromise()
       .then(file => console.log(`file ${file} was successfully uploaded.`))
       .catch(err => console.log('err: ', err));

@@ -9,6 +9,8 @@ export interface SoundObject extends mongoose.Document {
     filePath: string,
     library: string,
     misc: string,
+    purchased: boolean,
+    timesPurchased: number,
     length: number,
     price: number,
     discount: number,
@@ -25,6 +27,8 @@ const schema = new mongoose.Schema({
     filePath: String,
     library: String,
     misc: String,
+    purchased: Boolean,
+    timesPurchased: Number,
     length: Number,
     price: Number,
     discount: Number,
@@ -34,4 +38,4 @@ const schema = new mongoose.Schema({
     }, { timestamps: true }
 );
 
-export const Sound = mongoose.model<SoundObject>('Sound', schema);
+export const SoundModel = mongoose.model<SoundObject>('Sound', schema);

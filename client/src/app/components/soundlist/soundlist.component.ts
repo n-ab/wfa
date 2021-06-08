@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { PassThrough } from 'node:stream';
 import { Sound } from 'src/app/models';
 import { SoundService } from 'src/app/services/sound.service';
+import { CartService } from 'src/app/services/cart.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-soundlist',
@@ -27,7 +29,7 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
   showFullSoundList = true;
   showFilteredSoundList = false;
 
-  constructor(private soundService: SoundService) {
+  constructor(private soundService: SoundService, private userService: UserService, private cartService: CartService) {
     this.searchByNameForm = new FormGroup({ query: new FormControl(null) });
   }
 
@@ -119,4 +121,27 @@ handleBackspace(): void {
     this.soundsWereFound = true;
     return soundsReturned;
   }
+
+//  --------- star, add, play, info button functionality ---
+
+  star(id: string): void {
+    console.log('id of shit you clicked: ', id);
+    this.userService.starSound(id);
+  }
+
+  play(id: string): void {
+    console.log('id of shit you clicked: ', id);
+    this.soundService.playSound(id);
+  }
+
+  add(id: string): void {
+    console.log('id of shit you clicked: ', id);
+    this.cartService.modifyCartData('add');
+  }
+
+  info(id: string): void {
+    console.log('id of shit you clicked: ', id);
+    this.cartService.modifyCartData('info');
+  }
+
 }
