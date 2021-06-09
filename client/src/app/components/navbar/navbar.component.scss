@@ -65,19 +65,19 @@
 }
 
 .o1 {
-  animation: fadeIn 1s ease 2s forwards;
+  animation: fadeIn ease .8s forwards;
 }
 
 .o2 {
-  animation: fadeIn 1.75s ease 2s forwards;
+  animation: fadeIn ease .8s forwards;
 }
 
 .o3 {
-  animation: fadeIn 2.5s ease 2s forwards;
+  animation: fadeIn ease .8s forwards;
 }
 
 .o4 {
-  animation: fadeIn 3.75s ease 2s forwards;
+  animation: fadeIn ease .8s forwards;
 }
 
 @media (max-width: 500px) {

@@ -29,14 +29,15 @@ export class LoginComponent implements OnInit {
     console.log('attempting to login...');
     // tslint:disable-next-line:no-string-literal
     const email = await this.userService.emailExistsCheck(this.loginForm.controls['username'].value);
-    if (email) { 
+    if (email) {
       console.log('email found:', email);
       const user = await this.userService.login(this.loginForm.getRawValue())
-        .then(user => {
-          console.log('LOGGED IN: ', user);
-          this.navbar.setUser(user);
-        })
+        .then(loggedInUser => {
+          console.log('LOGGED IN: ', loggedInUser);
+          this.navbar.setUser(loggedInUser);
+          this.router.navigate(['/account']);
+        });
     }
-    else { return Promise.reject('no user found.')}
+    else { return Promise.reject('no user found.'); }
   }
 }

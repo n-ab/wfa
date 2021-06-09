@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PassThrough } from 'node:stream';
-import { Sound } from 'src/app/models';
+import { Sound, User } from 'src/app/models';
 import { SoundService } from 'src/app/services/sound.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
@@ -14,6 +14,9 @@ import { UserService } from 'src/app/services/user.service';
 export class SoundlistComponent implements OnInit, AfterViewInit {
 
   admin = false;
+  user!: User;
+
+  starredSoundArray: string[] = [];
 
   searchByNameForm: FormGroup;
   validSearchEntries: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-'];
@@ -35,6 +38,7 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.compileSoundList('');
+    this.userCheck();
   }
 
   ngAfterViewInit(): void {
@@ -45,6 +49,21 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
     setTimeout(() => {
       this.prepNameSearchBarr();
     }, 100);
+  }
+
+  userCheck(): Promise<any> {
+    console.log('CHECKING FOR LOGGED IN USER');
+    return this.userService.loggedInCheck()
+      .then(user => {
+        if (user) { this.setUser(user); }
+        this.starredSoundArray = this.user.starred;
+        console.log('starredSoundArray = ', this.starredSoundArray);
+      });
+  }
+
+  setUser(user: any): void {
+    console.log('NAVBAR - SETTING USER AS ', user);
+    this.user = user;
   }
 
 // FILTERING DATA --------------------------------
@@ -126,6 +145,7 @@ handleBackspace(): void {
 
   star(id: string): void {
     console.log('id of shit you clicked: ', id);
+    this.toggleStar(id);
     this.userService.starSound(id);
   }
 
@@ -142,6 +162,9 @@ handleBackspace(): void {
   info(id: string): void {
     console.log('id of shit you clicked: ', id);
     this.cartService.modifyCartData('info');
+  }
+
+  toggleStar(id: string): void {
   }
 
 }

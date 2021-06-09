@@ -22,14 +22,13 @@ export class NavbarComponent implements OnInit {
     return this.userService.loggedInCheck()
       .then(user => {
         if (user) { return this.setUser(user); }
-      })
+      });
   }
 
   setUser(user: any): void {
     console.log('NAVBAR - SETTING USER AS ', user);
-    if (user) {this.thereIsUser = true}
+    if (user) { this.thereIsUser = true; }
     this.user = user;
-    // this.user = user[0];
   }
 
 }

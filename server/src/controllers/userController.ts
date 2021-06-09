@@ -60,7 +60,8 @@ export function starSound(soundId: any, userId) {
   UserModel.findById(userId)
     .then(user => {
       console.log('user starred list BEFORE: ', user.starred);
-      user.starred += soundId['id'];
+      // user.starred += soundId['id'];
+      user.starred.push(soundId['id']);
       console.log('user starred list AFTER: ', user.starred);
       user.save();
     })
