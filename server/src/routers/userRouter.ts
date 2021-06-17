@@ -44,3 +44,9 @@ app.get('/usernameExistsCheck', (req: any, res) => {
 app.post('/starSound', (req: any, res) => {
     userController.starSound(req.body['params'], req.user._id);
 })
+
+app.get('/getUserData', async (req: any, res) => {
+    const user = await userController.getUserData(req.user._id);
+    console.log('user shit = ', user);
+    return res.status(200).json(user);
+})

@@ -66,3 +66,9 @@ export function starSound(soundId: any, userId) {
       user.save();
     })
 }
+
+export function getUserData(userId: string): Promise<object> {
+  return UserModel.findById(userId, {'password': 0})
+    .then(user => user)
+    .catch(err => err);
+}

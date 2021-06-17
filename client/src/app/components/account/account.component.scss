@@ -2,8 +2,6 @@
     background-color: black;
     height: 100vh;
     color: rgb(0, 217, 229);
-    position: relative;
-    z-index: -1;
     overflow: auto;
 }
 
@@ -15,4 +13,94 @@
     width: 132px;
     margin-left: 20px;
     margin-top: 5rem;
+}
+
+.account-item-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+// 868px width change account-item-container display shit
+
+.account-item {
+    transition-property: color, background-color;
+    transition-duration: .7s;
+    transition-timing-function: ease;
+    border: 1px solid rgba(255, 255, 255, 0.274);
+    border-radius: 5px;
+    color: lightgrey;
+    background-color:rgba(0, 0, 255, 0);
+    width: 232px;
+    height: 100px;
+    margin: 1rem;
+    user-select: none;
+    display: inline-block;
+}
+
+.account-item-subtitle {
+    font-style: italic;
+    padding-top: 15px;
+    text-align: center;
+}
+
+img {
+    display: block;
+    margin: auto;
+}
+
+// --- pay ---
+
+.pay:hover {
+    background-color: rgba(0, 128, 0, 0.555);    
+}
+
+.money-image {
+    width: 55px;
+    margin-top: 5px;
+    height: 50px;
+}
+
+.payment-table {
+    border: 1px solid darkgrey;
+    border-radius: 5px;
+    background-color: lightgrey;
+    width: 80%;
+    max-width: 800px;
+    color: black;
+    margin: auto;
+}
+
+// --- message --- 
+
+.message:hover {
+    background-color: white;
+    color: #484b4c;
+}
+
+.message-image {
+    width: 48px;
+    margin-top: 12px;
+    height: 43px;
+}
+
+// --- starred --- 
+
+.starred:hover {
+    background-color: #00d0ff;
+    color: black;
+}
+
+.starred-image {
+    width: 55px;
+}
+
+// --- cart --- 
+
+.cart:hover {
+    background-color: white;
+    color: black;
+}
+
+.cart-image {
+    width: 55px;
 }

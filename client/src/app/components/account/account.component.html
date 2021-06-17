@@ -1,3 +1,48 @@
 <div class="account-container">
     <div class="title">Account</div>
+    <div class="account-item-container">
+        <div class="account-item pay" (click)="selection('pay')">
+            <div class="account-item-title"><img class="money-image" src="../../../assets/img/money.svg" alt=""></div>
+            <div class="account-item-subtitle">purchases, payment methods</div>
+        </div>
+        <div class="account-item message" (click)="selection('message')">
+            <div class="account-item-title"><img class="message-image" src="../../../assets/img/message.svg" alt="reee.jpg"></div>
+            <div class="account-item-subtitle">messages, notifications</div>
+        </div>
+        <div class="account-item starred" (click)="selection('starred')">
+            <div class="account-item-title"><img class="starred-image" src="../../../assets/img/starred.svg" alt="reee.jpg"></div>
+            <div class="account-item-subtitle">starred, favorites</div>
+        </div>
+        <div class="account-item cart" (click)="selection('cart')">
+            <div class="account-item-title"><img class="cart-image" src="../../../assets/img/cart.svg" alt="reee.jpg"></div>
+            <div class="account-item-subtitle">cart, wishlist</div>
+        </div>
+    </div>
+    <hr style="border-color: #00d0ff; width: 10%;">
+    
+    <div *ngIf="paySelected">
+        PAY 
+        <table class="payment-table">
+            <thead>
+                <th>Order Number</th>
+                <th>Contents</th>
+                <th>Date</th>
+                <th>Amount</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let invoice of user.invoices">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="messageSelected">MESSAGE</div>
+
+    <div *ngIf="starredSelected">STARRED</div>
+
+    <div *ngIf="cartSelected">CART</div>
 </div>

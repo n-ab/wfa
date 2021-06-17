@@ -41,7 +41,7 @@ passport.serializeUser((user: any, done) => {
   });
   
 passport.deserializeUser((id, done) => {
-    UserModel.findById(id).select('firstName email cart starred')
+    UserModel.findById(id).select('firstName cart')
         .lean()
         .exec()
         .then(user => {

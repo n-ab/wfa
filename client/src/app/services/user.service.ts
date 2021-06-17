@@ -57,4 +57,16 @@ export class UserService {
       .then(starred => starred)
       .catch(err => err);
   }
+
+  fetchUserData(): Promise<object> {
+    return this.http.get('/api/user/getUserData').toPromise()
+      .then(user => {
+        console.log('user fetched: ', user);
+        return user;
+      })
+      .catch(err => {
+        console.log('I was unable to fetch a user because ', err);
+        return err;
+      })
+  }
 }
