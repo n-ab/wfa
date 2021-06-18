@@ -15,4 +15,8 @@ export class CartService {
       .catch(err => err);
   }
 
+  fetchMessages(): Promise<object> {
+    return Promise.resolve({reee:'REEE'});
+  }
+
 }

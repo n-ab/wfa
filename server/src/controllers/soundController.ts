@@ -71,3 +71,15 @@ export function fetchByAny(query: string) {
   })
   .catch(err => err);
 }
+
+export function fetchTheseSounds(sounds: string[]) {
+  const length = sounds.length;
+  console.log(`fetching ${length} sounds...`);
+  const completeSoundArray = [];
+  sounds.forEach(async (sound, i) => {
+    const reee = await SoundModel.findById(sound).then(sound => sound);
+    completeSoundArray.push(reee);
+    console.log(`sound ${i} = `, reee);
+    if (i - length === 0) return completeSoundArray;
+  });
+}

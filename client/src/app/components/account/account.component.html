@@ -40,9 +40,41 @@
         </table>
     </div>
 
-    <div *ngIf="messageSelected">MESSAGE</div>
+    <div *ngIf="messageSelected">
+        <table class="payment-table">
+            <thead>
+                <th>Date</th>
+                <th>From</th>
+                <th>Message</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let message of user.messages">
+                    <td *ngIf="!user.messages.length">You have 0 messages my guy.</td>
+                    <!-- <td>{{message.createdAt}}</td>
+                    <td>{{message.sender}}</td>
+                    <td>{{message.content}}</td> -->
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <div *ngIf="starredSelected">STARRED</div>
+    <div *ngIf="starredSelected">
+        <table class="payment-table">
+            <thead>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Length</th>
+                <th>File Type</th>
+                <th>Purchased</th>
+                <th>Price</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sound of user.starred">
+                    <td>{{sound}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
     <div *ngIf="cartSelected">CART</div>
 </div>

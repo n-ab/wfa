@@ -58,6 +58,10 @@ export class UserService {
       .catch(err => err);
   }
 
+  // ACCOUNT PAGE FUNCTIONS
+
+  // -- base ---
+
   fetchUserData(): Promise<object> {
     return this.http.get('/api/user/getUserData').toPromise()
       .then(user => {
@@ -68,5 +72,39 @@ export class UserService {
         console.log('I was unable to fetch a user because ', err);
         return err;
       })
+  }
+
+  // -- payment ---
+
+  fetchPaymentData(): Promise<object> {
+    return this.http.get('/api/user/getPaymentData').toPromise()
+      .then(paymentData => {
+        console.log('payment data = ', paymentData);
+        return paymentData;
+      })
+      .catch(err => err);
+  }
+
+  // -- messages ---
+
+  fetchMessages(): Promise<object> {
+    return this.http.get('/api/user/getMessages').toPromise()
+      .then(messages => {
+        console.log('messages: ', messages);
+        return messages;
+      })
+      .catch(err => err);
+  }
+
+  // -- starred ---
+
+  fetchStarredSounds(): Promise<object> {
+    console.log('attempting to fetch user\'s starred sounds...');
+    return this.http.get('/api/user/getStarred').toPromise()
+      .then(sounds => {
+        console.log('starred sounds = ', sounds);
+        return sounds;
+      })
+      .catch(err => err);
   }
 }

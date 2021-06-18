@@ -1,6 +1,10 @@
-import { UserModel, UserObject } from '../models/user';
+import { UserModel } from '../models/user';
+import { CartModel } from '../models/cart';
+import { MessageModel } from '../models/message';
+import * as soundController from '../controllers/soundController';
 import * as moment from 'moment';
 import * as auth from '../auth/auth';
+
 export function registerUser(data) {
     console.log('USER CONTROLLER - registration...', data);
     return UserModel.findOneAndUpdate(data, {$set: {newUser: data}}, { new: true, upsert: true })
@@ -15,7 +19,6 @@ export function registerUser(data) {
 }
 
 export function login(data: any) {
-    console.log('USER CONTROLLER - login', data);
     // auth.login(data);
     return UserModel.find({"email" : data.email});
 }
@@ -29,7 +32,6 @@ export function getAllUsers() {
 export function usernameExistsCheck(username: string) {
     return UserModel.find({username: username})
       .then(user => {
-        console.log('REEEEE: ', user);
         if (user.length > 0) {return user;}
         else { return false; }
       })
@@ -39,7 +41,6 @@ export function usernameExistsCheck(username: string) {
 export function emailExistsCheck(email: any): Promise<any> {
   return UserModel.find({email: email})
     .then(user => {
-      if (user) { console.log(`userController - emailExistsCheck() -- found user`, user); }
       return user;
     })
     .catch(async err => {
@@ -71,4 +72,23 @@ export function getUserData(userId: string): Promise<object> {
   return UserModel.findById(userId, {'password': 0})
     .then(user => user)
     .catch(err => err);
+}
+
+export function getPaymentData(userId: string): Promise<object> {
+  return;
+}
+
+export function getMessages(userId: string): Promise<object> {
+  return;
+}
+
+export function getStarred(userId: string): Promise<object> {
+  return UserModel.findById(userId)
+  .then(async user => {
+    user.starred;
+    const der = await soundController.fetchTheseSounds(user.starred);
+    console.log('der = ', der);
+    return der;
+  })
+  .catch(err => err);
 }

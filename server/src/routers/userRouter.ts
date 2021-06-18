@@ -26,10 +26,8 @@ app.post('/login', login, (req: any, res) => {
 })
 
 app.get('/emailExistsCheck', (req: any, res) => {
-    console.log('-- - -- - -- - -- - -- - -- ');
     userController.emailExistsCheck(req.query.email)
         .then(user => {
-            console.log('here\'s some bullshit.', user[0]);
             if (user.length) { return res.status(200).json(true); }
             return res.status(500).json(false);
         })
@@ -45,8 +43,31 @@ app.post('/starSound', (req: any, res) => {
     userController.starSound(req.body['params'], req.user._id);
 })
 
+// -- account page functions ---
+
 app.get('/getUserData', async (req: any, res) => {
+    if (!req.user) {
+        return res.status(500).json('REEE 012');
+    }
     const user = await userController.getUserData(req.user._id);
     console.log('user shit = ', user);
     return res.status(200).json(user);
+})
+
+app.get('/getPaymentData', (req: any, res) => {
+    const data = userController.getPaymentData(req.user._id);
+    if (!data) { return res.status(500).json('u r a b')}
+    // if (approved && data)
+    return res.status(200).json(data);
+})
+
+app.get('/getMessages', async (req: any, res) => {
+    if (!req.user) return;
+    const data = await userController.getMessages(req.user._id);
+})
+
+app.get('/getStarred', async (req: any, res) => {
+    console.log('fetching user\'s starred sounds...');
+    const reee = await userController.getStarred(req.user._id);
+    return res.status(200).json(reee);
 })

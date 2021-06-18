@@ -12,7 +12,8 @@ export interface UserObject extends mongoose.Document {
   cart: string,
   starred: string[],
   workOrders: string[],
-  invoices: string[]
+  invoices: string[],
+  messages: string[]
   // never save ANY card data on user object
 }
 
@@ -26,7 +27,8 @@ const schema = new mongoose.Schema({
   cart: { type: mongoose.Schema.Types.ObjectId, ref:'Cart' },
   starred: [String],
   workOrders: [String],
-  invoices: [String]
+  invoices: [String],
+  messages: [{ type: mongoose.Schema.Types.ObjectId, ref:'Message' }]
 }, { timestamps: true });
 
 // export interface UserDocument extends UserObject;
