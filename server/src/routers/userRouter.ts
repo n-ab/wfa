@@ -1,5 +1,6 @@
 import * as express from 'express';
 import * as userController from '../controllers/userController';
+import * as soundController from '../controllers/soundController';
 import { login } from '../auth/auth';
 
 export const app = express.Router();
@@ -50,7 +51,7 @@ app.get('/getUserData', async (req: any, res) => {
         return res.status(500).json('REEE 012');
     }
     const user = await userController.getUserData(req.user._id);
-    console.log('user shit = ', user);
+    console.log('user found: ', user['firstName']);
     return res.status(200).json(user);
 })
 
@@ -67,7 +68,7 @@ app.get('/getMessages', async (req: any, res) => {
 })
 
 app.get('/getStarred', async (req: any, res) => {
-    console.log('fetching user\'s starred sounds...');
-    const reee = await userController.getStarred(req.user._id);
+    const reee = await soundController.fetchTheseSounds(req.user.starred);
+    console.log('sounds populated from req.user: ', reee);
     return res.status(200).json(reee);
 })

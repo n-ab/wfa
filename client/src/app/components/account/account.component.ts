@@ -16,6 +16,7 @@ export class AccountComponent implements OnInit {
   userMessages!: Message[];
   userCart!: Cart;
   userStarred!: Sound[]
+  starredSounds!: Sound[];
 
   paySelected = false;
   messageSelected = false;
@@ -95,7 +96,7 @@ export class AccountComponent implements OnInit {
   }
 
   async getCart(): Promise<void> {
-    const response = await this.userService.fetchMessages();
+    const response = await this.cartService.fetchMessages();
     console.log('CART response = ', response);
   }
 

@@ -25,7 +25,7 @@ const schema = new mongoose.Schema({
   username: String,
   privilege: String,
   cart: { type: mongoose.Schema.Types.ObjectId, ref:'Cart' },
-  starred: [String],
+  starred: [{ type: mongoose.Schema.Types.ObjectId, ref:'Sound' }],
   workOrders: [String],
   invoices: [String],
   messages: [{ type: mongoose.Schema.Types.ObjectId, ref:'Message' }]

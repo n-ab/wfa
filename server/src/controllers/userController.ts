@@ -1,9 +1,4 @@
-import { UserModel } from '../models/user';
-import { CartModel } from '../models/cart';
-import { MessageModel } from '../models/message';
-import * as soundController from '../controllers/soundController';
-import * as moment from 'moment';
-import * as auth from '../auth/auth';
+import { UserModel, UserObject } from '../models/user';
 
 export function registerUser(data) {
     console.log('USER CONTROLLER - registration...', data);
@@ -82,13 +77,13 @@ export function getMessages(userId: string): Promise<object> {
   return;
 }
 
-export function getStarred(userId: string): Promise<object> {
-  return UserModel.findById(userId)
-  .then(async user => {
-    user.starred;
-    const der = await soundController.fetchTheseSounds(user.starred);
-    console.log('der = ', der);
-    return der;
-  })
-  .catch(err => err);
+export async function compileStarred(userId: string): Promise<any> {
+  const sounds = [];
+  const populatedUser = await UserModel.findOne({_id: userId}).populate('starred').exec((err, starred) => {
+    console.log('starred shit: ', starred);
+    sounds.push(starred);
+    if (err) console.log('error: ', err);
+    return starred;
+  });
+  return sounds;
 }

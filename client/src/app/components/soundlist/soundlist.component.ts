@@ -56,6 +56,7 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
     return this.userService.loggedInCheck()
       .then(user => {
         if (user) { this.setUser(user); }
+        console.log('### = ', user);
         this.starredSoundArray = this.user.starred;
         console.log('starredSoundArray = ', this.starredSoundArray);
       });

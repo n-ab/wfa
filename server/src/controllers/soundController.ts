@@ -72,7 +72,8 @@ export function fetchByAny(query: string) {
   .catch(err => err);
 }
 
-export function fetchTheseSounds(sounds: string[]) {
+export function fetchTheseSounds(sounds: any) {
+  console.log('fetchTheseSounds() - ', sounds);
   const length = sounds.length;
   console.log(`fetching ${length} sounds...`);
   const completeSoundArray = [];
