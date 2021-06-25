@@ -1,1 +1,42 @@
-<p>contact works!</p>
+<div class="contact-container">
+    <div class="header-container">
+        <div class="title">Contact </div>
+        <div class="summary">
+            One of our main selling points is our lightning fast turnaround time. Unless we're signed on to sound design a narrative, most of our work orders take less than 48 hours. If you're in a hurry, let us know your deadline and we'll prioritize your need. 
+        </div>
+    </div>
+    <div class="contact-box-container">
+        <div class="contact-box email" (click)="selection('email')">
+            <img src="../../../assets/img/email.svg" alt="">
+            <div class="contact-title">Email</div>
+            <div class="contact-content"></div>
+        </div>
+        <div class="contact-box phone" (click)="selection('phone')">
+            <img src="../../../assets/img/message-us.svg" alt="">
+            <div class="contact-title">Phone</div>
+            <div class="contact-content"></div>
+        </div>
+        <div class="contact-box fax" (click)="selection('fax')">
+            <img src="../../../assets/img/fax.svg" alt="">
+            <div class="contact-title">Fax</div>
+            <div class="contact-content"></div>
+        </div>
+    </div>
+
+    <div *ngIf="emailSelected" class="email-form">
+        email
+        <form [formGroup]="emailForm" (ngSubmit)="email()" class="email-form" enctype="application/x-www-form-urlencoded">
+            
+        </form>
+    </div>
+
+    <div *ngIf="phoneSelected" class="email-form">
+        phone
+        <form [formGroup]="emailForm"></form>
+    </div>
+    
+    <div *ngIf="faxSelected" class="email-form">
+        fax
+        <form [formGroup]="emailForm"></form>
+    </div>
+</div>

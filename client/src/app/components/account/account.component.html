@@ -18,6 +18,12 @@
             <div class="account-item-subtitle">cart, wishlist</div>
         </div>
     </div>
+    <div class="selection-title">
+        <div *ngIf="paySelected">Payment</div>
+        <div *ngIf="messageSelected">Message</div>
+        <div *ngIf="starredSelected">Starred</div>
+        <div *ngIf="cartSelected">Cart</div>
+    </div>
     <hr style="border-color: #00d0ff; width: 10%;">
     
     <div *ngIf="paySelected">
@@ -63,18 +69,44 @@
             <thead>
                 <th>Title</th>
                 <th>Description</th>
-                <th>Length</th>
-                <th>File Type</th>
+                <th class="length">Length</th>
+                <th>Type</th>
                 <th>Purchased</th>
-                <th>Price</th>
+                <th class="price">Price</th>
             </thead>
             <tbody>
                 <tr *ngFor="let sound of starredSounds">
-                    <td>{{sound}}</td>
+                    <td>{{sound.title}}</td>
+                    <td>{{sound.description}}</td>
+                    <td class="length">{{sound.length}}</td>
+                    <td>.wav</td>
+                    <td>{{sound.purchased}}</td>
+                    <td class="price">${{sound.price}}.00</td>
                 </tr>
             </tbody>
         </table>
     </div>
 
-    <div *ngIf="cartSelected">CART</div>
+    <div *ngIf="cartSelected">CART
+        <table class="payment-table">
+            <thead>
+                <th>Title</th>
+                <th>Description</th>
+                <th class="length">Length</th>
+                <th>Type</th>
+                <th>Purchased</th>
+                <th class="price">Price</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let sound of cartSounds">
+                    <td>{{sound.title}}</td>
+                    <td>{{sound.description}}</td>
+                    <td class="length">{{sound.length}}</td>
+                    <td>.wav</td>
+                    <td>{{sound.purchased}}</td>
+                    <td class="price">${{sound.price}}.00</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

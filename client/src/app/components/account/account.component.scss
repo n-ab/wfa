@@ -48,6 +48,48 @@ img {
     margin: auto;
 }
 
+.selection-title {
+    text-align: center;
+    font-size: 150%;
+    letter-spacing: 5px;
+}
+
+// --- table settings ---
+
+table {
+    // table-layout: fixed;
+}
+
+thead {
+    border-bottom: 1px solid black;
+}
+
+tr {
+    box-shadow: 0px 12px 8px -10px black;
+}
+
+.length {
+    width: 50px;
+}
+
+.price {
+    width: 40px;
+    text-align: center;
+}
+
+th, td {
+    // border: 1px solid green;
+    overflow: hidden;
+}
+
+td {
+    border-left: 1px solid #b7b7b7;
+}
+
+th {
+    box-shadow: 0px 0px 10px -10px black;
+}
+
 // --- pay ---
 
 .pay:hover {

@@ -58,16 +58,19 @@ export class UserService {
       .catch(err => err);
   }
 
+  unstarSound(id: string): Promise<any> {
+    return this.http.post('/api/user/unstarSound', {params: {id}}).toPromise()
+      .then(unstarredConfirmation => unstarredConfirmation)
+      .catch(err => err);
+  }
+
   // ACCOUNT PAGE FUNCTIONS
 
   // -- base ---
 
   fetchUserData(): Promise<object> {
     return this.http.get('/api/user/getUserData').toPromise()
-      .then(user => {
-        console.log('user fetched: ', user);
-        return user;
-      })
+      .then(user => user)
       .catch(err => {
         console.log('I was unable to fetch a user because ', err);
         return err;

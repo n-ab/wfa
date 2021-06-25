@@ -26,14 +26,19 @@
               </div>
           </div>
           <div class="sound-right">
-            <button mat-raised-button class="star-button button-shit" (click)="star(sound._id)">
-              <div class="star-shit-container" *ngIf="starredSoundArray">
+            <button mat-raised-button id="star-button" class="star-button button-shit" (click)="star(sound._id)">
+              <div *ngIf="starredSoundArray">
                 <div *ngIf="!starredSoundArray.includes(sound._id)">star</div>
                 <div *ngIf="starredSoundArray.includes(sound._id)" class="starred">star</div>
               </div>
             </button>
             <button mat-raised-button class="add-button  button-shit" (click)="play(sound._id)">play</button>
-            <button mat-raised-button class="play-button button-shit" (click)="add(sound._id)" >add</button>
+            <button mat-raised-button class="play-button button-shit" (click)="add(sound._id)">
+              <div *ngIf="cartArray">
+                <div *ngIf="!cartArray.includes(sound._id)">add</div>
+                <div *ngIf="cartArray.includes(sound._id)" class="inCart">√</div>
+              </div>
+            </button>
             <button mat-raised-button class="info-button button-shit" (click)="info(sound._id)">info</button>
           </div>
         </div>

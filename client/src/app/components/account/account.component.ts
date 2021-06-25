@@ -3,6 +3,8 @@ import { Cart, User, Sound, Message } from 'src/app/models';
 import { UserService } from 'src/app/services/user.service';
 import { CartService } from 'src/app/services/cart.service';
 import { TimeoutError } from 'rxjs';
+import { Router } from '@angular/router';
+import { SoundService } from 'src/app/services/sound.service';
 
 @Component({
   selector: 'app-account',
@@ -17,6 +19,7 @@ export class AccountComponent implements OnInit {
   userCart!: Cart;
   userStarred!: Sound[]
   starredSounds!: Sound[];
+  cartSounds!: Sound[];
 
   paySelected = false;
   messageSelected = false;
@@ -24,13 +27,17 @@ export class AccountComponent implements OnInit {
   cartSelected = false;
 
 
-  constructor(private userService: UserService, private cartService: CartService) { }
+  constructor(private userService: UserService, private cartService: CartService, private soundService: SoundService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userService.loggedInCheck().then(user => {
+      if (!user) {
+        this.router.navigateByUrl('login');
+      }
+    })
   }
 
   setUser(user: any): void {
-    console.log('NAVBAR - SETTING USER AS ', user);
     this.user = user;
   }
 
@@ -39,7 +46,7 @@ export class AccountComponent implements OnInit {
     this.userService.fetchUserData().then(user => { if (user) { return this.setUser(user); } });
     setTimeout(() => {
       this.handleSelection(selection);
-    }, 500)
+    }, 250)
   }
 
   handleSelection(selection: string) {
@@ -91,13 +98,33 @@ export class AccountComponent implements OnInit {
 
   async getStarred(): Promise<void> {
     console.log('attempting to fetch sounds... REEE');
-    const response = await this.userService.fetchStarredSounds();
-    console.log('STARRED response = ', response);
+    const response = await this.userService.fetchStarredSounds().then(sounds => {
+      if (sounds) return this.setStarredSounds(sounds);
+    })
   }
 
+  setStarredSounds(sounds: any): void {
+    this.starredSounds = sounds;
+  }
+
+  // --- 1 ---------------
   async getCart(): Promise<void> {
-    const response = await this.cartService.fetchMessages();
-    console.log('CART response = ', response);
+    const response = await this.cartService.populateUsersCart().then(cart => {
+      console.log('getCart() - cart = ', cart);
+      if (cart) return this.setCartSounds(cart);
+    });
+  }
+
+  setCartSounds(cart: any): void {
+    console.log('setCartSounds() - sounds = ', cart.sounds);
+    this.cartSounds = cart.sounds;
+    console.log('this.cartSounds = ', this.cartSounds);
+    this.populateCartSounds(cart.sounds);
+  }
+
+  populateCartSounds(cartSounds: any): any {
+    console.log('attempting to POPULATE CART SOUNDS');
+    return this.cartService.populateUsersCart();
   }
 
 }

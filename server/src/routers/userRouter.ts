@@ -6,9 +6,8 @@ import { login } from '../auth/auth';
 export const app = express.Router();
 
 app.get('/check', (req: any, res) => {
-    console.log('--- $$$ --- 1');
-    console.log(req.user);
     if (req.user === undefined) { return res.json(false)}
+    console.log(req.user.firstName + ' is logged in.');
     return res.status(200).json(req.user);
 })
 
@@ -44,6 +43,10 @@ app.post('/starSound', (req: any, res) => {
     userController.starSound(req.body['params'], req.user._id);
 })
 
+app.post('/unstarSound', (req: any, res) => {
+    userController.unstarSound(req.body['params'], req.user._id);
+})
+
 // -- account page functions ---
 
 app.get('/getUserData', async (req: any, res) => {
@@ -69,6 +72,6 @@ app.get('/getMessages', async (req: any, res) => {
 
 app.get('/getStarred', async (req: any, res) => {
     const reee = await soundController.fetchTheseSounds(req.user.starred);
-    console.log('sounds populated from req.user: ', reee);
+    console.log('sounds populated with soundController.fetchTheseSounds()');
     return res.status(200).json(reee);
 })

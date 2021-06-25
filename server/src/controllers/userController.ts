@@ -63,6 +63,16 @@ export function starSound(soundId: any, userId) {
     })
 }
 
+export function unstarSound(soundId: any, userId) {
+  UserModel.findById(userId)
+    .then(user => {
+      const index = user.starred.indexOf(soundId['id']);
+      user.starred.splice(index, 1);
+      user.save();
+      return user.starred;
+    }).catch(err => err);
+}
+
 export function getUserData(userId: string): Promise<object> {
   return UserModel.findById(userId, {'password': 0})
     .then(user => user)

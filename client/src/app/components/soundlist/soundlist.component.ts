@@ -1,7 +1,6 @@
 import { Component, OnInit, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { PassThrough } from 'node:stream';
-import { Sound, User } from 'src/app/models';
+import { Cart, Sound, User } from 'src/app/models';
 import { SoundService } from 'src/app/services/sound.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,8 +14,10 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
 
   admin = false;
   user!: User;
+  cart!: Cart;
 
   starredSoundArray: string[] = [];
+  cartArray: string[] = [];
 
   searchByNameForm: FormGroup;
   validSearchEntries: string[] = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-'];
@@ -52,19 +53,37 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
   }
 
   userCheck(): Promise<any> {
-    console.log('CHECKING FOR LOGGED IN USER');
     return this.userService.loggedInCheck()
       .then(user => {
-        if (user) { this.setUser(user); }
-        console.log('### = ', user);
-        this.starredSoundArray = this.user.starred;
-        console.log('starredSoundArray = ', this.starredSoundArray);
+        if (user) {
+          this.setUser(user);
+          this.starredSoundArray = this.user.starred;
+        }
       });
   }
 
   setUser(user: any): void {
-    console.log('NAVBAR - SETTING USER AS ', user);
+    if (user.cart) this.cart = user.cart;
     this.user = user;
+    console.log(`${user.firstName} has been set as session user.`);
+    this.getUsersCart(user._id);
+  }
+
+  getUsersCart(userId: string) {
+    this.cartService.getUsersCart()
+    .then(cart => {
+      this.setCart(cart);
+      console.log('got or generated cart: ', cart);
+    });
+  }
+
+  setCart(cart: any): void | string {
+    if (cart) {
+      console.log('cart: ', cart);
+      this.cartArray = cart['sounds'];
+      return this.cart = cart;
+    };
+    return "user has not made a cart.";
   }
 
 // FILTERING DATA --------------------------------
@@ -145,24 +164,37 @@ handleBackspace(): void {
 //  --------- star, add, play, info button functionality ---
 
   star(id: string): void {
-    console.log('id of shit you clicked: ', id);
+    // handle unstar
+    if (this.starredSoundArray.includes(id)) {
+      this.toggleStar(id);
+      this.userService.unstarSound(id);
+      return;
+    }
+    // star
     this.toggleStar(id);
     this.userService.starSound(id);
+    this.userService.loggedInCheck().then(user => {
+      this.setUser(user);
+      setTimeout(() => {
+        this.starredSoundArray = this.user.starred;
+      }, 100);
+    });
   }
 
   play(id: string): void {
-    console.log('id of shit you clicked: ', id);
     this.soundService.playSound(id);
   }
 
   add(id: string): void {
-    console.log('id of shit you clicked: ', id);
-    this.cartService.modifyCartData('add');
+    if (this.cartArray.includes(id)) {
+      this.cartService.removeFromCart(id);
+      return;
+    }
+    this.cartService.addToCart(id);
   }
 
   info(id: string): void {
-    console.log('id of shit you clicked: ', id);
-    this.cartService.modifyCartData('info');
+    
   }
 
   toggleStar(id: string): void {
