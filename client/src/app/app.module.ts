@@ -14,6 +14,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatNativeDateModule } from '@angular/material/core';
+
 import { SoundlistComponent } from './components/soundlist/soundlist.component';
 import { LandingComponent } from './components/landing/landing.component';
 import { SoundaddComponent } from './components/soundadd/soundadd.component';
@@ -55,11 +57,11 @@ import { AccountComponent } from './components/account/account.component';
     ReactiveFormsModule,
     HttpClientModule,
     // material modules
-    MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatPaginatorModule,
+    MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatPaginatorModule, MatNativeDateModule
   ],
   exports: [
     // material modules
-    MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatPaginatorModule,
+    MatButtonModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatDatepickerModule, MatPaginatorModule, MatNativeDateModule
   ],
   entryComponents: [
     // put modals here
@@ -67,7 +69,8 @@ import { AccountComponent } from './components/account/account.component';
   providers: [
     // put guards here
     AudioContext,
-    NavbarComponent
+    NavbarComponent,
+    MatNativeDateModule
   ],
   bootstrap: [AppComponent]
 })

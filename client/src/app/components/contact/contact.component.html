@@ -24,19 +24,50 @@
     </div>
 
     <div *ngIf="emailSelected" class="email-form">
-        email
         <form [formGroup]="emailForm" (ngSubmit)="email()" class="email-form" enctype="application/x-www-form-urlencoded">
-            
+            <div class="form-title">Send Us An Email</div>
+            <mat-form-field class="form-input"> <input matInput type="email" name="email" formControlName="email" placeholder="Enter Your Email"> </mat-form-field>
+            <mat-form-field class="form-input"> <input matInput type="text" name="name" formControlName="name" placeholder="Your Name / Company Name"> </mat-form-field>
+            <mat-form-field class="form-input"> <textarea matInput type="text" name="message" formControlName="message" placeholder="Your Message"></textarea> </mat-form-field>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Enter your desired turnaround date</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+            <button mat-raised-button class="submit-button">submit</button>
         </form>
     </div>
 
     <div *ngIf="phoneSelected" class="email-form">
-        phone
-        <form [formGroup]="emailForm"></form>
+        <div class="phone-contact">
+            <div class="form-title">Shoot Us A Text</div>
+            <div class="phone-contact-body">
+                <div class="phone-contact-number">+1 702-830-7210</div>
+                <hr>
+                <div class="phone-contact-content">
+                    If this is urgent, please put URGENT (in all caps) at the beginning of the message. <br><br> Be sure to specify your turnaround time in the first text!
+                </div>
+            </div>
+        </div>
     </div>
     
     <div *ngIf="faxSelected" class="email-form">
-        fax
-        <form [formGroup]="emailForm"></form>
+        <div class="phone-contact">
+            <div class="form-title">Send Us A... Fax?</div>
+            <div class="phone-contact-body">
+                <div class="whats-a-fax">What's a fax? Have some social media while we think about this...</div>
+                <hr>
+                <div class="social-media">
+                    <div class="social-media-icon"><img src="../../../assets/img/youtube.jpg" alt="youtube.jpg"></div>
+                    <div class="social-media-icon"><img src="../../../assets/img/twitter.jpg" alt="twitter.jpg"></div>
+                    <div class="social-media-icon"><img src="../../../assets/img/facebook.jpg" alt="facebook.jpg"></div>
+                    <div class="social-media-icon"><img src="../../../assets/img/linkedin.jpg" alt="linkedin.jpg"></div>
+                    <div class="social-media-icon"><img src="../../../assets/img/insta.jpg" alt="instagram.jpg"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -44,9 +44,7 @@ export class AccountComponent implements OnInit {
   selection(selection: string): void {
     // fetch data ONLY UPON REQUEST
     this.userService.fetchUserData().then(user => { if (user) { return this.setUser(user); } });
-    setTimeout(() => {
-      this.handleSelection(selection);
-    }, 250)
+    this.handleSelection(selection);
   }
 
   handleSelection(selection: string) {

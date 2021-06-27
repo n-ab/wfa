@@ -22,11 +22,11 @@ export class ContactComponent implements OnInit {
 
   constructor(private userService: UserService, private contactService: ContactService, private router: Router) {
     this.emailForm = new FormGroup({
-      theirEmail: new FormControl(null),
+      email: new FormControl(null),
+      name: new FormControl(null),
       message: new FormControl(null),
       desiredTurnaround: new FormControl(null),
-      
-    })
+    });
   }
 
   ngOnInit(): void {
@@ -52,16 +52,19 @@ export class ContactComponent implements OnInit {
         this.emailSelected = true;
         this.phoneSelected = false;
         this.faxSelected = false;
+        console.log('this.emailSelected = ', this.emailSelected);
         break;
       case 'phone':
         this.phoneSelected = true;
         this.faxSelected = false;
         this.emailSelected = false;
+        console.log('this.phoneSelected = ', this.phoneSelected);
         break;
       case 'fax':
         this.faxSelected = true;
         this.phoneSelected = false;
         this.emailSelected = false;
+        console.log('this.faxSelected = ', this.faxSelected);
         break;
       default:
         break;
@@ -69,20 +72,7 @@ export class ContactComponent implements OnInit {
   }
 
   email() {
-    this.contactService.email(this.emailForm.getRawValue()).then(message => {
-      console.log('server response: ', message);
-      return message;
-    });
-  }
-
-  phone() {
-    this.contactService.email(this.emailForm.getRawValue()).then(message => {
-      console.log('server response: ', message);
-      return message;
-    });
-  }
-
-  fax() {
+    console.log('this.emailForm.getRawValue() = ', this.emailForm.getRawValue());
     this.contactService.email(this.emailForm.getRawValue()).then(message => {
       console.log('server response: ', message);
       return message;

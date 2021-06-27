@@ -2,6 +2,14 @@
   margin: 1rem;
 }
 
+a {
+  color: #00d9e5;
+}
+
+a:hover {
+  color: #00aab3;
+}
+
 .search-bar-container {
   border: 1px solid #424242;
   box-shadow: 0px 0px 25px -5px #ffffff;
@@ -56,7 +64,7 @@ margin-left: 15px;
   border-radius: 5px;
   background-color: black;
   color: white;
-  padding: 1rem;
+  padding: 3rem 1rem 1rem 1rem;
   margin: auto;
   display: block;
   width: 60%;
