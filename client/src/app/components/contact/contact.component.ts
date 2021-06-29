@@ -53,6 +53,7 @@ export class ContactComponent implements OnInit {
         this.phoneSelected = false;
         this.faxSelected = false;
         console.log('this.emailSelected = ', this.emailSelected);
+        document.getElementById('email')?.scrollIntoView({behavior: 'smooth'});
         break;
       case 'phone':
         this.phoneSelected = true;

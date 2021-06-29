@@ -30,6 +30,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthComponent } from './components/auth/auth.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { AccountComponent } from './components/account/account.component';
+import { AdminMessagingComponent } from './components/admin-messaging/admin-messaging.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { AccountComponent } from './components/account/account.component';
     LoginComponent,
     AuthComponent,
     AdminComponent,
-    AccountComponent
+    AccountComponent,
+    AdminMessagingComponent,
+    ProjectsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,40 @@
+.spacer {
+    height: 200px;
+    vertical-align: top;
+}
+
+.projects-container {
+    background-color: black;
+    padding-top: 40px;
+    vertical-align: top;
+}
+
+.projects-header {
+    text-align: center;
+    color: #00d9e5;
+    font-size: 250%;
+}
+
+.reee {
+    color: black;
+    user-select: none;
+}
+
+.projects {
+    margin-top: 3rem;
+}
+
+.project {
+    border: 1px solid rgb(48, 48, 48);
+    border-radius: 5px;
+    width: 75%;
+    max-width: 700px;
+    margin: auto;
+    height: 300px;
+}
+
+.project-title {
+    color: white;
+    font-size: 150%;
+    padding: 4rem;
+}

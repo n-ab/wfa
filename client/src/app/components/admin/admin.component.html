@@ -1,1 +1,25 @@
-<p>admin works!</p>
+<div class="admin-container">
+    <div class="admin-title">Admin</div>
+    <div class="options">
+        <div class="option messages-button" (click)="selection('messages')">Messages</div>
+        <div class="option work-orders-button" (click)="selection('workOrders')">Work Orders</div>
+    </div>
+
+    <div class="selection messages-container" *ngIf="messagesSelected">
+        <div class="option-title">Messages</div>
+        <div class="messages">
+            <div class="message">
+                <div class="message-title"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="selection work-orders-container" *ngIf="workOrdersSelected">
+        <div class="option-title">Work Orders</div>
+        <div class="work-orders">
+            <div class="work-order">
+                <div class="work-order-title"></div>
+            </div>
+        </div>
+    </div>
+</div>

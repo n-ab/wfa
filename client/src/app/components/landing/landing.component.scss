@@ -1,13 +1,116 @@
+a {
+  color: #00d9e5;
+  // text-decoration-color: black;
+}
+
+a:hover {
+  color: #00aab3;
+}
+
 .landing-logo {
+  background-color: black;
+  height: 350px;
+}
+
+.summaries {
+  background-image: linear-gradient(0.47turn, #00d0ff, #497aa5, #0f3c63);
+}
+
+.summary {
+  height: 25rem;
+  overflow: auto;
+}
+
+.summary-content-container {
+  width: 90%;
+  height: 21rem;
+  box-shadow: 0px 0px 10px -2px black;
+  overflow: auto;
+  margin: auto;
+  margin-top: 42px;
+}
+
+.summary-header {
+  text-align: center;
+  font-size: 285%;
+  font-weight: 100;
+  color: white;
+  margin-top: 2rem;
+  user-select: none;
+}
+
+.summary-content {
+  width: 90%;
+  max-width: 800px;
+  margin-top: 2rem;
+  font-size: 130%;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  margin-left: 5%;
+}
+
+.s1-content {
+  width: 90%;
+  max-width: 800px;
+  font-size: 130%;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  margin: auto;
+  margin-top: 3rem;
+}
+
+.s2-content {
+  width: 90%;
+  max-width: 800px;
+  margin-top: 2rem;
+  font-size: 130%;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.s3-content {
+  width: 90%;
+  max-width: 800px;
+  margin-top: 2rem;
+  font-size: 130%;
+  font-weight: 800;
+  letter-spacing: 2px;
+  line-height: 1.6;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.service-selected {
+  background-color:rgb(0, 0, 0);
+  padding: 1rem 3rem;
+  color: white;
+  font-weight: 800;
+  letter-spacing: 1px;
   display: block;
   margin: auto;
-  width: 75%;
-  height: 350px;
-  background-color: lightgrey;
-  border-radius: 10px;
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-top: 39px;
+  min-width: 200px;
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+// -------------------------
 
 .showcases {
   background-color: black;
@@ -55,4 +158,10 @@
 .here {
   color: lightblue;
   font-size: 105%;
+}
+
+app-projects {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  overflow: hidden;
 }

@@ -94,8 +94,7 @@ margin-left: 15px;
 // sound box -----------------
 
 .sound {
-  box-shadow: 0px 0px 20px -7px rgb(74, 195, 255);
-  border: 1px solid rgb(111, 111, 111);
+  border: 1px solid #212121;
   display: inline-block;
   padding: 7px;
   margin: 10px;
@@ -103,11 +102,26 @@ margin-left: 15px;
   width: 15rem;
   height: 120px;
   font-family: 'Montserrat', sans-serif;
-  transition: box-shadow .6s ease;
+  transition: box-shadow .3s ease;
+  position: relative;
+  box-shadow: 0px 0px 18px -4px #4ac3ff;
 }
 
-.sound:hover {
-  box-shadow: 0px 0px 20px 5px #ffffff;
+.sound::before {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 0px 30px -5px #7fecf2;
+  opacity: 0;
+  transition: opacity 500ms;
+  border-radius: 10px;
+}
+
+.sound:hover::before {
+  opacity: 1;
 }
 
 .sound-title {
@@ -115,6 +129,7 @@ margin-left: 15px;
   font-size: 150%;
   border-bottom: 1px solid lightgrey;
 }
+
 
 .sound-description {
   font-size: 80%;

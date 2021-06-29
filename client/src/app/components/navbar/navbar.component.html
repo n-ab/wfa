@@ -5,6 +5,10 @@
   </div>
   <div class="navbar-right">
     <div class="options">
+      <div *ngIf="user" class="option o1" [routerLink]="['admin']">
+        <div *ngIf="user.admin > 0" class="option-text">Admin</div>
+      </div>
+
       <div class="option o1" [routerLink]="['']">
         <div class="option-text">Home</div>
       </div>

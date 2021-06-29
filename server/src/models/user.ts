@@ -13,7 +13,10 @@ export interface UserObject extends mongoose.Document {
   starred: string[],
   workOrders: string[],
   invoices: string[],
-  messages: string[]
+  messages: string[],
+  admin: number,
+  specialUser: number,
+  normalUser: number,
   // never save ANY card data on user object
 }
 
@@ -28,7 +31,10 @@ const schema = new mongoose.Schema({
   starred: [{ type: mongoose.Schema.Types.ObjectId, ref:'Sound' }],
   workOrders: [String],
   invoices: [String],
-  messages: [{ type: mongoose.Schema.Types.ObjectId, ref:'Message' }]
+  messages: [{ type: mongoose.Schema.Types.ObjectId, ref:'Message' }],
+  admin: Number,
+  specialUser: Number,
+  normalUser: Number,
 }, { timestamps: true });
 
 // export interface UserDocument extends UserObject;

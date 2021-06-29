@@ -18,12 +18,12 @@
         </div>
         <div class="contact-box fax" (click)="selection('fax')">
             <img src="../../../assets/img/fax.svg" alt="">
-            <div class="contact-title">Fax</div>
+            <div class="contact-title">Social</div>
             <div class="contact-content"></div>
         </div>
     </div>
 
-    <div *ngIf="emailSelected" class="email-form">
+    <div *ngIf="emailSelected" class="email-form" id="email">
         <form [formGroup]="emailForm" (ngSubmit)="email()" class="email-form" enctype="application/x-www-form-urlencoded">
             <div class="form-title">Send Us An Email</div>
             <mat-form-field class="form-input"> <input matInput type="email" name="email" formControlName="email" placeholder="Enter Your Email"> </mat-form-field>
@@ -56,9 +56,7 @@
     
     <div *ngIf="faxSelected" class="email-form">
         <div class="phone-contact">
-            <div class="form-title">Send Us A... Fax?</div>
             <div class="phone-contact-body">
-                <div class="whats-a-fax">What's a fax? Have some social media while we think about this...</div>
                 <hr>
                 <div class="social-media">
                     <div class="social-media-icon"><img src="../../../assets/img/youtube.jpg" alt="youtube.jpg"></div>

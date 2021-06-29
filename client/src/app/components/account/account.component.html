@@ -24,7 +24,7 @@
         <div *ngIf="starredSelected">Starred</div>
         <div *ngIf="cartSelected">Cart</div>
     </div>
-    <hr style="border-color: #00d0ff; width: 10%;">
+    <hr style="border-color: #00d0ff; width: 30%;">
     
     <div *ngIf="paySelected">
         <table class="payment-table">
@@ -92,18 +92,21 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th class="length">Length</th>
-                <th>Type</th>
-                <th>Purchased</th>
+                <th class="type">Type</th>
                 <th class="price">Price</th>
+                <th class="cart-remove"></th>
+                <th class="move-to-wishlist"></th>
+                <th></th>
             </thead>
             <tbody>
                 <tr *ngFor="let sound of cartSounds">
                     <td>{{sound.title}}</td>
                     <td>{{sound.description}}</td>
                     <td class="length">{{sound.length}}</td>
-                    <td>.wav</td>
-                    <td>{{sound.purchased}}</td>
+                    <td class="type">.wav</td>
                     <td class="price">${{sound.price}}.00</td>
+                    <td class="move-to-wishlist"> <button class="wishlist" mat-raised-button>move to wishlist</button> </td>
+                    <td class="cart-remove"> <button class="remove" mat-raised-button>remove</button> </td>
                 </tr>
             </tbody>
         </table>

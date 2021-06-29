@@ -50,14 +50,15 @@ img {
 
 .selection-title {
     text-align: center;
-    font-size: 150%;
+    font-size: 300%;
     letter-spacing: 5px;
+    padding: 1rem;
+    font-weight: 100;
 }
 
 // --- table settings ---
 
 table {
-    // table-layout: fixed;
 }
 
 thead {
@@ -65,7 +66,7 @@ thead {
 }
 
 tr {
-    box-shadow: 0px 12px 8px -10px black;
+    box-shadow: 0px 12px 8px -10px #5a5a5a;
 }
 
 .length {
@@ -75,6 +76,17 @@ tr {
 .price {
     width: 40px;
     text-align: center;
+    padding-right: 10px;
+    padding-left: 3px;
+}
+
+.type {
+    width: 20px;
+    padding-left: 5px;
+}
+
+thead {
+    border-bottom: 1px solid black;
 }
 
 th, td {
@@ -84,6 +96,8 @@ th, td {
 
 td {
     border-left: 1px solid #b7b7b7;
+    height: 2rem !important;
+    padding-left: 15px;
 }
 
 th {
@@ -110,6 +124,7 @@ th {
     max-width: 800px;
     color: black;
     margin: auto;
+    margin-top: 3rem;
 }
 
 // --- message --- 
@@ -151,3 +166,18 @@ th {
 .cart-image {
     width: 55px;
 }
+
+.wishlist {
+    background-color: rgba(0, 0, 0, 0);
+    margin-right: 8px;
+    margin-bottom: 5px;
+}
+
+.remove {
+    background-color: rgba(0, 0, 0, 0);
+    margin-right: 8px;
+    margin-bottom: 5px;
+    margin-top: 3px;
+    box-shadow: 0px 0px 5px 0px red;
+}
+
