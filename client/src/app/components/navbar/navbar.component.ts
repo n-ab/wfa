@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models';
 import { UserService } from 'src/app/services/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { NavbarmodalComponent } from '../navbarmodal/navbarmodal.component';
 
 @Component({
   selector: 'app-navbar',
@@ -9,9 +11,11 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class NavbarComponent implements OnInit {
 
+  showHamburger = true;
+
   user!: User;
   thereIsUser = false;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userCheck();
@@ -27,6 +31,28 @@ export class NavbarComponent implements OnInit {
   setUser(user: any): void {
     if (user) { this.thereIsUser = true; }
     this.user = user;
+  }
+
+  toggleHamburger(toggle: string) {
+    switch (toggle) {
+      case 'hamburgerIsShowing':
+        this.showHamburger = false;
+        console.log('show hamburger? ', this.showHamburger);
+        this.openNavDialog();
+        break;
+      case 'xIsShowing':
+        this.showHamburger = true;
+        console.log('show hamburger? ', this.showHamburger);
+        break;
+    }
+  }
+
+  openNavDialog(): void {
+    const dialogRef = this.dialog.open(NavbarmodalComponent, {
+      width: '400px',
+      height: '488px'
+    });
+    dialogRef.afterClosed().toPromise().then(() => { this.toggleHamburger('xIsShowing') });
   }
 
 }

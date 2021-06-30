@@ -1,10 +1,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
 <div class="navbar">
   <div class="navbar-left">
-    <div class="logo">Waveform Arts</div>
+    <div class="logo">Waveform </div>
+    <div class="logo2">Arts</div>
   </div>
   <div class="navbar-right">
     <div class="options">
+      <div *ngIf="showHamburger" (click)="toggleHamburger('hamburgerIsShowing')" class="hamburger hamburger-effect" id="hamburger">
+        <div class="hamburger-lines">
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+        </div>
+      </div>
+      <div *ngIf="!showHamburger" (click)="toggleHamburger('xIsShowing')" class="hamburger hamburger-effect" id="hamburger">
+        <div class="hamburger-lines">
+          <div class="x-line xl-1"></div>
+          <div class="x-line xl-2"></div>
+        </div>
+      </div>
       <div *ngIf="user" class="option o1" [routerLink]="['admin']">
         <div *ngIf="user.admin > 0" class="option-text">Admin</div>
       </div>
@@ -14,6 +28,9 @@
       </div>
       <div class="option o2" [routerLink]="['soundlist']">
         <div class="option-text">Sounds</div>
+      </div>
+      <div class="option o2" [routerLink]="['project-hosting']">
+        <div class="option-text">Hosting</div>
       </div>
       <div class="option o3" [routerLink]="['about']">
         <div class="option-text">About Us</div>

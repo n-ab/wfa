@@ -23,9 +23,14 @@
   100%  { font-size: 100%; width: 100px; height: 30px; }
 }
 
-@keyframes letterSpacingReveal {
+@keyframes letterSpacingReveal1 {
   0%   { letter-spacing: -12px; opacity: 0;}
   100% { letter-spacing: 1px;   opacity: 1;}
+}
+
+@keyframes letterSpacingReveal2 {
+  0%   { opacity: 0; transform: translate(0px, 0px);}
+  100% { opacity: 1; transform: translate(100px, 100px);}
 }
 
 @keyframes letterSpacingRevealMobile {

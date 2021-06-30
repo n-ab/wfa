@@ -32,6 +32,9 @@ import { AdminComponent } from './components/admin/admin.component';
 import { AccountComponent } from './components/account/account.component';
 import { AdminMessagingComponent } from './components/admin-messaging/admin-messaging.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { AboutComponent } from './components/about/about.component';
+import { NavbarmodalComponent } from './components/navbarmodal/navbarmodal.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +54,10 @@ import { ProjectsComponent } from './components/projects/projects.component';
     AdminComponent,
     AccountComponent,
     AdminMessagingComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    AboutComponent,
+    NavbarmodalComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

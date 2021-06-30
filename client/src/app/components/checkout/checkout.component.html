@@ -1,0 +1,16 @@
+<div class="checkout-container">
+    <div class="checkout-title">Checkout</div>
+    <div class="summary-showcase">Select Payment Method </div>
+    <div class="checkout-table">
+        <table>
+            <tr *ngFor="let sound of cartSounds">
+                <td>{{sound.title}}</td>
+                <td>{{sound.price}}</td>
+            </tr>
+            <tr class="total-tr">
+                <td>Total </td>
+                <td>{{cartPrice | currency: 'USD'}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

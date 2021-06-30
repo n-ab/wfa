@@ -1,0 +1,33 @@
+.option1 {
+    text-align: center;
+    height: 50px;
+    box-shadow: 0px 0px 20px -6px black;
+    padding: 2px;
+    border-radius: 5px;
+    transition: box-shadow 1s ease, border-radius .2s ease;
+}
+
+.option {
+    text-align: center;
+    height: 53px;
+    margin-top: 20px;
+    box-shadow: 0px 0px 20px -6px black;
+    padding: 2px;
+    border-radius: 5px;
+    transition: box-shadow 1s ease, border-radius .4s ease;
+}
+
+.option-content {
+    padding-top: 16px;
+    user-select: none;
+}
+
+.option:hover {
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0px black;
+}
+
+.option1:hover {
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px 0px black;
+}

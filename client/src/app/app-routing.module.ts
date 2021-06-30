@@ -9,10 +9,13 @@ import { AdminComponent } from './components/admin/admin.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AccountComponent } from './components/account/account.component';
+import { AboutComponent } from './components/about/about.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent},
   { path: 'contact', component: ContactComponent },
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent},
   { path: 'soundlist', component: SoundlistComponent},
@@ -20,7 +23,8 @@ const routes: Routes = [
   { path: 'edit', component: SoundeditComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'edit', component: SoundeditComponent},
-  { path: 'account', component: AccountComponent}
+  { path: 'account', component: AccountComponent},
+  { path: 'about', component: AboutComponent}
 ];
 
 @NgModule({

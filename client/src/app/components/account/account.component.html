@@ -105,10 +105,16 @@
                     <td class="length">{{sound.length}}</td>
                     <td class="type">.wav</td>
                     <td class="price">${{sound.price}}.00</td>
-                    <td class="move-to-wishlist"> <button class="wishlist" mat-raised-button>move to wishlist</button> </td>
-                    <td class="cart-remove"> <button class="remove" mat-raised-button>remove</button> </td>
+                    <td class="move-to-wishlist"> <button class="wishlist" mat-raised-button>save to</button> </td>
+                    <td class="cart-remove"> <button class="remove" mat-raised-button>X</button> </td>
                 </tr>
             </tbody>
         </table>
+        <br><br><br>
+        <div class="checkout-now">
+            <div class="cart-total">Total: {{cartPrice | currency:'USD'}}</div>
+            <button class="checkout-button" mat-raised-button (click)="goToCheckout()">Checkout Now</button>
+        </div>
+        <br><br><br>
     </div>
 </div>

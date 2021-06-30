@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Cart, User, Sound, Message } from 'src/app/models';
 import { UserService } from 'src/app/services/user.service';
 import { CartService } from 'src/app/services/cart.service';
-import { TimeoutError } from 'rxjs';
 import { Router } from '@angular/router';
 import { SoundService } from 'src/app/services/sound.service';
 
@@ -25,6 +24,8 @@ export class AccountComponent implements OnInit {
   messageSelected = false;
   starredSelected = false;
   cartSelected = false;
+
+  cartPrice!: number;
 
 
   constructor(private userService: UserService, private cartService: CartService, private soundService: SoundService, private router: Router) { }
@@ -114,15 +115,26 @@ export class AccountComponent implements OnInit {
   }
 
   setCartSounds(cart: any): void {
-    console.log('setCartSounds() - sounds = ', cart.sounds);
     this.cartSounds = cart.sounds;
-    console.log('this.cartSounds = ', this.cartSounds);
     this.populateCartSounds(cart.sounds);
   }
 
   populateCartSounds(cartSounds: any): any {
-    console.log('attempting to POPULATE CART SOUNDS');
-    return this.cartService.populateUsersCart();
+    console.log('attempting to POPULATE CART SOUNDS', cartSounds);
+    this.cartService.populateUsersCart();
+    this.calculatePrice(cartSounds);
+  }
+
+  calculatePrice(cartSounds: any) {
+    let total = 0;
+    const price = this.cartSounds.map(sound => {
+      total += sound.price;
+    });
+    this.cartPrice = total;
+  }
+
+  goToCheckout(): void {
+    this.router.navigateByUrl('checkout');
   }
 
 }

@@ -1,0 +1,9 @@
+<div class="options">
+    <div class="option1" (click)="navTo('home')"> <div class="option-content">Home</div> </div>
+    <div class="option" (click)="navTo('sounds')"> <div class="option-content">Sounds</div> </div>
+    <div class="option" (click)="navTo('project-hosting')"> <div class="option-content">Project / Data Hosting</div> </div>
+    <div class="option" (click)="navTo('about')"> <div class="option-content">About Us</div> </div>
+    <div *ngIf="user" class="option" (click)="navTo('account')"> <div class="option-content">Account</div> </div>
+    <div *ngIf="!user" class="option" (click)="navTo('login')"><div class="option-content">Login / Register</div></div>
+    <div class="option" (click)="navTo('contact')"><div class="option-content">Contact</div></div>
+</div>
