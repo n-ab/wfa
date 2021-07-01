@@ -37,12 +37,10 @@ export class NavbarComponent implements OnInit {
     switch (toggle) {
       case 'hamburgerIsShowing':
         this.showHamburger = false;
-        console.log('show hamburger? ', this.showHamburger);
         this.openNavDialog();
         break;
       case 'xIsShowing':
         this.showHamburger = true;
-        console.log('show hamburger? ', this.showHamburger);
         break;
     }
   }

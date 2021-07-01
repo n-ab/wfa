@@ -8,8 +8,13 @@
     <div class="selection messages-container" *ngIf="messagesSelected">
         <div class="option-title">Messages</div>
         <div class="messages">
-            <div class="message">
-                <div class="message-title"></div>
+            <div class="message" *ngFor="let message of messages">
+                <div class="no-messages" *ngIf="messages.length < 1">All caught up on <span class="no-length-highlight">messages</span></div>
+                <div class="m-item message-from">{{message.name}}</div>
+                <div class="m-item message-return-email">{{message.email}}</div>
+                <div class="m-item message-content">{{message.message}}</div>
+                <div class="m-item message-turnaround" *ngIf="message.desiredTurnaround">{{message.desiredTurnaround}}</div>
+                <button mat-raised-button class="respond-button">Respond</button>
             </div>
         </div>
     </div>
@@ -17,8 +22,9 @@
     <div class="selection work-orders-container" *ngIf="workOrdersSelected">
         <div class="option-title">Work Orders</div>
         <div class="work-orders">
-            <div class="work-order">
-                <div class="work-order-title"></div>
+            <div class="work-order" *ngFor="let workOrder of workOrders">
+                <div class="no-messages" *ngIf="workOrders.length < 1">All caught up on <span class="no-length-highlight">work orders</span></div>
+                <div class="work-order-title">{{workOrder}}</div>
             </div>
         </div>
     </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeUrl  } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-projects',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectsComponent implements OnInit {
 
-  constructor() { }
+  iframeSrc!: SafeUrl;
+
+  constructor(private sanitizer: DomSanitizer) {
+    const id = '';
+    const url = '';
+    this.iframeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 
   ngOnInit(): void {
   }

@@ -13,7 +13,7 @@ a:hover {
 }
 
 .summaries {
-  background-image: linear-gradient(0.47turn, #00d0ff, #497aa5, #0f3c63);
+  background-image: linear-gradient(0.47turn, #00d0ff, #497aa5, #ff8d00);
 }
 
 .summary {
@@ -54,7 +54,7 @@ a:hover {
   width: 90%;
   max-width: 800px;
   font-size: 130%;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 2px;
   line-height: 1.6;
   margin: auto;
@@ -66,7 +66,7 @@ a:hover {
   max-width: 800px;
   margin-top: 2rem;
   font-size: 130%;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 2px;
   line-height: 1.6;
   margin: auto;
@@ -78,7 +78,7 @@ a:hover {
   max-width: 800px;
   margin-top: 2rem;
   font-size: 130%;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 2px;
   line-height: 1.6;
   margin: auto;
@@ -87,22 +87,25 @@ a:hover {
 
 .service-selected {
   background-color:rgb(0, 0, 0);
-  padding: 1rem 3rem;
   color: white;
-  font-weight: 800;
+  font-weight: 400;
   letter-spacing: 1px;
+  padding: 1rem;
   display: block;
-  margin: auto;
   margin-top: 39px;
   min-width: 200px;
 }
 
 .button-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
-
+.get-quote {
+  margin: auto;
+  display: block;
+  margin-top: 39px;
+}
 
 
 
@@ -164,4 +167,43 @@ app-projects {
   margin: 0 0 0 0;
   padding: 0 0 0 0;
   overflow: hidden;
+}
+
+.walter-murch-container {
+  background-image: linear-gradient(white, black);
+}
+
+.walter-murch-quote {
+  padding: 3rem;
+  font-size: 150%;
+  line-height: 2.8;
+  width: 366px;
+  margin: auto;
+  color: #00d0ff;
+  animation: murchQuote 10s ease forwards;
+}
+
+@keyframes murchQuote {
+  0%   { color: #00d0ff }
+  100% { color: black; }
+}
+
+.walter-murch-credit {
+  text-align: center;
+  color: #00d0ff;
+  font-size: 150%;
+  font-style: italic;
+  animation: murchCredit 10s ease;
+}
+
+@keyframes murchCredit {
+  0%   { color: black; }
+  100% { color: #00d0ff; }
+}
+
+.walter-murch-divider {
+  margin: auto;
+  width: 50%;
+  border-color: #00d0ff;
+  margin-top: 6rem;
 }

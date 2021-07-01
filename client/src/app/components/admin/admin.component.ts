@@ -65,8 +65,10 @@ export class AdminComponent implements OnInit {
   }
 
   getMessages(): void {
-    this.messageService.fetchMessages().then(messages => {
-      console.log('messages fetched = ', messages)
+    this.messageService.fetchMessages()
+    .then(messages => {
+      console.log('messages fetched = ', messages);
+      this.setMessages(messages);
     })
   }
 
@@ -77,6 +79,7 @@ export class AdminComponent implements OnInit {
   getWorkorders(): void {
     this.workorderService.fetchWorkorders()
     .then(workOrders => {
+      console.log('work orders fetched = ', workOrders);
       this.setWorkorders(workOrders);
     })
   }

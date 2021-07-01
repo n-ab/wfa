@@ -5,5 +5,5 @@
     <div class="option" (click)="navTo('about')"> <div class="option-content">About Us</div> </div>
     <div *ngIf="user" class="option" (click)="navTo('account')"> <div class="option-content">Account</div> </div>
     <div *ngIf="!user" class="option" (click)="navTo('login')"><div class="option-content">Login / Register</div></div>
-    <div class="option" (click)="navTo('contact')"><div class="option-content">Contact</div></div>
+    <div class="option contact" (click)="navTo('contact')"><div class="option-content">Contact</div></div>
 </div>

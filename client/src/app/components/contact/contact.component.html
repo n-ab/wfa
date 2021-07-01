@@ -28,7 +28,7 @@
             <div class="form-title">Send Us An Email</div>
             <mat-form-field class="form-input"> <input matInput type="email" name="email" formControlName="email" placeholder="Enter Your Email"> </mat-form-field>
             <mat-form-field class="form-input"> <input matInput type="text" name="name" formControlName="name" placeholder="Your Name / Company Name"> </mat-form-field>
-            <mat-form-field class="form-input"> <textarea matInput type="text" name="message" formControlName="message" placeholder="Your Message"></textarea> </mat-form-field>
+            <mat-form-field class="form-input"> <textarea matInput type="text" name="message" formControlName="message" placeholder="Describe Your Project / Needs / Goals"></textarea> </mat-form-field>
 
             <mat-form-field appearance="fill">
                 <mat-label>Enter your desired turnaround date</mat-label>
@@ -40,6 +40,7 @@
             <button mat-raised-button class="submit-button">submit</button>
         </form>
     </div>
+    <br><br><br>
 
     <div *ngIf="phoneSelected" class="email-form">
         <div class="phone-contact">

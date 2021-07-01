@@ -1,7 +1,7 @@
 .option1 {
     text-align: center;
     height: 50px;
-    box-shadow: 0px 0px 20px -6px black;
+    box-shadow: 0px 0px 20px -10px black;
     padding: 2px;
     border-radius: 5px;
     transition: box-shadow 1s ease, border-radius .2s ease;
@@ -11,7 +11,7 @@
     text-align: center;
     height: 53px;
     margin-top: 20px;
-    box-shadow: 0px 0px 20px -6px black;
+    box-shadow: 0px 0px 20px -10px black;
     padding: 2px;
     border-radius: 5px;
     transition: box-shadow 1s ease, border-radius .4s ease;
@@ -20,6 +20,8 @@
 .option-content {
     padding-top: 16px;
     user-select: none;
+    font-size: 150%;
+    font-weight: 300;
 }
 
 .option:hover {
@@ -30,4 +32,8 @@
 .option1:hover {
     border-radius: 20px;
     box-shadow: 0px 0px 20px 0px black;
+}
+
+.contact {
+    background-color: #ff8d00;
 }

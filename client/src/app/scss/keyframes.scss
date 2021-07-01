@@ -29,8 +29,8 @@
 }
 
 @keyframes letterSpacingReveal2 {
-  0%   { opacity: 0; transform: translate(0px, 0px);}
-  100% { opacity: 1; transform: translate(100px, 100px);}
+  0%   { opacity: 0; color: white; }
+  100% { opacity: 1; color: #ff8d00; }
 }
 
 @keyframes letterSpacingRevealMobile {

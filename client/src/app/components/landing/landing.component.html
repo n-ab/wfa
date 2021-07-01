@@ -4,7 +4,7 @@
     <div class="summary-content-container">
       <div class="summary-header">Sound Design</div>
       <div class="s1-content">Keep your audience locked in with immersive sound design and add another layer to story. With strategies for every kind of project and platform, we have the tools and the knowledge to get you the sound you’ve been looking for.</div>
-      <button mat-raised-button class="service-selected">Tell us about your project and get a quote</button>
+      <button mat-raised-button class="service-selected get-quote" (click)="contact()">Describe your project and get a quote</button>
     </div>
   </div>
   <div class="summary s2">
@@ -22,36 +22,19 @@
       <div class="summary-header">Download Foley and Sound Effects</div>
       <div class="s3-content">Our collection of sounds from projects, field recordings, and happy accidents during sound design is now available to you. There are both free and gold sounds available. <a href="">Sign Up</a> to get discounts on your first purchase.</div>
       <div class="button-container">
-        <button mat-raised-button class="service-selected">Check It Out</button>
-        <button mat-raised-button class="service-selected">Sign Up</button>
+        <button mat-raised-button class="service-selected" (click)="goToSoundlist()">Check It Out</button>
+        <button mat-raised-button class="service-selected" (click)="signUpOrLogin()">Sign Up</button>
       </div>
     </div>
   </div>
 </div>
-<app-projects></app-projects>
-<div class="showcases">
-  <br><br>
-
-  <div class="showcase showcase-top">
-    <div class="showcase-title st1">Sound Design</div>
-    <div class="showcase-body">
-
-      Find the tone for your content you've been looking for from our professionally trained sound designers, foley artists, and composers. Transport your audience from their world into yours and keep them locked in with a soundscape that will leave an impression with them for years to come. Contact us any time, day or night, and we'll have someone ready to help you meet your production's deadlines and goals. Additionally, <span class="learn-more">learn more</span> about our online platform where you can live chat, leave notes, and bounce ideas from your team to ours in a safe, encrypted way.
-    </div>
+<div class="walter-murch-container">
+  <div class="walter-murch-quote">
+    "In the same way that painting, or looking at paintings, makes you see the world in a different way, listening to interestingly arranged sounds makes you hear differently."
   </div>
-
-  <div class="showcase">
-    <div class="showcase-title st2">Custom Foley</div>
-    <div class="showcase-body">
-      Using the latest software from iZotope and recorded with best-in-class microphones from Sennheiser and Sanken, we specialize in creating foley samples and stems that are indistinguishable from what was recorded on set. Look <span class="here">here</span>
-    </div>
+  <div class="walter-murch-credit">
+    - Walter Murch
   </div>
-
-  <div class="showcase">
-    <div class="showcase-title st3">Sound Design</div>
-    <div class="showcase-body">
-      Deliver your audience from their reality and transport them to the mind of your characters, the locations of your scenes, and keep them locked in with enveloping sound design. Make the dreams you have for your production real.
-    </div>
-  </div>
-
+  <hr class="walter-murch-divider">
 </div>
+<app-projects></app-projects>
