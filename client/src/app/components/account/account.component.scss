@@ -43,6 +43,18 @@
     text-align: center;
 }
 
+.ais-star {
+    padding-top: 7px;
+}
+
+.ais-cart {
+    padding-top: 5px;
+}
+
+.ais-pay {
+    padding-top: 10px;
+}
+
 img {
     display: block;
     margin: auto;
@@ -107,12 +119,12 @@ th {
 // --- pay ---
 
 .pay:hover {
-    background-color: rgba(0, 128, 0, 0.555);    
+    background-color: #468e50;
 }
 
 .money-image {
     width: 55px;
-    margin-top: 5px;
+    margin-top: 8px;
     height: 50px;
 }
 
@@ -154,6 +166,7 @@ th {
 
 .starred-image {
     width: 55px;
+    margin-top: 8px;
 }
 
 // --- cart --- 
@@ -165,6 +178,7 @@ th {
 
 .cart-image {
     width: 55px;
+    margin-top: 11px;
 }
 
 .wishlist {
