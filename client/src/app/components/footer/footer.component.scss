@@ -1,0 +1,30 @@
+.footer-container {
+    background: linear-gradient(336deg, rgb(68, 68, 68), #141414);
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-header {
+    padding: 1rem;
+    color: white;
+    font-size: 130%;
+}
+
+.footer-item {
+    font-size: 90%;
+    color: #03cffe;
+    padding: 0rem 0rem 1rem 1rem;
+    user-select: none;
+}
+
+.footer-item:hover {
+    text-decoration: underline;
+}
+
+.footer-column {
+    
+}
+
+mat-form-field {
+    
+}

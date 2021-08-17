@@ -11,6 +11,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AccountComponent } from './components/account/account.component';
 import { AboutComponent } from './components/about/about.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { SubmitdialogfileComponent } from './components/submitdialogfile/submitdialogfile.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent},
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'admin', component: AdminComponent},
   { path: 'edit', component: SoundeditComponent},
   { path: 'account', component: AccountComponent},
-  { path: 'about', component: AboutComponent}
+  { path: 'about', component: AboutComponent},
+  { path: 'upload-dialog-file', component: SubmitdialogfileComponent}
 ];
 
 @NgModule({

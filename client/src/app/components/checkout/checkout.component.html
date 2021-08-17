@@ -1,11 +1,13 @@
 <div class="checkout-container">
+    <button class="back-button" mat-raised-button (click)="goToCart()">Back To Cart</button>
+    <br>
     <div class="checkout-title">Checkout</div>
     <div class="summary-showcase">Select Payment Method </div>
     <div class="checkout-table">
         <table>
             <tr *ngFor="let sound of cartSounds">
                 <td>{{sound.title}}</td>
-                <td>{{sound.price}}</td>
+                <td>{{sound.price | currency: 'USD'}}</td>
             </tr>
             <tr class="total-tr">
                 <td>Total </td>
@@ -13,4 +15,20 @@
             </tr>
         </table>
     </div>
+</div>
+<div class="paypal">
+    <div id="paypal-button-container"></div>
+
+    <script>
+        document.querySelector('#paypal-button-container')
+          .style.display = 'none';
+     
+        paypal.Buttons().render('#paypal-button-container');
+     
+        document.querySelector('#myRadioField')
+          .addEventListener('click', function() {
+            document.querySelector('#paypal-button-container')
+              .style.display = 'block';
+          });
+     </script>
 </div>

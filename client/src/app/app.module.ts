@@ -35,6 +35,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { AboutComponent } from './components/about/about.component';
 import { NavbarmodalComponent } from './components/navbarmodal/navbarmodal.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { SubmitdialogfileComponent } from './components/submitdialogfile/submitdialogfile.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     ProjectsComponent,
     AboutComponent,
     NavbarmodalComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    FooterComponent,
+    SubmitdialogfileComponent
   ],
   imports: [
     BrowserModule,

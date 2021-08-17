@@ -5,6 +5,7 @@ import * as moment from 'moment';
 export const app = express.Router();
 
 app.post('/email', (req: any, res) => {
+    console.log('req.body = ', req.body);
     const response = contactController.handleEmail(req.body['params']['data']);
     return res.status(200).json(response);
 })

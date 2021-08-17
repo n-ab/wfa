@@ -2,11 +2,12 @@
   margin: 1rem;
 }
 
-a {
+.link {
   color: #00d0ff;
+  display: inline;
 }
 
-a:hover {
+.link:hover {
   color: #00aab3;
 }
 

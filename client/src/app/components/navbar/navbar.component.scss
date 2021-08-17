@@ -2,7 +2,6 @@
 @import '../../scss/wfa.scss';
 
 .navbar {
-  // padding: 0 0 0 0 !important;
   margin: 0 0 0 0 !important;
   background-color: black;
   color: #00d0ff;
@@ -64,30 +63,49 @@
   background-color: white;
 }
 
+.account-options {
+  color: black;
+  border-radius: 5px;
+  
+}
+
+.hide-account-options {
+  display: none;
+}
+
+.account-option {
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.account-options:hover {
+  display: block;
+}
+
 .option-text {
   padding: 6px;
 }
 
 .logged-in {
-  // text-decoration: underline;
-  // text-decoration-color: rgb(0, 217, 229);
   border-bottom: #00d0ff;
 }
 
 .o1 {
-  animation: fadeIn ease .8s forwards;
+  animation: fadeIn 1.5s ease .75s forwards;
 }
 
 .o2 {
-  animation: fadeIn ease .8s forwards;
+  animation: fadeIn 1.5s ease .8s forwards;
 }
 
 .o3 {
-  animation: fadeIn ease .8s forwards;
+  animation: fadeIn 1.5s ease .85s forwards;
 }
 
 .o4 {
-  animation: fadeIn ease .8s forwards;
+  animation: fadeIn 1.5s ease .9s forwards;
 }
 
 @media (max-width: 500px) {
@@ -142,7 +160,7 @@
   }
 }
 
-@media (max-width: 842px) and (min-width: 501px){
+@media (max-width: 842px) and (min-width: 300px){
   .options {
     margin-right: 0px;
   }

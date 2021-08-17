@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models';
 import { ContactService } from 'src/app/services/contact.service';
@@ -22,15 +22,16 @@ export class ContactComponent implements OnInit {
 
   constructor(private userService: UserService, private contactService: ContactService, private router: Router) {
     this.emailForm = new FormGroup({
-      email: new FormControl(null),
-      name: new FormControl(null),
-      message: new FormControl(null),
+      email: new FormControl(null, Validators.required),
+      name: new FormControl(null, Validators.required),
+      message: new FormControl(null, Validators.required),
       desiredTurnaround: new FormControl(null),
     });
   }
 
   ngOnInit(): void {
     this.userCheck();
+    window.scrollTo(0, 0);
   }
 
   userCheck(): Promise<any> {
@@ -53,7 +54,7 @@ export class ContactComponent implements OnInit {
         this.phoneSelected = false;
         this.faxSelected = false;
         console.log('this.emailSelected = ', this.emailSelected);
-        document.getElementById('email')?.scrollIntoView({behavior: 'smooth'});
+        document.getElementById('REE')?.scrollIntoView({behavior: 'smooth'});
         break;
       case 'phone':
         this.phoneSelected = true;

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models';
 import { UserService } from 'src/app/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -9,7 +9,7 @@ import { NavbarmodalComponent } from '../navbarmodal/navbarmodal.component';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, AfterViewInit {
 
   showHamburger = true;
 
@@ -19,6 +19,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.userCheck();
+
+  }
+
+  ngAfterViewInit(): void {
   }
 
   userCheck(): Promise<any> {
@@ -31,6 +35,14 @@ export class NavbarComponent implements OnInit {
   setUser(user: any): void {
     if (user) { this.thereIsUser = true; }
     this.user = user;
+    const accountOptions = document.getElementById('account-options');
+    console.log('accountopitons = ', accountOptions);
+    if (accountOptions) {
+      accountOptions!.addEventListener('mouseenter', event => {
+        console.log('REEEE!!! RE RE REEE!');
+        document.getElementById('account-options')?.classList.remove('hide-account-options');
+      }); 
+    }
   }
 
   toggleHamburger(toggle: string) {

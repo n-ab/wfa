@@ -1,36 +1,14 @@
 <div class="contact-container">
     <div class="header-container">
-        <div class="title">Contact </div>
-        <div class="summary">
-            One of our main selling points is our lightning fast turnaround time. Unless we're signed on to sound design a narrative, most of our work orders take less than 48 hours. If you're in a hurry, let us know your deadline and we'll prioritize your need. 
-        </div>
     </div>
-    <div class="contact-box-container">
-        <div class="contact-box email" (click)="selection('email')">
-            <img src="../../../assets/img/email.svg" alt="">
-            <div class="contact-title">Email</div>
-            <div class="contact-content"></div>
-        </div>
-        <div class="contact-box phone" (click)="selection('phone')">
-            <img src="../../../assets/img/message-us.svg" alt="">
-            <div class="contact-title">Phone</div>
-            <div class="contact-content"></div>
-        </div>
-        <div class="contact-box fax" (click)="selection('fax')">
-            <img src="../../../assets/img/fax.svg" alt="">
-            <div class="contact-title">Social</div>
-            <div class="contact-content"></div>
-        </div>
-    </div>
-
-    <div *ngIf="emailSelected" class="email-form" id="email">
+    <div *ngIf="emailSelected" class="email-form" id="email REE">
         <form [formGroup]="emailForm" (ngSubmit)="email()" class="email-form" enctype="application/x-www-form-urlencoded">
-            <div class="form-title">Send Us An Email</div>
+            <div class="form-title">Contact Us</div>
             <mat-form-field class="form-input"> <input matInput type="email" name="email" formControlName="email" placeholder="Enter Your Email"> </mat-form-field>
             <mat-form-field class="form-input"> <input matInput type="text" name="name" formControlName="name" placeholder="Your Name / Company Name"> </mat-form-field>
             <mat-form-field class="form-input"> <textarea matInput type="text" name="message" formControlName="message" placeholder="Describe Your Project / Needs / Goals"></textarea> </mat-form-field>
 
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" class="turnaround-datepicker">
                 <mat-label>Enter your desired turnaround date</mat-label>
                 <input matInput [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -39,34 +17,5 @@
 
             <button mat-raised-button class="submit-button">submit</button>
         </form>
-    </div>
-    <br><br><br>
-
-    <div *ngIf="phoneSelected" class="email-form">
-        <div class="phone-contact">
-            <div class="form-title">Shoot Us A Text</div>
-            <div class="phone-contact-body">
-                <div class="phone-contact-number">+1 702-830-7210</div>
-                <hr>
-                <div class="phone-contact-content">
-                    If this is urgent, please put URGENT (in all caps) at the beginning of the message. <br><br> Be sure to <span class="specify">specify your turnaround time</span> in the first text!
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div *ngIf="faxSelected" class="email-form">
-        <div class="phone-contact">
-            <div class="phone-contact-body">
-                <hr>
-                <div class="social-media">
-                    <div class="social-media-icon"><img src="../../../assets/img/youtube.jpg" alt="youtube.jpg"></div>
-                    <div class="social-media-icon"><img src="../../../assets/img/twitter.jpg" alt="twitter.jpg"></div>
-                    <div class="social-media-icon"><img src="../../../assets/img/facebook.jpg" alt="facebook.jpg"></div>
-                    <div class="social-media-icon"><img src="../../../assets/img/linkedin.jpg" alt="linkedin.jpg"></div>
-                    <div class="social-media-icon"><img src="../../../assets/img/insta.jpg" alt="instagram.jpg"></div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>

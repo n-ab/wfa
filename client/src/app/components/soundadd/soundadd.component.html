@@ -8,8 +8,8 @@
   <mat-form-field class="form-input"><input matInput type="text" name="price" formControlName="price" placeholder="price"></mat-form-field>
   <mat-form-field class="form-input"><input matInput type="text" name="library" formControlName="library" placeholder="library"></mat-form-field>
   <mat-form-field class="form-input"><input matInput type="text" name="misc" formControlName="misc" placeholder="misc"></mat-form-field>
-  <button type="button" mat-raised-button class="upload-button" (click)="sound.click()">upload file</button>
-  <div class="sound-uploaded-notifier" *ngIf="audioPreview && audioPreview !== ''">ready for upload</div>
+    <button type="button" mat-raised-button class="upload-button" (click)="sound.click()">upload file</button>
+    <div class="sound-uploaded-notifier" *ngIf="audioPreview && audioPreview !== ''">ready for upload</div>
   <input type="file" class="input" #sound (change)="soundSelected($event)">
   <button mat-raised-button class="submit" (ngSubmit)="uploadSound()">submit</button>
 </form>

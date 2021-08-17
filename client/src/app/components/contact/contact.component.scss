@@ -1,8 +1,12 @@
 .contact-container {
     background-color: black;
-    height: 110vh;
+    height: 100vh;
     color: rgb(0, 217, 229);
     overflow: auto;
+}
+
+.turnaround-datepicker {
+    width: 39%;
 }
 
 .title {
@@ -62,61 +66,18 @@
     margin-top: 6px;
 }
 
-.email:hover {
-    background-color: lightgrey;
-    color: rgb(43, 43, 43);
-}
-
-.phone:hover {
-    background-color: lightgrey;
-    color: rgb(43, 43, 43);
-}
-
-.fax:hover {
-    background-color: lightgrey;
-    color: rgb(43, 43, 43);
-}
-
-img {
-    width: 60px;
-    padding-top: 8px;
-    margin: auto;
-    display: block;
-}
-
 form {
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.274);
     width: 80%;
     max-width: 700px;
     margin: auto;
-    margin-top: 2rem;
+    margin-top: 4rem;
     border-radius: 5px;
-    background-color: #03cffe;
+    background-image: linear-gradient(127deg, #00d0ff, #478ecc);
     padding: 1rem;
     opacity: 0;
     animation: fadeIn .5s ease forwards;
-}
-
-.phone-contact {
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.274);
-    width: 80%;
-    max-width: 700px;
-    margin: auto;
-    margin-top: 2rem;
-    border-radius: 5px;
-    background-color: #03cffe;
-    padding: 1rem;
-    opacity: 0;
-    animation: fadeIn .5s ease forwards;
-}
-
-.phone-contact-number {
-    font-size: 200%;
-    text-align: center;
-    padding: 1rem;
-    letter-spacing: 10px;
 }
 
 hr {
@@ -155,9 +116,11 @@ hr {
 }
 
 .submit-button {
-    background-color: rgb(0, 217, 229);
+    background-color: #28a2d4;
     margin: auto;
     display: block;
+    color: white;
+    font-weight: 400;
 }
 
 mat-form-field {

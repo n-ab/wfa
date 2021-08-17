@@ -11,6 +11,7 @@ export class FileService {
 
   constructor(private http: HttpClient, public audioContext: AudioContext) { }
 
+  // ADMIN FUNCTION
   uploadFile(data: any): Promise<any> {
     console.log('data: ', data);
     const postData = new FormData();
@@ -26,5 +27,17 @@ export class FileService {
     return this.http.post('/api/file/upload', postData).toPromise()
       .then(file => console.log(`file ${file} was successfully uploaded.`))
       .catch(err => console.log('err: ', err));
+  }
+
+  // USER FUNCTION 
+  dialogUpload(data: any): Promise<any> {
+    console.log('dialog upload reeeeee', data);
+    const postData = new FormData();
+    postData.append('title', data.title);
+    postData.append('projectNumber', data.projectNumber);
+    postData.append('audioFile', data.audioFile);
+    return this.http.post('/api/file/dialogUpload', postData).toPromise()
+      .then(file => console.log(`file ${file} was successfully uploaded.`))
+      .catch(err => console.log('error handling your shit: ', err));
   }
 }

@@ -1,8 +1,10 @@
 .projects-container {
-    background-color: black;
     padding-top: 40px;
     vertical-align: top;
     padding-bottom: 1px;
+    background-image: linear-gradient(45deg, 
+                                    rgb(80, 80, 80), 
+                                      transparent);
 }
 
 .projects-header {
@@ -15,21 +17,17 @@
 
 .projects {
     margin-top: 3rem;
+    margin-bottom: 3rem;
 }
 
 .project {
-    border: 1px solid rgb(48, 48, 48);
     border-radius: 5px;
     width: 75%;
     max-width: 700px;
     margin: auto;
-    height: 600px;
-    background-image: linear-gradient(324deg, #00d0ff, black);
-    margin-bottom: 10rem;
 }
 
 .project-title {
-    color: white;
     font-size: 250%;
     padding: 1rem 3rem;
     margin-top: 55px;
@@ -38,12 +36,12 @@
 }
 
 .project-description {
-    color: white;
-    font-size: 125%;
+    font-size: 150%;
     padding: 1rem 5rem;
     font-weight: 300;
     line-height: 2.5;
     letter-spacing: 1px;
+    margin-top: 1rem;
 }
 
 #video {
@@ -84,4 +82,36 @@
         margin: auto;
         display: block;
     }
+}
+
+@media(max-width: 675px) {
+    #video {
+        height: 185px;
+        width: 320px;
+        margin: auto;
+        display: block;
+    }
+}
+
+@media(min-width: 950px) {
+    #video {
+        height: 462px;
+        width: 800px;
+        margin: auto;
+        display: block;
+    }
+}
+
+.hr {
+    background-color: #03cffe;
+    width: 50%;
+    margin: auto;
+    margin-top: 15px;
+    height: 1px;
+    transition: height 2s ease;
+}
+
+.hr-effect {
+    height: 25px;
+    transition: height 2s ease;
 }

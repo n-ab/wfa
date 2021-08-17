@@ -17,6 +17,7 @@ export interface SoundObject extends mongoose.Document {
     fileType: string,
     bitRate: string,
     sampleRate: string,
+    userUploadedDialog: boolean,
 }
 
 const schema = new mongoose.Schema({
@@ -35,6 +36,7 @@ const schema = new mongoose.Schema({
     fileType: String,
     bitRate: String,
     sampleRate: String,
+    userUploadedDialog: Boolean
     }, { timestamps: true }
 );
 

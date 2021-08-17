@@ -1,0 +1,18 @@
+<div class="submit-dialog-file-container">
+    <div class="header-container">
+        <div class="header">Upload Dialog</div>
+        <div class="content">Upload a .wav or .mp3 file and get a quote or consultation. <br><br> We pride ourselves on the quickest turnaround time you've ever had for a dialog edit.</div>
+        <form class="add-form" [formGroup]="addAudioFile" (ngSubmit)="submitDialog()" enctype="multipart/form-data">
+            <mat-form-field class="form-input"><input matInput type="text" name="title" formControlName="title" placeholder="Name of file"></mat-form-field>
+            <mat-form-field class="form-input"><input matInput type="text" name="projectNumber" formControlName="projectNumber" placeholder="Project #"></mat-form-field>
+            <div class="lil-container" id="lil-container">
+                <button type="button" mat-raised-button class="upload-button" (click)="sound.click()">upload file</button>
+                <div class="sound-uploaded-notifier" *ngIf="audioPreview && audioPreview !== ''">ready for upload</div>
+            </div>
+            <br>
+            <input type="file" class="input" #sound (change)="soundSelected($event)">
+            <button mat-raised-button class="form-input submit" (ngSubmit)="submitDialog()">submit</button>
+            <br>
+        </form>
+    </div>
+</div>

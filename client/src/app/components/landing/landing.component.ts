@@ -48,4 +48,38 @@ export class LandingComponent implements OnInit {
     this.router.navigateByUrl('contact');
   }
 
+  dialogUpload(): void {
+    const summaries = document.getElementById('summaries');
+    const summaryHeaders = document.getElementById('summary');
+    const buttonContainers = document.querySelectorAll('[type=button]');
+    const everything = document.querySelectorAll('#summaries > div');
+    const here = document.getElementById('here');
+    summaryHeaders?.classList.remove('summary');
+    here?.classList.remove('here-link');
+    here?.classList.add('hide');
+    buttonContainers.forEach(buttonContainer => {
+      console.log('reeeeeee:', buttonContainer.classList);
+      buttonContainer.classList.add('hide');
+      buttonContainer.classList.remove('button-container');
+      console.log('reeeeeee:', buttonContainer.classList);
+    })
+    everything.forEach(x => {
+      // console.log('x = ', x);
+      x.classList.remove('summary');
+      x.classList.add('color-black');
+      console.log('x.classList = ', x.classList);
+    })
+    summaries?.classList.add('fade-to-black');
+    summaries?.classList.remove('summaries');
+    console.log('summaries classlist: ', summaries?.classList);
+    // this.router.navigateByUrl('dialog-file-upload');
+    setTimeout(() => {
+      this.router.navigateByUrl('upload-dialog-file');
+    }, 500);
+  }
+
+  goToHostingDescription(): void {
+    this.router.navigateByUrl('');
+  }
+
 }

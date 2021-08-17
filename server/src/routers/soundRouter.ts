@@ -5,10 +5,10 @@ import * as moment from 'moment';
 
 export const app = express.Router();
 
-const storage = multer.diskStorage({
+const storageAdmin = multer.diskStorage({
     destination: (req, file, callback) => {
         if(file.mimetype !== 'audio/wav') return new Error("Invalid File Type");
-        callback(null, "src/audiofiles");
+        callback(null, "src/audioFiles_Engineers");
     },
     filename: (req, file, callback) => {
         const name = 'wfa-'+ req.body.title.split(' ').join('-') + '-' + moment().format().toString();
@@ -16,9 +16,25 @@ const storage = multer.diskStorage({
     }
 });
 
-app.post('/upload', multer({storage:storage}).single('audioFile'), (req: any, res) => {
+const storageUser = multer.diskStorage({
+    destination: (req, file, callback) => {
+        // if(file.mimetype !== 'audio/wav') return new Error("Invalid File Type");
+        callback(null, "src/audioFiles_Engineers");
+    },
+    filename: (req, file, callback) => {
+        const name = 'wfa-'+ req.body.title.split(' ').join('-') + '-' + moment().format().toString();
+        callback(null, name + '.wav');
+    }
+});
+
+app.post('/upload', multer({storage:storageAdmin}).single('audioFile'), (req: any, res) => {
     console.log('file uploaded. saving metadata/path to db using: ', req.body);
     return soundController.saveSoundData(req.body);
+})
+
+app.post('/dialogUpload', multer({storage:storageUser}).single('audioFile'), (req: any, res) => {
+    console.log('dialogupload: ', req.body);
+    return soundController.saveDialogData(req.body);
 })
 
 app.get('/fetch', (req: any, res) => {

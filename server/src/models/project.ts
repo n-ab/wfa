@@ -2,6 +2,7 @@ import * as mongoose from 'mongoose';
 
 export interface ProjectObject extends mongoose.Document {
     _id: any,
+    projectNumber: string,
     title: string,
     subtitle: string,
     discussions: string[],
@@ -12,6 +13,7 @@ export interface ProjectObject extends mongoose.Document {
 }
 
 const schema = new mongoose.Schema({
+    projectNumber: String,
     title: String,
     subtitle: String,
     discussions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Discussion'}],

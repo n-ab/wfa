@@ -4,6 +4,7 @@ import { Cart, Sound, User } from 'src/app/models';
 import { SoundService } from 'src/app/services/sound.service';
 import { CartService } from 'src/app/services/cart.service';
 import { UserService } from 'src/app/services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-soundlist',
@@ -33,13 +34,14 @@ export class SoundlistComponent implements OnInit, AfterViewInit {
   showFullSoundList = true;
   showFilteredSoundList = false;
 
-  constructor(private soundService: SoundService, private userService: UserService, private cartService: CartService) {
+  constructor(private soundService: SoundService, private userService: UserService, private cartService: CartService, private route: ActivatedRoute) {
     this.searchByNameForm = new FormGroup({ query: new FormControl(null) });
   }
 
   ngOnInit(): void {
     this.compileSoundList('');
     this.userCheck();
+    console.log('snapshot: ', this.route.snapshot.paramMap);
   }
 
   ngAfterViewInit(): void {

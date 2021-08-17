@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 import {SoundModel, SoundObject} from '../models/sound';
 import * as moment from 'moment';
+import { UserUploadedDialogModel } from '../models/userUploadedDialog';
 
 export interface IsearchQuery {
   searchQuery: string,
@@ -12,6 +13,7 @@ export function saveSoundData(data) {
     return SoundModel.findOneAndUpdate(data, {$set: {newSound: data}}, { new: true, upsert: true })
     .then(sound => {
         sound.price = 3;
+        sound.userUploadedDialog = false;
         sound.discount = 0;
         sound.status = 'active';
         sound.filePath = 'wfa-'+ sound.title + '-' + moment().format();
@@ -20,6 +22,17 @@ export function saveSoundData(data) {
         return sound;
     })
     .catch(err => console.log('there was an error saving sound: ', err));
+}
+
+export function saveDialogData(data) {
+  return UserUploadedDialogModel.findOneAndUpdate(data, {$set: {newSound: data}}, { new: true, upsert: true})
+  .then(sound => {
+    sound.userUploadedDialog = true;
+    sound.status = 'notForSale';
+    sound.save();
+    console.log(`saved ${sound.title} to ${sound.filePath}`);
+    return sound;
+  })
 }
 
 export function fetch() {

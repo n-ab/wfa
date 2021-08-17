@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Sound, User } from 'src/app/models';
 import { CartService } from 'src/app/services/cart.service';
 import { SoundService } from 'src/app/services/sound.service';
 import { UserService } from 'src/app/services/user.service';
+
+
 
 @Component({
   selector: 'app-checkout',
@@ -16,10 +19,14 @@ export class CheckoutComponent implements OnInit {
   cartSounds!: Sound[];
   cartPrice!: number;
 
-  constructor(private userService: UserService, private cartService: CartService, private soundService: SoundService) { }
+  constructor(private userService: UserService, private cartService: CartService, private soundService: SoundService, private router: Router) { }
 
   ngOnInit(): void {
     this.getUser();
+    var PAYPAL_SCRIPT = 'https://www.paypal.com/sdk/js?client-id=AUy12EbsDQtINmXYlmziHt95EI0821bXA7cKVgWInk5f_5h6xrCqVrIb9XPcFQ-gMezcuaqUsjz37TX2';
+    var script = document.createElement('script');
+    script.setAttribute('src', PAYPAL_SCRIPT);
+    document.head.appendChild(script);
   }
 
   getUser() {
@@ -61,5 +68,8 @@ export class CheckoutComponent implements OnInit {
     this.cartPrice = total;
   }
 
+  goToCart(): void {
+    this.router.navigateByUrl('account');
+  }
 
 }
