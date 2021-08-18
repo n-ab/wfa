@@ -25,13 +25,23 @@ export class ContactComponent implements OnInit {
       email: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
       message: new FormControl(null, Validators.required),
-      desiredTurnaround: new FormControl(null),
+      desiredTurnaround: new FormControl(),
     });
   }
 
   ngOnInit(): void {
     this.userCheck();
     window.scrollTo(0, 0);
+  }
+
+  email() {
+    console.log('this.desiredTurnaround = ', this.emailForm.controls['desiredTurnaround'].value)
+    console.log('this.email reee = ', this.emailForm.controls['email'].value)
+    console.log('this.emailForm.getRawValue() = ', this.emailForm.getRawValue());
+    this.contactService.email(this.emailForm.getRawValue()).then(message => {
+      console.log('server response: ', message);
+      return message;
+    });
   }
 
   userCheck(): Promise<any> {
@@ -71,14 +81,6 @@ export class ContactComponent implements OnInit {
       default:
         break;
     }
-  }
-
-  email() {
-    console.log('this.emailForm.getRawValue() = ', this.emailForm.getRawValue());
-    this.contactService.email(this.emailForm.getRawValue()).then(message => {
-      console.log('server response: ', message);
-      return message;
-    });
   }
 
 }
