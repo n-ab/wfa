@@ -37,6 +37,7 @@ import { NavbarmodalComponent } from './components/navbarmodal/navbarmodal.compo
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SubmitdialogfileComponent } from './components/submitdialogfile/submitdialogfile.component';
+import { ContactsubmissionlandingComponent } from './components/contactsubmissionlanding/contactsubmissionlanding.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { SubmitdialogfileComponent } from './components/submitdialogfile/submitd
     NavbarmodalComponent,
     CheckoutComponent,
     FooterComponent,
-    SubmitdialogfileComponent
+    SubmitdialogfileComponent,
+    ContactsubmissionlandingComponent
   ],
   imports: [
     BrowserModule,

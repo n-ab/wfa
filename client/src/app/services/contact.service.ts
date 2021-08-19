@@ -10,7 +10,12 @@ export class ContactService {
 
   email(data: any) {
     return this.http.post('/api/contact/email', {params: {data}}).toPromise()
-      .then(message => message)
+      .then(message => {
+        console.log('message returned after email submission = ', message);
+        const reee = Object.values(message);
+        console.log('Objects.values(message) = ', reee);
+        return message;
+      })
       .catch(err => err);
   }
 

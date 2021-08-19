@@ -1,16 +1,14 @@
 import * as express from 'express';
 import * as contactController from '../controllers/contactController';
+import * as projectController from '../controllers/projectController';
 import * as moment from 'moment';
 
 export const app = express.Router();
 
-app.post('/email', (req: any, res) => {
-    console.log('req.body = ', req.body);
-    const response = contactController.handleEmail(req.body['params']['data']);
-    return res.status(200).json(response);
-})
-
-app.post('/phone', (req: any, res) => {
-    const response = contactController.handlePhone(req.body['params']['data']);
-    return res.status(200).json(response);
+app.post('/email', async (req: any, res) => {
+    const response = await contactController.handleEmail(req.body['params']['data']);
+    const project = await projectController.createNewProject(req.body['params']['data']);
+    console.log('response', response);
+    console.log('project', project);
+    return res.status(200).json({response, project});
 })

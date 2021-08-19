@@ -9,7 +9,11 @@ export interface ProjectObject extends mongoose.Document {
     notes: string[],
     wfaEngineers: string[],
     clientIds: string[],
-    turnaroundGoal: string
+    turnaroundGoal: string,
+    message: string             // initial message
+    firstMessageFrom: string,
+    contactEmail1: string,
+    contactEmail2: string,
 }
 
 const schema = new mongoose.Schema({
@@ -20,7 +24,11 @@ const schema = new mongoose.Schema({
     notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note'}],
     wfaEngineers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     clientIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-    turnaroundGoal: String
-});
+    desiredTurnaround: String,
+    message: String,             // initial message 
+    firstMessageFrom: String,
+    contactEmail1: String,
+    contactEmail2: String,
+}, { timestamps: true });
 
 export const ProjectModel = mongoose.model<ProjectObject>('Project', schema);

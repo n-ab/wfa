@@ -12,6 +12,7 @@ import { AccountComponent } from './components/account/account.component';
 import { AboutComponent } from './components/about/about.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SubmitdialogfileComponent } from './components/submitdialogfile/submitdialogfile.component';
+import { ContactsubmissionlandingComponent } from './components/contactsubmissionlanding/contactsubmissionlanding.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'edit', component: SoundeditComponent},
   { path: 'account', component: AccountComponent},
   { path: 'about', component: AboutComponent},
-  { path: 'upload-dialog-file', component: SubmitdialogfileComponent}
+  { path: 'upload-dialog-file', component: SubmitdialogfileComponent},
+  { path: 'message-received', component: ContactsubmissionlandingComponent},
 ];
 
 @NgModule({

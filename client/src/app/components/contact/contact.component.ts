@@ -35,11 +35,9 @@ export class ContactComponent implements OnInit {
   }
 
   email() {
-    console.log('this.desiredTurnaround = ', this.emailForm.controls['desiredTurnaround'].value)
-    console.log('this.email reee = ', this.emailForm.controls['email'].value)
-    console.log('this.emailForm.getRawValue() = ', this.emailForm.getRawValue());
     this.contactService.email(this.emailForm.getRawValue()).then(message => {
       console.log('server response: ', message);
+      this.router.navigate(['/message-received'], {queryParams: message});
       return message;
     });
   }
@@ -55,32 +53,6 @@ export class ContactComponent implements OnInit {
 
   setUser(user: any): void {
     this.user = user;
-  }
-
-  selection(selection: string): void {
-    switch (selection) {
-      case 'email':
-        this.emailSelected = true;
-        this.phoneSelected = false;
-        this.faxSelected = false;
-        console.log('this.emailSelected = ', this.emailSelected);
-        document.getElementById('REE')?.scrollIntoView({behavior: 'smooth'});
-        break;
-      case 'phone':
-        this.phoneSelected = true;
-        this.faxSelected = false;
-        this.emailSelected = false;
-        console.log('this.phoneSelected = ', this.phoneSelected);
-        break;
-      case 'fax':
-        this.faxSelected = true;
-        this.phoneSelected = false;
-        this.emailSelected = false;
-        console.log('this.faxSelected = ', this.faxSelected);
-        break;
-      default:
-        break;
-    }
   }
 
 }
