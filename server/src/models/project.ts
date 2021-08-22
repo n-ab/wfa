@@ -3,7 +3,7 @@ import * as mongoose from 'mongoose';
 export interface ProjectObject extends mongoose.Document {
     _id: any,
     projectNumber: string,
-    title: string,
+    projectName: string,
     subtitle: string,
     discussions: string[],
     notes: string[],
@@ -14,10 +14,12 @@ export interface ProjectObject extends mongoose.Document {
     firstMessageFrom: string,
     contactEmail1: string,
     contactEmail2: string,
+    ipAddress: string,
 }
 
 const schema = new mongoose.Schema({
     projectNumber: String,
+    projectName: String,
     title: String,
     subtitle: String,
     discussions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Discussion'}],
@@ -29,6 +31,7 @@ const schema = new mongoose.Schema({
     firstMessageFrom: String,
     contactEmail1: String,
     contactEmail2: String,
+    ipAddress: String,
 }, { timestamps: true });
 
 export const ProjectModel = mongoose.model<ProjectObject>('Project', schema);

@@ -9,19 +9,12 @@ export class ContactService {
   constructor(private http: HttpClient) { }
 
   email(data: any) {
+    console.log('contact service: ', data);
     return this.http.post('/api/contact/email', {params: {data}}).toPromise()
-      .then(message => {
-        console.log('message returned after email submission = ', message);
-        const reee = Object.values(message);
-        console.log('Objects.values(message) = ', reee);
-        return message;
+      .then(email => {
+        console.log('email of submitter = ', email);
+        return email;
       })
-      .catch(err => err);
-  }
-
-  phone(data: any) {
-    return this.http.post('/api/contact/phone', {params: {data}}).toPromise()
-      .then(message => message)
       .catch(err => err);
   }
 }

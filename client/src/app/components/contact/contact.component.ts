@@ -24,6 +24,7 @@ export class ContactComponent implements OnInit {
     this.emailForm = new FormGroup({
       email: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
+      projectName: new FormControl(null, Validators.required),
       message: new FormControl(null, Validators.required),
       desiredTurnaround: new FormControl(),
     });
@@ -35,10 +36,10 @@ export class ContactComponent implements OnInit {
   }
 
   email() {
-    this.contactService.email(this.emailForm.getRawValue()).then(message => {
-      console.log('server response: ', message);
-      this.router.navigate(['/message-received'], {queryParams: message});
-      return message;
+    this.contactService.email(this.emailForm.getRawValue()).then(email => {
+      console.log('server response: ', email);
+      this.router.navigate(['/message-received'], {queryParams: email});
+      return email;
     });
   }
 

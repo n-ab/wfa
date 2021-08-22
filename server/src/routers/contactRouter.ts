@@ -6,9 +6,7 @@ import * as moment from 'moment';
 export const app = express.Router();
 
 app.post('/email', async (req: any, res) => {
-    const response = await contactController.handleEmail(req.body['params']['data']);
+    const response = await contactController.handleEmail(req.body['params']['data']).catch(err => console.log('error in contact router: ', err));
     const project = await projectController.createNewProject(req.body['params']['data']);
-    console.log('response', response);
-    console.log('project', project);
-    return res.status(200).json({response, project});
+    return res.status(200).json(response.email);
 })

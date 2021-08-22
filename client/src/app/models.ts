@@ -4,6 +4,7 @@ import { UserObject } from '../../../server/src/models/user';
 import { MessageObject } from '../../../server/src/models/message';
 import { WorkorderObject } from '../../../server/src/models/workOrder';
 import { UserUploadedDialogObject } from '../../../server/src/models/userUploadedDialog';
+import { ProjectObject } from '../../../server/src/models/project';
 
 export {
   SoundObject as Sound,
@@ -11,5 +12,6 @@ export {
   UserObject as User,
   MessageObject as Message,
   WorkorderObject as Workorder,
-  UserUploadedDialogObject as UserUploadedDialog
+  UserUploadedDialogObject as UserUploadedDialog,
+  ProjectObject as Project,
 };
