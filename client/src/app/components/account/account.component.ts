@@ -27,7 +27,6 @@ export class AccountComponent implements OnInit {
 
   cartPrice!: number;
 
-
   constructor(private userService: UserService, private cartService: CartService, private soundService: SoundService, private router: Router) { }
 
   ngOnInit(): void {

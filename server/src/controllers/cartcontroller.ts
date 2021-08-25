@@ -1,5 +1,4 @@
-import * as mongoose from 'mongoose';
-import { CartModel, CartObject } from '../models/cart';
+import { CartModel } from '../models/cart';
 import { UserModel } from '../models/user';
 
 export function newUserCart(userId) {

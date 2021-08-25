@@ -1,16 +1,39 @@
-<div class="landing-page-container">
-    <div class="landing-container">
-        <div class="landing-title">Your Project</div>
-        <div class="landing-item project-info"><div class="landing-item-title">Info</div></div>
-        <div class="landing-item messages"><div class="landing-item-title">Discussions</div></div>
-        <div class="landing-item project-files"><div class="landing-item-title">Files</div></div>
-        <div class="landing-item messages"></div>
-        <div class="landing-item messages"></div>
-        <div class="landing-item messages"></div>
+<div *ngIf="project" class="landing-page-container">
+    <div class="header">
+        <div class="landing-title">{{project.projectName}}</div>
+        <table [cellSpacing]="0" [cellPadding]="8">
+            <tbody>
+                <tr>
+                    <td>Client Contact: </td>
+                    <td class="td-data">{{project.contactEmail1}}</td>
+                </tr>
+                <tr>
+                    <td>Project Lead:</td>
+                    <td class="td-data">{{project.firstMessageFrom}}</td>
+                </tr>
+                <tr>
+                    <td>Turnaround Goal:</td>
+                    <td class="td-data">{{turnaroundDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+        <button mat-raised-button class="edit-info-button">Edit This Info</button>
+        <br>
     </div>
-    <div *ngIf="project" class="" style="color: white; text-align: center; font-size: 150%; padding: 1rem; border: 1px solid rgb(61, 61, 61); ">
-        {{project}}
-        <br><br>
-        {{project.contactEmail1}}
+    <div class="landing-container">
+        <div class="landing-item project-info">
+            <div class="landing-item-title">Discussions</div>
+            <div class="notes-container">
+                <div style="margin-top: 5px;" *ngFor="let note of notes">
+                    <div class="note" *ngIf="note">
+                        <div class="note-content">{{note.content.substr(0, 45)}}...</div>
+                        <div class="note-content note-date">{{note.dateOfCreation}}</div>
+                    </div>
+                </div>
+                <button mat-raised-button class="add-note-button" (click)="addNewNote()">+</button>
+            </div>
+        </div>
+        <div class="landing-item project-info"><div class="landing-item-title">Files</div></div>
     </div>
 </div>

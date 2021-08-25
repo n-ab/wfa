@@ -6,11 +6,11 @@ export interface ProjectObject extends mongoose.Document {
     projectName: string,
     subtitle: string,
     discussions: string[],
+    message: string             // initial message
     notes: string[],
     wfaEngineers: string[],
     clientIds: string[],
     turnaroundGoal: string,
-    message: string             // initial message
     firstMessageFrom: string,
     contactEmail1: string,
     contactEmail2: string,

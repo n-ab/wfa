@@ -37,5 +37,4 @@ export class CartService {
     .then(cart => cart)
     .catch(err => err);
   }
-
 }
