@@ -38,6 +38,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { SubmitdialogfileComponent } from './components/submitdialogfile/submitdialogfile.component';
 import { ContactsubmissionlandingComponent } from './components/contactsubmissionlanding/contactsubmissionlanding.component';
+import { AddnoteComponent } from './components/addnote/addnote.component';
+import { EnterPasswordFromEmailComponent } from './components/enter-password-from-email/enter-password-from-email.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { ContactsubmissionlandingComponent } from './components/contactsubmissio
     CheckoutComponent,
     FooterComponent,
     SubmitdialogfileComponent,
-    ContactsubmissionlandingComponent
+    ContactsubmissionlandingComponent,
+    AddnoteComponent,
+    EnterPasswordFromEmailComponent
   ],
   imports: [
     BrowserModule,
