@@ -9,7 +9,6 @@ export class ContactService {
   constructor(private http: HttpClient) { }
 
   email(data: any) {
-    console.log('contact service: ', data);
     return this.http.post('/api/contact/email', {params: {data}}).toPromise()
       .then(email => {
         console.log('email of submitter = ', email);

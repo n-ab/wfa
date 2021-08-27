@@ -11,7 +11,7 @@ export async function createNewProject(data: any) {
     console.log('$$$$ = data', data);
     return ProjectModel.findOneAndUpdate(data, {$set: {newProject: data}}, {new: true, upsert: true})
         .then(async project => {
-            const note = await noteController.createNewNote(project._id, project.message, project.contactEmail1);
+            const note = await noteController.createInitialNote(project._id, project.message, project.contactEmail1);
             console.log('note saved = ', note);
             project.notes.push(note);
             project.save();
@@ -23,9 +23,14 @@ export async function createNewProject(data: any) {
 export async function fetchProject(email: string) {
     console.log('email = ', email);
     const project = await ProjectModel.findOne({contactEmail1: email});
-    const projectWithNotes = await project.populate('notes').execPopulate();
-    return projectWithNotes;
-    // const project = await ProjectModel.find({contactEmail1: email}).populate('sounds').exec.then(sound => sound);
-    // console.log('RETURNING project = ', project);
-    // return project;
+    if(project){
+        const projectWithNotes = await project.populate('notes').execPopulate();
+        return projectWithNotes;
+    } else {
+        return '--- reee --- ';
+    }
+}
+
+export async function addNoteIdToProjectNotes(data: any) {
+    console.log('adding some bullshit to some other bullshit: ', data);
 }

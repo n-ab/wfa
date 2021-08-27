@@ -1,7 +1,9 @@
 <div *ngIf="project" class="landing-page-container">
     <div class="header">
-        <div class="landing-title">{{project.projectName}}</div>
-        <table [cellSpacing]="0" [cellPadding]="8">
+        <table [cellSpacing]="0" [cellPadding]="10">
+            <thead>
+                <th>{{project.projectName}}</th>
+            </thead>
             <tbody>
                 <tr>
                     <td>Client Contact: </td>
@@ -14,12 +16,10 @@
                 <tr>
                     <td>Turnaround Goal:</td>
                     <td class="td-data">{{turnaroundDate}}</td>
+                    <td><button mat-raised-button class="edit-info-button">Edit Project Info</button></td>
                 </tr>
             </tbody>
         </table>
-        <br>
-        <button mat-raised-button class="edit-info-button">Edit This Info</button>
-        <br>
     </div>
     <div class="landing-container">
         <div class="landing-item project-info">
@@ -31,7 +31,9 @@
                         <div class="note-content note-date">{{note.dateOfCreation}}</div>
                     </div>
                 </div>
-                <button mat-raised-button class="add-note-button" (click)="addNewNote()">+</button>
+                <button mat-raised-button *ngIf="!showingNoteForm" class="add-note-button" (click)="showNoteForm()">+</button>
+                <button mat-raised-button *ngIf="showingNoteForm" class="add-note-button" (click)="hideNoteForm()">-</button>
+                <app-addnote *ngIf="showingNoteForm" [projectId]="project._id"></app-addnote>
             </div>
         </div>
         <div class="landing-item project-info"><div class="landing-item-title">Files</div></div>

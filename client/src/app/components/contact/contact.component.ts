@@ -37,7 +37,7 @@ export class ContactComponent implements OnInit {
 
   email() {
     this.contactService.email(this.emailForm.getRawValue()).then(email => {
-      this.router.navigate(['/message-received'], {queryParams: email});
+      this.router.navigate(['/contact-landing'], {queryParams: email});
       return email;
     });
   }

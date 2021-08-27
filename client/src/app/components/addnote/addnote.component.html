@@ -1,1 +1,7 @@
-<p>addnote works!</p>
+<div class="form-container">
+    <form [formGroup]="addNoteForm" (ngSubmit)="submitNote()" class="add-note-form">
+        <mat-form-field class="form-input"><input matInput type="text" name="header" formControlName="header" placeholder="Message Header"></mat-form-field>
+        <mat-form-field class="form-input"><textarea matInput type="text" name="content" formControlName="content" placeholder="Your Message"></textarea></mat-form-field>
+        <button mat-raised-button (click)="submitNote()">add note</button>
+    </form>
+</div>

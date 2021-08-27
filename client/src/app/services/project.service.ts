@@ -10,8 +10,14 @@ export class ProjectService {
 
   constructor(private http: HttpClient) { }
 
-  fetchProject(email: string): Promise<Project> {
-    return this.http.get('/api/project/fetchProject', {params: {email}}).toPromise()
+  fetchProject(query: string): Promise<Project> {
+    return this.http.get('/api/project/fetchProject', {params: {query}}).toPromise()
+      .then(project => project)
+      .catch(err => err);
+  }
+
+  fetchProjectWithProjectId(id: string): Promise<Project> {
+    return this.http.get(`/api/project/${id}`).toPromise()
       .then(project => project)
       .catch(err => err);
   }
@@ -23,8 +29,8 @@ export class ProjectService {
       .catch(err => err);
   }
 
-  addProjectNote(projectId: any): Promise<Note> {
-    return this.http.post('/api/project/addNote', projectId).toPromise()
+  addProjectNote(data: any, ): Promise<Note> {
+    return this.http.post('/api/project/addNote', data).toPromise()
       .then(note => note)
       .catch(err => err);
   }

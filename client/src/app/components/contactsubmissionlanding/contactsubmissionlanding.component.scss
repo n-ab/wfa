@@ -18,6 +18,7 @@
     margin: auto;
     border-radius: 25px;
     margin-top: 3rem;
+    padding: 2rem;
 }
 
 .landing-title {
@@ -32,8 +33,12 @@
 table {
     margin: auto;
     color: white;
-    background-image: linear-gradient(127deg, #00d1ff, #1a5d98);
+    // background-image: linear-gradient(127deg, #00d1ff, #1a5d98);
     border-radius: 10px;
+}
+
+th {
+    font-size: 200%;
 }
 
 .note:nth-child(odd) {
@@ -66,6 +71,8 @@ td {
 .edit-info-button {
     margin: auto;
     display: block;
+    height: 20px;
+    line-height: 1px;
 }
 
 .project-bracket-data {

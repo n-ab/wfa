@@ -1,7 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { NavbarComponent } from '../components/navbar/navbar.component';
-import { User } from '../models';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Injectable({
   providedIn: 'root'
@@ -108,6 +107,14 @@ export class UserService {
         console.log('starred sounds = ', sounds);
         return sounds;
       })
+      .catch(err => err);
+  }
+
+  updatePassword(formData: any, emailConfirmation: any): Promise<any> {
+    const data = {formData, emailConfirmation};
+    console.log('updating password with data: ', data);
+    return this.http.post('/api/user/updatePasswordFromEmail', data).toPromise()
+      .then(user => user)
       .catch(err => err);
   }
 }

@@ -13,6 +13,8 @@ import { AboutComponent } from './components/about/about.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { SubmitdialogfileComponent } from './components/submitdialogfile/submitdialogfile.component';
 import { ContactsubmissionlandingComponent } from './components/contactsubmissionlanding/contactsubmissionlanding.component';
+import { EnterPasswordFromEmailComponent } from './components/enter-password-from-email/enter-password-from-email.component';
+import { AddnoteComponent } from './components/addnote/addnote.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent},
@@ -28,7 +30,9 @@ const routes: Routes = [
   { path: 'account', component: AccountComponent},
   { path: 'about', component: AboutComponent},
   { path: 'upload-dialog-file', component: SubmitdialogfileComponent},
-  { path: 'message-received', component: ContactsubmissionlandingComponent},
+  { path: 'add-note', component: AddnoteComponent},
+  { path: 'contact-landing', component: ContactsubmissionlandingComponent },
+  { path: 'enter-password-from-email', component: EnterPasswordFromEmailComponent}
 ];
 
 @NgModule({

@@ -15,6 +15,7 @@ export interface ProjectObject extends mongoose.Document {
     contactEmail1: string,
     contactEmail2: string,
     ipAddress: string,
+    files: string[]             // file paths
 }
 
 const schema = new mongoose.Schema({
@@ -32,6 +33,7 @@ const schema = new mongoose.Schema({
     contactEmail1: String,
     contactEmail2: String,
     ipAddress: String,
+    files: [String],
 }, { timestamps: true });
 
 export const ProjectModel = mongoose.model<ProjectObject>('Project', schema);
