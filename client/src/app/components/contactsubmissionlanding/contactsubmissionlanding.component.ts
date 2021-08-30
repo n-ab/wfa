@@ -40,11 +40,10 @@ export class ContactsubmissionlandingComponent implements OnInit {
       .then(project => {
         this.project = project;
         this.query = project.contactEmail1;
-        const turnaround = this.project.turnaroundGoal;
         this.turnaroundDate = moment(this.project.turnaroundGoal).format('LLLL');
-        console.log('this.project.notes = ', this.project.notes);
         const notesArray: any = this.project.notes;
         this.notes = notesArray;
+        // console.log('this.notes = ', this.notes);
       })
       .catch(err => {
         console.log('error fetching project via service: ', err);
@@ -62,7 +61,7 @@ export class ContactsubmissionlandingComponent implements OnInit {
 
   setNotes(project: any): void {
     console.log('project.notes = ', project.notes);
-    this.notes = project.notes;
+    // this.notes = project.notes;
     console.log('this.notes = ', this.notes);
   }
 

@@ -22,8 +22,9 @@ export function createNewNote(data: any) {
         console.log('√√√ saving note as: √√√', note);
         note.dateOfCreation = moment().format('LLLL');
         note.save();
-        return note._id;
-    })
+        console.log('note._id', typeof note._id);
+        return {noteId: note._id, projectId: note.ofProject};
+    }).catch(err => console.log('error creating new note: ', err));
 }
 
 export async function populateProjectNotes(projectId: string) {

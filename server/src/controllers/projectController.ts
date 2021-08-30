@@ -25,6 +25,9 @@ export async function fetchProject(email: string) {
     const project = await ProjectModel.findOne({contactEmail1: email});
     if(project){
         const projectWithNotes = await project.populate('notes').execPopulate();
+        console.log('projectWithNotes;', projectWithNotes);
+        // const sortedNotes = [... new Set(projectWithNotes.notes)];
+        // console.log('sortedNotes: ', sortedNotes);
         return projectWithNotes;
     } else {
         return '--- reee --- ';
@@ -32,5 +35,19 @@ export async function fetchProject(email: string) {
 }
 
 export async function addNoteIdToProjectNotes(data: any) {
-    console.log('adding some bullshit to some other bullshit: ', data);
+    console.log('adding note id: ', data['noteId']);
+    console.log('to project: ', data['projectId']);
+    const arrayOfNoteIds = [];
+    ProjectModel.findById(data['projectId'])
+        .then(project => {
+            // console.log('project notes PRE push= ', project.notes);
+            arrayOfNoteIds.push(project.notes['id']);
+            project.notes.push(data['noteId']);
+            // console.log('project notes POST push= ', project.notes);
+            console.log('arrayOfNoteIds = ', arrayOfNoteIds);
+            project.save();
+            return project.notes;
+        })
 }
+
+// export function deleteNoteDuplicate()
