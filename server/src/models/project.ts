@@ -27,7 +27,7 @@ const schema = new mongoose.Schema({
     notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note'}],
     wfaEngineers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     clientIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-    desiredTurnaround: String,
+    turnaroundGoal: String,
     message: String,             // initial message 
     firstMessageFrom: String,
     contactEmail1: String,

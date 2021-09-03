@@ -40,7 +40,8 @@ export class ContactsubmissionlandingComponent implements OnInit {
       .then(project => {
         this.project = project;
         this.query = project.contactEmail1;
-        this.turnaroundDate = moment(this.project.turnaroundGoal).format('LLLL');
+        console.log('this.project.turnaroundGoal = ', project);
+        this.turnaroundDate = moment(project.turnaroundGoal).format('LL');
         const notesArray: any = this.project.notes;
         this.notes = notesArray;
         // console.log('this.notes = ', this.notes);
