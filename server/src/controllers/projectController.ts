@@ -13,6 +13,8 @@ export async function createNewProject(data: any) {
         .then(async project => {
             const note = await noteController.createInitialNote(project._id, project.message, project.contactEmail1);
             console.log('note saved = ', note);
+            let number: Number = Math.random() * 1113;
+            project.projectNumber = Math.floor(100000 + Math.random() * 900000);
             project.notes.push(note);
             project.save();
             return project;

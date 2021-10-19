@@ -2,7 +2,7 @@ import * as mongoose from 'mongoose';
 
 export interface ProjectObject extends mongoose.Document {
     _id: any,
-    projectNumber: string,
+    projectNumber: number,
     projectName: string,
     subtitle: string,
     discussions: string[],
@@ -10,7 +10,7 @@ export interface ProjectObject extends mongoose.Document {
     notes: string[],
     wfaEngineers: string[],
     clientIds: string[],
-    turnaroundGoal: string,
+    desiredTurnaround: string,
     firstMessageFrom: string,
     contactEmail1: string,
     contactEmail2: string,
@@ -19,7 +19,7 @@ export interface ProjectObject extends mongoose.Document {
 }
 
 const schema = new mongoose.Schema({
-    projectNumber: String,
+    projectNumber: Number,
     projectName: String,
     title: String,
     subtitle: String,
@@ -27,7 +27,7 @@ const schema = new mongoose.Schema({
     notes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Note'}],
     wfaEngineers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
     clientIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User'}],
-    turnaroundGoal: String,
+    desiredTurnaround: String,
     message: String,             // initial message 
     firstMessageFrom: String,
     contactEmail1: String,

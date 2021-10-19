@@ -4,7 +4,8 @@ import { ProjectService } from 'src/app/services/project.service';
 import { Project } from '../../models';
 import { Note } from '../../models';
 import * as moment from 'moment';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FileService } from 'src/app/services/file.service';
 
 @Component({
   selector: 'app-contactsubmissionlanding',
@@ -20,8 +21,15 @@ export class ContactsubmissionlandingComponent implements OnInit {
   turnaroundDate = '';
   notes!: Note[];
   showingNoteForm = false;
+  addAudioFile: FormGroup;
+  audioPreview = '';
 
-  constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private projectService: ProjectService, private fileService: FileService, public audioContext: AudioContext) {
+    this.addAudioFile = new FormGroup({
+      title: new FormControl('', Validators.required),
+      audioFile: new FormControl(null),
+    });
+  }
 
   ngOnInit(): void {
     const params = Object.values(this.route.snapshot.queryParams);
@@ -41,7 +49,7 @@ export class ContactsubmissionlandingComponent implements OnInit {
         this.project = project;
         this.query = project.contactEmail1;
         console.log('this.project.turnaroundGoal = ', project);
-        this.turnaroundDate = moment(project.turnaroundGoal).format('LL');
+        this.turnaroundDate = moment(project.desiredTurnaround).format('LL');
         const notesArray: any = this.project.notes;
         this.notes = notesArray;
         // console.log('this.notes = ', this.notes);
@@ -77,6 +85,34 @@ export class ContactsubmissionlandingComponent implements OnInit {
 
   hideNoteForm(): void {
     this.showingNoteForm = false;
+  }
+
+  submitDialog(): void {
+    this.fileService.dialogUpload(this.addAudioFile.getRawValue());
+  }
+
+  soundSelected(event: Event): void {
+    // tslint:disable-next-line:no-non-null-assertion
+    const reee = document.getElementById('lil-container');
+    reee?.classList.add()
+    if ((event.target as HTMLInputElement).files![0] != null) {
+      // tslint:disable-next-line:no-non-null-assertion
+      const file = (event.target as HTMLInputElement).files![0];
+      this.addAudioFile.patchValue({audioFile: file});
+      console.log('file = ', file);
+      // tslint:disable-next-line:no-non-null-assertion
+      this.addAudioFile.get('audioFile')!.updateValueAndValidity();
+      const reader = new FileReader();
+      reader.onload = () => {
+        // tslint:disable-next-line:no-non-null-assertion
+        this.audioPreview = reader.result!.toString();
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+        const source = this.audioContext.createBufferSource().context;
+        console.log('this.audioContext.createBufferSource().context: ', source);
+      }
+    }
   }
 
 }

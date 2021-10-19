@@ -104,10 +104,21 @@ hr {
 }
 
 .form-title {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
     padding: 1rem;
     text-align: center;
     color: white;
+    font-weight: 300;
     font-size: 200%;
+}
+
+.form-subtitle {
+    color: #0d5b72;
+    text-align: center;
+    width: 230px;
+    margin: auto;
+    margin-bottom: 1rem;
 }
 
 @keyframes fadeIn {

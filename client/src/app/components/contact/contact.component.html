@@ -3,7 +3,9 @@
     </div>
     <div *ngIf="emailSelected" class="email-form" id="email REE">
         <form [formGroup]="emailForm" (ngSubmit)="email()" class="email-form" enctype="application/x-www-form-urlencoded">
-            <div class="form-title">Contact Us</div>
+            <div class="form-title">Describe Your Project</div>
+            <div class="form-subtitle">The more in depth you can describe your project, the easier time we'll all have in the future.</div>
+            <div class="form-subtitle">Even if you're just submitting a file for edit, all fields are necessary.</div>
             <mat-form-field class="form-input"> <input matInput type="email" name="email" formControlName="email" placeholder="Enter Your Email"> </mat-form-field>
             <mat-form-field class="form-input"> <input matInput type="text" name="name" formControlName="name" placeholder="Your Name / Company Name"> </mat-form-field>
             <mat-form-field class="form-input"> <input matInput type="text" name="projectName" formControlName="projectName" placeholder="Project Name"> </mat-form-field>
@@ -19,4 +21,3 @@
         </form>
     </div>
 </div>
-<br><br><br><br>

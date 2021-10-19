@@ -1,7 +1,6 @@
 .fade-to-black {
   background-image: linear-gradient(black, black, black);
   background: black;
-  // display: none;
   color: black;
 }
 
@@ -12,7 +11,6 @@
 
 a {
   color: #00d9e5;
-  // text-decoration-color: black;
 }
 
 a:hover {
@@ -49,37 +47,68 @@ a:hover {
   overflow: auto;
   color: white;
 }
+// -------- original code for hover transition effect ----------
+// .box {
+//   width: 90%;
+//   position: relative;
+//   box-shadow: 0px 0px 5px -3px black;
+//   background-image: linear-gradient(160deg, transparent, transparent, transparent);
+//   overflow: auto;
+//   margin: auto;
+//   margin-top: 42px;
+//   margin-bottom: 7px;
+//   border-radius: 50px;
+//   z-index: 1;
+// }
 
-.summary-content-container {
+// .box::before {
+//   background-image: linear-gradient(160deg, transparent, transparent, #0000005c);
+//   z-index: -1;
+//   opacity: 0;
+//   position: absolute;
+//   content: "";
+//   top: 0;
+//   right: 0;
+//   bottom: 0;
+//   left: 0;
+//   transition: opacity 1s ease;
+// }
+
+// .box:hover::before {
+//   opacity: 1;
+// }
+// -------- original code for hover transition effect ----------
+.box {
   width: 90%;
   position: relative;
-  box-shadow: 0px 0px 5px -3px black;
+  box-shadow: 0px 0px 0px 0px black;
   background-image: linear-gradient(160deg, transparent, transparent, transparent);
   overflow: auto;
+  z-index: 1;
   margin: auto;
   margin-top: 42px;
   margin-bottom: 7px;
   border-radius: 50px;
-  z-index: 1;
+  // transition: box-shadow 0.3s ease-in-out;
 }
 
-.summary-content-container::before {
+.box::after {
   background-image: linear-gradient(160deg, transparent, transparent, #0000005c);
-  z-index: -1;
-  opacity: 0;
+  box-shadow: 0px 0px 15px 5px black;
   position: absolute;
+  z-index: -3;
+  opacity: 0;
   content: "";
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  transition: opacity 1s ease;
+  transition: all 0.3s ease-in-out;
 }
 
-.summary-content-container:hover::before {
+.box:hover::after {
   opacity: 1;
 }
-
 .summary-header {
   text-align: center;
   font-size: 285%;

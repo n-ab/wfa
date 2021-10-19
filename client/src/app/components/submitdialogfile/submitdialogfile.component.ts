@@ -18,7 +18,7 @@ export class SubmitdialogfileComponent implements OnInit {
       title: new FormControl('', Validators.required),
       projectNumber: new FormControl('', Validators.required),
       audioFile: new FormControl(null),
-    })
+    });
   }
 
   ngOnInit(): void {

@@ -16,7 +16,7 @@
                 <tr>
                     <td>Turnaround Goal:</td>
                     <td class="td-data">{{turnaroundDate}}</td>
-                    <td><button mat-raised-button class="edit-info-button">Edit Project Info</button></td>
+                    <!-- <td><button mat-raised-button class="edit-info-button">Edit Project Info</button></td> -->
                 </tr>
             </tbody>
         </table>
@@ -36,6 +36,19 @@
                 <app-addnote *ngIf="showingNoteForm" [projectId]="project._id"></app-addnote>
             </div>
         </div>
-        <div class="landing-item project-info"><div class="landing-item-title">Files</div></div>
+        <div class="landing-item project-info">
+            <div class="landing-item-title">Files</div>
+            <form class="add-form" [formGroup]="addAudioFile" (ngSubmit)="submitDialog()" enctype="multipart/form-data">
+                <mat-form-field class="form-input"><input matInput type="text" name="title" formControlName="title" placeholder="Name of file"></mat-form-field>
+                <div class="lil-container" id="lil-container">
+                    <button type="button" mat-raised-button class="upload-button" (click)="sound.click()">upload file</button>
+                    <div class="sound-uploaded-notifier" *ngIf="audioPreview && audioPreview !== ''">ready for upload</div>
+                </div>
+                <br>
+                <input type="file" class="input" #sound (change)="soundSelected($event)">
+                <button mat-raised-button class="form-input submit" (ngSubmit)="submitDialog()">submit</button>
+                <br>
+            </form>
+        </div>
     </div>
 </div>
